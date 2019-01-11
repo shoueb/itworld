@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @Author: yuangui.hu
  * @Date: 2019/1/11 15:00
  */
-@Controller
+@Controller("webLoginPathController")
 @RequestMapping("/")
 public class LoginPathController extends BaseController {
     /**
