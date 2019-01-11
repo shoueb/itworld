@@ -1,0 +1,13 @@
+第一版：
+开始时间：2019-01-11
+预计结束：2019-01-30
+目的：快速开发、快速上线
+架构：
+    1：软件  架构：Spring Boot 2.1.1 + Mybatis +th模板 +Mymapper【tk】+分页插件+Redis【后面在添加】+MQ
+    2：图片服务器：阿里OSS
+    3：操作  系统：Centos7
+    4：数  据  库：MySQL 5.7
+    5：开发  工具：ideal
+    6：缓      存：Redis
+    7：消息中间件：RabbitMQ
+第二版：Spring Clound 【版本】
