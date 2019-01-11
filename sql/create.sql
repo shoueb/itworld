@@ -30,3 +30,42 @@ CREATE TABLE `t_author_user` (
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='作者表';
+
+CREATE TABLE `t_blog_article` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `author_id` bigint(20) DEFAULT NULL COMMENT '作者ID',
+  `article_title` varchar(100) DEFAULT NULL COMMENT '标题',
+  `article_type` varchar(20) DEFAULT NULL COMMENT '文章类型',
+  `language_type` varchar(30) DEFAULT NULL COMMENT '技术语言类型',
+  `article_mem` varchar(200) DEFAULT NULL COMMENT '简介',
+  `content_url` varchar(200) DEFAULT NULL COMMENT '文章内容地址',
+  `img_url_min` varchar(200) DEFAULT NULL COMMENT '小图片地址',
+  `img_url_max` varchar(200) DEFAULT NULL COMMENT '大图片地址',
+  `content_keys` varchar(200) DEFAULT NULL COMMENT '文章关键字',
+  `github_url` varchar(200) DEFAULT NULL COMMENT '开源地址',
+  `comment_count` bigint(20) DEFAULT NULL COMMENT '评论总数',
+  `read_count` bigint(20) DEFAULT NULL COMMENT '阅读总数',
+  `practice_count` bigint(20) DEFAULT NULL COMMENT '实践总数',
+  `delete_flag` char(1) DEFAULT '1' COMMENT '数据状态1正常 0 删除',
+  `show_position` varchar(10) DEFAULT NULL COMMENT '显示位置 0默认1候选2精选',
+  `status` varchar(10) DEFAULT NULL COMMENT '状态0新建1发布2审核通过3审核不通过4系统删除',
+  `create_by_id` bigint(20) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_by_id` bigint(20) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8  COMMENT='文章';
+CREATE TABLE `t_blog_series` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `series_title` varchar(100) DEFAULT NULL COMMENT '标题',
+  `series_mem` varchar(200) DEFAULT NULL COMMENT '简介',
+  `author_id` bigint(20) DEFAULT NULL COMMENT '作者ID',
+  `status` varchar(10) DEFAULT NULL COMMENT '状态0新建1发布2审核通过3审核不通过4系统删除',
+  `series_type` varchar(20) DEFAULT NULL COMMENT '系列类别',
+  `delete_flag` char(1) DEFAULT NULL COMMENT '数据状态1正常0删除',
+  `create_by_id` bigint(20) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_by_id` bigint(20) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章系列';
