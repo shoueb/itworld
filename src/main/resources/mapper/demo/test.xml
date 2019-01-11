@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!---namespace 对应Mapper-->
+<mapper namespace="com.shoueb.jianshu.demo.dao.TestMapper">
+    <!--id对应方法名称-->
+    <select id="getTestById" parameterType="java.lang.Long"
+            resultType="com.shoueb.jianshu.demo.pojo.Test">
+      SELECT * FROM t_test WHERE ID = #{id}
+    </select>
+</mapper>

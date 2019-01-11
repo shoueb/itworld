@@ -1,0 +1,34 @@
+调用：/demoServlet
+
+新开发方式：
+1：创建继承于HttpServlet的类。 并用@WebServlet进行注解方式的配置映射
+@WebServlet(name = "demoServlet", urlPatterns = "/demoServlet")
+public class DemoServlet  extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws IOException {
+        resp.getWriter().append("servlet demo");
+    }
+}
+2：在启动类声明扫描
+   @ServletComponentScan
+ 或者：
+  ServletRegistrationBean  注册一个Bean
+-----------------------------------------------------------------
+旧开发方式
+1：创建继承于HttpServlet的类
+public class demoServlet   extends HttpServlet {
+    //重写
+    //doGet
+    //doPost
+}
+2：在web.xml配置映射
+<servlet>
+   <servlet-name>映射名称</servlet-name>
+   <servlet-class>类路径</servlet-class>
+</servlet>
+<!--映射-->
+<servlet-mapping>
+        <servlet-name>映射名称</servlet-name>
+        <url-pattern>要映射什么地址  如：*.do_</url-pattern>
+</servlet-mapping>
