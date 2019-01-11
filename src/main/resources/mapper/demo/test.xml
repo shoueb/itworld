@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!---namespace 对应Mapper-->
-<mapper namespace="com.shoueb.jianshu.demo.dao.TestMapper">
+<mapper namespace="com.shoueb.itworld.demo.dao.TestMapper">
     <!--id对应方法名称-->
     <select id="getTestById" parameterType="java.lang.Long"
             resultType="com.shoueb.jianshu.demo.pojo.Test">
