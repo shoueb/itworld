@@ -1,5 +1,7 @@
 package com.shoueb.itworld.demo.pojo;
 
+import com.shoueb.itworld.common.entity.BaseEntity;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -9,7 +11,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name="t_test")
-public class Test extends BaseEntity  implements Serializable {
+public class Test extends BaseEntity implements Serializable {
     /**
      * 账号
      */
