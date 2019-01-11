@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
+import java.util.Date;
 
 /**
  * @Description: 基础表
@@ -25,22 +26,22 @@ public class BaseEntity {
      * 创建者
      */
     @Column(name = "create_by_id")
-    private String createById;
+    private Long createById;
     /**
      * 创建时间
      */
     @Column(name = "create_time")
-    private String createTime;
+    private Date createTime;
     /**
      * 修改ID
      */
     @Column(name = "update_by_id")
-    private String updateById;
+    private Long updateById;
     /**
      * 修改时间
      */
     @Column(name = "update_time")
-    private String updateTime;
+    private Date updateTime;
 
     @Transient
     private Integer page = 1;
@@ -72,35 +73,35 @@ public class BaseEntity {
         this.rows = rows;
     }
 
-    public String getCreateById() {
+    public Long getCreateById() {
         return createById;
     }
 
-    public void setCreateById(String createById) {
+    public void setCreateById(Long createById) {
         this.createById = createById;
     }
 
-    public String getCreateTime() {
+    public Date getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(String createTime) {
+    public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    public String getUpdateById() {
+    public Long getUpdateById() {
         return updateById;
     }
 
-    public void setUpdateById(String updateById) {
+    public void setUpdateById(Long updateById) {
         this.updateById = updateById;
     }
 
-    public String getUpdateTime() {
+    public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(String updateTime) {
+    public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 }

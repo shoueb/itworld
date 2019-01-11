@@ -3,8 +3,13 @@ CREATE TABLE `t_test` (
   `name` varchar(64) DEFAULT NULL,
   `title` varchar(64) DEFAULT NULL,
   `mem` varchar(64) DEFAULT NULL,
+  `create_by_id` bigint(20) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_by_id` bigint(20) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
 #作者表
 CREATE TABLE `t_author_user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
