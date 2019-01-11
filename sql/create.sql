@@ -61,7 +61,7 @@ CREATE TABLE `t_blog_series` (
   `series_mem` varchar(200) DEFAULT NULL COMMENT '简介',
   `author_id` bigint(20) DEFAULT NULL COMMENT '作者ID',
   `status` varchar(10) DEFAULT NULL COMMENT '状态0新建1发布2审核通过3审核不通过4系统删除',
-  `series_type` varchar(20) DEFAULT NULL COMMENT '系列类别',
+  `series_type` varchar(20) DEFAULT NULL COMMENT '系列类别0散文1系列文章2解决方案3优秀开源',
   `delete_flag` char(1) DEFAULT NULL COMMENT '数据状态1正常0删除',
   `create_by_id` bigint(20) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
