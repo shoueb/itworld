@@ -11,7 +11,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
  * @Date: 2018-09-03
  */
 @SpringBootApplication
-@MapperScan("com.shoueb.itworld.*.dao")
+@MapperScan("com.shoueb.itworld.*.mapper")
 @ServletComponentScan
 public class ItworldApplication {
     /**

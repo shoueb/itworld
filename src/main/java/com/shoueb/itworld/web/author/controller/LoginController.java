@@ -12,12 +12,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
 /**
  * @Description: 会员登录
  * @Author: yuangui.hu
  * @Date: 2019/1/11 15:00
  */
-@Controller
+@RestController
 @RequestMapping("/")
 public class LoginController extends BaseController {
     /**
@@ -29,15 +32,6 @@ public class LoginController extends BaseController {
      */
     @Autowired
     private LoginService loginService;
-    /**
-     * 跳转到登录页面
-     * @return 跳转到登录页面
-     */
-    @RequestMapping(value = "login" ,method = RequestMethod.GET)
-    public String login(){
-        //web前端跳转到  web 文件下
-        return "web/login";
-    }
 
     /***
      * 登录
@@ -46,6 +40,7 @@ public class LoginController extends BaseController {
      * @return 返回登录结果集
      */
     @RequestMapping(value = "doLogin" ,method = RequestMethod.POST)
+    @ResponseBody
     public ResultRO doLogin(@RequestParam("username") String userName,@RequestParam("pwd") String pwd){
         try {
             AuthorUser authorUser=new AuthorUser();

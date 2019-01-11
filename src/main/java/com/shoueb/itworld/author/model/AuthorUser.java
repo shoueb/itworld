@@ -1,12 +1,14 @@
 package com.shoueb.itworld.author.model;
 
 import com.shoueb.itworld.common.entity.BaseEntity;
-import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
+
+@Table(name = "t_author_user")
 public class AuthorUser extends BaseEntity {
 
     private String muuid;
-
     private String userName;
 
     private String pwd;
