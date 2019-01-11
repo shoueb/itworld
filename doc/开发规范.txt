@@ -1,0 +1,7 @@
+1：遵循命名规范：驼峰命名规范
+2：文件名、包名不能出现大写
+3：模块化开发，每个人只负责自己的部分即可
+4：前端部分：web包下开发  会员：member  后端：admin   在这些模块下：controller、service 、vo、ro、其他bean
+5：按功能模块只存：mapper  model
+6：通用模块common 不允许添加和修改
+7：方法注解必须写清楚 包括返回 例子：LoginController

@@ -36,6 +36,9 @@ public class ResultRO<T>  implements Serializable{
     public static <T> ResultRO<T> success(String msg,T data){
         return new ResultRO(ResultRO.SUCCESS,msg,data);
     }
+    public static <T> ResultRO<T> success(T data){
+        return new ResultRO(ResultRO.SUCCESS,"",data);
+    }
     public static <T> ResultRO<T> error(){
         return new ResultRO(ResultRO.ERROR,"","");
     }
