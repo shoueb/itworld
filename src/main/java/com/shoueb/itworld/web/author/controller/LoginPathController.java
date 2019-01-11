@@ -22,5 +22,13 @@ public class LoginPathController extends BaseController {
         //web前端跳转到  web 文件下
         return "web/login";
     }
-
+    /**
+     * 跳转到登录页面
+     * @return 跳转到登录页面
+     */
+    @RequestMapping(value = "index" ,method = RequestMethod.GET)
+    public String index(){
+        //web前端跳转到  web 文件下
+        return "web/index";
+    }
 }
