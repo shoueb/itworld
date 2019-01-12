@@ -31,4 +31,5 @@ public class LoginPathController extends BaseController {
         //web前端跳转到  web 文件下
         return "web/index";
     }
+
 }
