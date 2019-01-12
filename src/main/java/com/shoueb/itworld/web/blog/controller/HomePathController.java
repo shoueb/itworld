@@ -20,11 +20,19 @@ public class HomePathController {
         return "web/home";
     }
 
-    @GetMapping("/details")
+    @GetMapping("details")
     public String details(){
         return "web/details";
     }
 
+    @GetMapping("weblogin")
+    public String login(){
+        return "web/webLogin";
+    }
 
+    @GetMapping("singup")
+    public String sinup(){
+        return  "web/singup";
+    }
 
 }
