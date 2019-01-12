@@ -69,3 +69,29 @@ CREATE TABLE `t_blog_series` (
   `update_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='文章系列';
+CREATE TABLE `t_task_main` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键ID',
+  `task_name` varchar(100) DEFAULT NULL COMMENT '任务名称',
+  `author_id` bigint(20) DEFAULT NULL COMMENT '作者ID',
+  `author_user_name` varchar(64) DEFAULT NULL COMMENT '作者用户名',
+  `author_realname` varchar(64) DEFAULT NULL COMMENT '作者真实姓名',
+  `author_kh_name` varchar(64) DEFAULT NULL,
+  `project_id` bigint(20) DEFAULT NULL COMMENT '项目ID',
+  `project_name` varchar(100) DEFAULT NULL COMMENT '项目名称',
+  `board_id` bigint(20) DEFAULT NULL COMMENT '看板ID',
+  `board_name` varchar(100) DEFAULT NULL COMMENT '看板名称',
+  `task_mem` varchar(300) DEFAULT NULL COMMENT '描述',
+  `attachment_defualt_url` varchar(200) DEFAULT NULL COMMENT '默认附件地址',
+  `task_start` datetime DEFAULT NULL COMMENT '任务开始',
+  `task_end` datetime DEFAULT NULL COMMENT '任务结束',
+  `parent_id` bigint(20) DEFAULT '0' COMMENT '上级任务 0为最顶任务',
+  `priority` int(4) DEFAULT NULL COMMENT '优先级',
+  `status` varchar(10) DEFAULT NULL COMMENT '任务状态',
+  `is_warning` char(1) DEFAULT NULL COMMENT '是否开启提醒 1提醒 0不提醒',
+  `warning_count` int(4) DEFAULT NULL COMMENT '告警几次',
+  `create_by_id` bigint(20) DEFAULT NULL COMMENT '创建者ID',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_by_id` bigint(20) DEFAULT NULL COMMENT '修改者ID',
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='任务主体';
