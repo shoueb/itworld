@@ -19,6 +19,6 @@
 .ov-hidden{
     overflow: hidden;
 }
-.text-400{
-
+.cursor-pointer{
+    cursor: pointer
 }
