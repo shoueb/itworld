@@ -19,4 +19,12 @@ public class HomePathController {
     public String index(){
         return "web/home";
     }
+
+    @GetMapping("/details")
+    public String details(){
+        return "web/details";
+    }
+
+
+
 }
