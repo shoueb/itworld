@@ -20,12 +20,12 @@ public interface HomeServcie {
      * 编辑推荐【20条】
      * @return
      */
-    List<BlogArticleHot> queryEditorRecommendArticle();
+    List<BlogArticleHot> queryEditorRecommendArticle(BlogArticleHot blogArticleHot);
 
     /**
      * 首页的文章【15条】
      * @return
      */
-    List<BlogArticleHot> queryHomeArticle(int pageNum);
+    List<BlogArticleHot> queryHomeArticle(BlogArticleHot blogArticleHot);
 
 }

@@ -1,9 +1,11 @@
 package com.shoueb.itworld.web.author.controller;
 
+import com.google.common.base.Preconditions;
 import com.shoueb.itworld.author.model.AuthorUser;
 import com.shoueb.itworld.common.controller.BaseController;
 import com.shoueb.itworld.common.exception.BusinessException;
 import com.shoueb.itworld.common.result.ResultRO;
+import com.shoueb.itworld.common.utils.MD5Utils;
 import com.shoueb.itworld.web.author.service.LoginService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,12 +42,34 @@ public class LoginController extends BaseController {
      */
     @RequestMapping(value = "doLogin" ,method = RequestMethod.POST)
     @ResponseBody
-    public ResultRO doLogin(@RequestParam("username") String userName,@RequestParam("pwd") String pwd){
+    public ResultRO doLogin(@RequestParam("username") String userName,
+                            @RequestParam("pwd") String pwd){
         try {
+            //验证条件
+            Preconditions.checkNotNull(userName, "用户名不能为空");
+            Preconditions.checkNotNull(pwd, "密码不能为空");
+            if(userName.length()<6){
+                return ResultRO.error("用户名或密码错误");
+            }
+            if(pwd.length()<6){
+                return ResultRO.error("用户名或密码错误");
+            }
+            //密码  用户名+密码  唯一   用户名唯一
+            pwd= MD5Utils.md5Password(userName.trim()+pwd);
+            //设置值===对象
             AuthorUser authorUser=new AuthorUser();
             authorUser.setUserName(userName);
             authorUser.setPwd(pwd);
-            loginService.login(authorUser);
+            //调用service
+            ResultRO resultRO=loginService.login(authorUser);
+            //返回值判断是否成功
+            if(resultRO==null || resultRO.isError()){
+                //我不认为你是对  互不信任原则
+                throw new BusinessException("用户名或密码错误");
+            }
+            //做成功的事
+            request.getSession().setAttribute("author",resultRO.getData());
+            //告诉调用者
             return ResultRO.success();
         }catch (BusinessException buss){
             LOG.error("登录失败",buss.getMessage());

@@ -27,25 +27,33 @@
         <result column="update_by_id" jdbcType="BIGINT" property="updateById" />
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     </resultMap>
+    <sql id="query_where">
+        <if test="showPosition != null and showPosition != ''"> and a.show_position = #{showPosition}</if>
+        <if test="showHome != null and showHome != ''"> and  a.show_home = #{showHome}</if>
+        <if test="editorRecommend != null and editorRecommend != ''"> and  a.editor_recommend = #{editorRecommend}</if>
+    </sql>
     <select id="queryHomeRecommendArticle" parameterType="com.shoueb.itworld.author.model.BlogArticleHot"
-    resultMap="BlogArticleHotROMap"
-    >
+    resultMap="BlogArticleHotROMap">
         select  a.id,a.uid,a.article_title,b.series_title
         from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
+        where a.delete_flag='1'
+        <include refid="query_where"></include>
     </select>
 
     <select id="queryHomeArticle" parameterType="com.shoueb.itworld.author.model.BlogArticleHot"
-            resultMap="BlogArticleHotROMap"
-    >
+            resultMap="BlogArticleHotROMap">
         select a.*,b.series_title,c.kh_name  from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
               left join t_author_user c on  a.author_id = c.id
+        where a.delete_flag='1'
+        <include refid="query_where"></include>
     </select>
 
     <select id="queryEditorRecommendArticle" parameterType="com.shoueb.itworld.author.model.BlogArticleHot"
-            resultMap="BlogArticleHotROMap"
-    >
+            resultMap="BlogArticleHotROMap">
         select  a.id,a.uid,a.article_title,b.series_title
         from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
+        where a.delete_flag='1'
+        <include refid="query_where"></include>
     </select>
 
 

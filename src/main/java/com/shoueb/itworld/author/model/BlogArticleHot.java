@@ -77,6 +77,10 @@ public class BlogArticleHot extends BaseEntity implements Serializable {
      */
     private String showPosition;
     /**
+     * 是否在首页显示 1是0否
+     */
+    private String showHome;
+    /**
      *编辑推荐  1是0否
      */
     private String editorRecommend;
@@ -229,5 +233,13 @@ public class BlogArticleHot extends BaseEntity implements Serializable {
 
     public void setEditorRecommend(String editorRecommend) {
         this.editorRecommend = editorRecommend;
+    }
+
+    public String getShowHome() {
+        return showHome;
+    }
+
+    public void setShowHome(String showHome) {
+        this.showHome = showHome;
     }
 }

@@ -36,17 +36,21 @@ public class LoginServiceImpl implements LoginService {
         Preconditions.checkNotNull(authorUser, "参数不能为空");
         Preconditions.checkNotNull(authorUser.getUserName(), "用户名不能为空");
         Preconditions.checkNotNull(authorUser.getPwd(), "密码不能为空");
+        //做什么事
         //注意采用MyBatis统一Mapper的 Example 【可以学一下】
         Example example=new Example(AuthorUser.class);
         example.createCriteria().andEqualTo("userName",authorUser.getUserName());
         List<AuthorUser> list= authorUserMapper.selectByExample(example);
+        //先校验有异常 然后抛出异常    ===  便于阅读 理解
         if(CollectionUtils.isEmpty(list) || list.size()>1){
             throw new BusinessException("用户名或密码错误");
         }
         AuthorUser authorUserRo=list.get(0);
+        //密码不相等
         if(! authorUser.getPwd().equals(authorUserRo.getPwd())){
             throw new BusinessException("用户名或密码错误");
         }
+        //最后返回成功
         return ResultRO.success(authorUserRo);
     }
 }
