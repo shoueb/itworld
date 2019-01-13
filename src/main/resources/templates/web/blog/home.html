@@ -28,7 +28,7 @@
 			<div class="row mt-4">
 				<ul class="list-unstyled" th:each="homeArticle:${homeArticleList}">
 					<li class="media">
-						<img class="mr-3 rounded h-120px" src="assets/images/avatars/avatar-1.png" alt="user avatar">
+						<img class="mr-3 rounded h-120px" th:src="@{${homeArticle.imgUrlMin}}" alt="user avatar">
 						<div class="media-body">
 							<h5 class="mt-0 mb-1"><span th:if="${homeArticle.seriesTitle!=null}">[<span th:text="${homeArticle.seriesTitle}"></span>]</span> <span th:text="${homeArticle.articleTitle}"></span>
 								<small class="float-right text-danger font-weight-normal mr-4">gitHub</small>
