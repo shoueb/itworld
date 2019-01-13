@@ -1,5 +1,6 @@
 package com.shoueb.itworld.web.blog.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.shoueb.itworld.author.mapper.BlogArticleHotMapper;
 import com.shoueb.itworld.author.model.BlogArticleHot;
 import com.shoueb.itworld.web.blog.service.HomeServcie;
@@ -24,6 +25,7 @@ public class HomeServcieImpl  implements HomeServcie {
      */
     @Override
     public List<BlogArticleHot> queryHomeRecommendArticle() {
+        PageHelper.startPage(0,3);
         return blogArticleHotMapper.queryHomeRecommendArticle();
     }
 
@@ -41,7 +43,8 @@ public class HomeServcieImpl  implements HomeServcie {
      * @return
      */
     @Override
-    public List<BlogArticleHot> queryHomeArticle() {
+    public List<BlogArticleHot> queryHomeArticle(int pageNum) {
+        PageHelper.startPage(pageNum,15);
         return blogArticleHotMapper.selectAll();
     }
 }

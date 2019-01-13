@@ -3,6 +3,7 @@ package com.shoueb.itworld.web.blog.controller;
 import com.shoueb.itworld.author.model.BlogArticleHot;
 import com.shoueb.itworld.common.controller.BaseController;
 import com.shoueb.itworld.web.blog.service.HomeServcie;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,10 +26,14 @@ public class HomePathController extends BaseController {
      **/
     @GetMapping("/")
     public String index(){
+       String page= request.getParameter("page");
+       if(StringUtils.isBlank(page)){
+           page="1";
+       }
         //1：主页推荐【3条】  2：编辑推荐【20条】 3：首页的文章【15条】
         List<BlogArticleHot> homeRecommendArticle= homeServcie.queryHomeRecommendArticle();
         List<BlogArticleHot> editorRecommendArticle= homeServcie.queryEditorRecommendArticle();
-        List<BlogArticleHot> homeArticle= homeServcie.queryHomeArticle();
+        List<BlogArticleHot> homeArticle= homeServcie.queryHomeArticle(Integer.valueOf(page));
         request.setAttribute("homeRecommendArticleList",homeRecommendArticle);
         request.setAttribute("editorRecommendArticleList",editorRecommendArticle);
         request.setAttribute("homeArticleList",homeArticle);

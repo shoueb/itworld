@@ -26,6 +26,6 @@ public interface HomeServcie {
      * 首页的文章【15条】
      * @return
      */
-    List<BlogArticleHot> queryHomeArticle();
+    List<BlogArticleHot> queryHomeArticle(int pageNum);
 
 }
