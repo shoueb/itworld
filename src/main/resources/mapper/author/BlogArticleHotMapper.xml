@@ -4,6 +4,7 @@
     <resultMap id="BlogArticleHotROMap" type="com.shoueb.itworld.author.ro.BlogArticleHotRO">
         <result column="id" jdbcType="BIGINT" property="id" />
         <result column="author_id" jdbcType="BIGINT" property="authorId" />
+        <result column="kh_name" jdbcType="VARCHAR" property="khName" />
         <result column="article_title" jdbcType="VARCHAR" property="articleTitle" />
         <result column="article_series" jdbcType="VARCHAR" property="articleSeries" />
         <result column="series_title" jdbcType="VARCHAR" property="seriesTitle" />
@@ -32,4 +33,20 @@
         select  a.id,a.uid,a.article_title,b.series_title
         from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
     </select>
+
+    <select id="queryHomeArticle" parameterType="com.shoueb.itworld.author.model.BlogArticleHot"
+            resultMap="BlogArticleHotROMap"
+    >
+        select a.*,b.series_title,c.kh_name  from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
+              left join t_author_user c on  a.author_id = c.id
+    </select>
+
+    <select id="queryEditorRecommendArticle" parameterType="com.shoueb.itworld.author.model.BlogArticleHot"
+            resultMap="BlogArticleHotROMap"
+    >
+        select  a.id,a.uid,a.article_title,b.series_title
+        from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
+    </select>
+
+
 </mapper>

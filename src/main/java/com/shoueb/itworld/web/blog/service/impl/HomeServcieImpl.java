@@ -35,7 +35,8 @@ public class HomeServcieImpl  implements HomeServcie {
      */
     @Override
     public List<BlogArticleHot> queryEditorRecommendArticle() {
-        return blogArticleHotMapper.selectAll();
+        PageHelper.startPage(0,20);
+        return blogArticleHotMapper.queryEditorRecommendArticle();
     }
 
     /**
@@ -45,6 +46,6 @@ public class HomeServcieImpl  implements HomeServcie {
     @Override
     public List<BlogArticleHot> queryHomeArticle(int pageNum) {
         PageHelper.startPage(pageNum,15);
-        return blogArticleHotMapper.selectAll();
+        return blogArticleHotMapper.queryHomeArticle();
     }
 }

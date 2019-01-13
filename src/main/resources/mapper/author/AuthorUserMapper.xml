@@ -20,4 +20,14 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
 
+
+  
+<!--
+  <select id="loginByNameAndPwd" parameterType="java.lang.String"
+          resultMap="AuthorUser"
+  >
+  select * from t_author_user where user_name = #{userName} and pwd = #{pwd}
+  </select>-->
+
+
 </mapper>

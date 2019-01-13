@@ -13,6 +13,12 @@ public class BlogArticleHotRO extends BlogArticleHot {
      */
     private String seriesTitle;
 
+
+    /**
+     *武侠名称
+     */
+    private String khName;
+
     public String getSeriesTitle() {
         return seriesTitle;
     }
@@ -20,4 +26,13 @@ public class BlogArticleHotRO extends BlogArticleHot {
     public void setSeriesTitle(String seriesTitle) {
         this.seriesTitle = seriesTitle;
     }
+
+    public String getKhName() {
+        return khName;
+    }
+
+    public void setKhName(String khName) {
+        this.khName = khName;
+    }
+
 }

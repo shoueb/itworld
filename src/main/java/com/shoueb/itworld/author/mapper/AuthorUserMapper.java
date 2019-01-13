@@ -4,5 +4,5 @@ import com.shoueb.comm.MyMapper;
 import com.shoueb.itworld.author.model.AuthorUser;
 
 public interface AuthorUserMapper extends MyMapper<AuthorUser> {
-
+    AuthorUser loginByNameAndPwd(String userName,String pwd);
 }

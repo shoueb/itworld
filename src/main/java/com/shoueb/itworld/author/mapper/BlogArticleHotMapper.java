@@ -15,4 +15,6 @@ public interface BlogArticleHotMapper extends MyMapper<BlogArticleHot> {
      * @return
      */
     List<BlogArticleHot> queryHomeRecommendArticle();
+    List<BlogArticleHot> queryHomeArticle();
+    List<BlogArticleHot> queryEditorRecommendArticle();
 }

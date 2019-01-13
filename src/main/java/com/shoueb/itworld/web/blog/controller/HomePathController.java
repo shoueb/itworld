@@ -2,6 +2,8 @@ package com.shoueb.itworld.web.blog.controller;
 
 import com.shoueb.itworld.author.model.BlogArticleHot;
 import com.shoueb.itworld.common.controller.BaseController;
+
+import com.shoueb.itworld.web.author.service.LoginService;
 import com.shoueb.itworld.web.blog.service.HomeServcie;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,8 @@ public class HomePathController extends BaseController {
         request.setAttribute("homeArticleList",homeArticle);
         return "web/blog/home";
     }
+
+
 
     @GetMapping("details")
     public String details(){
