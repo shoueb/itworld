@@ -11,7 +11,6 @@ import java.util.Date;
   * @Date: 2019/1/12
 */
  @Table(name = "t_task_main")
-
 public class TaskMain extends BaseEntity implements Serializable {
      /**
       *任务名称

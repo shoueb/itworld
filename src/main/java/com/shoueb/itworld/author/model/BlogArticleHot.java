@@ -77,6 +77,11 @@ public class BlogArticleHot extends BaseEntity implements Serializable {
      */
     private String showPosition;
     /**
+     *编辑推荐  1是0否
+     */
+    private String editorRecommend;
+
+    /**
      *状态0新建1发布2审核通过3审核不通过4系统删除
      */
     private String status;
@@ -218,4 +223,11 @@ public class BlogArticleHot extends BaseEntity implements Serializable {
     }
 
 
+    public String getEditorRecommend() {
+        return editorRecommend;
+    }
+
+    public void setEditorRecommend(String editorRecommend) {
+        this.editorRecommend = editorRecommend;
+    }
 }

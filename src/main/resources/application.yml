@@ -14,8 +14,8 @@ mapper:
   mappers: com.shoueb.comm.MyMapper
   not-empty: false
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.shoueb.itworld.*.pojo
+  mapper-locations: mapper/**/*.xml
+  type-aliases-package: com.shoueb.itworld.*.model
 pagehelper:
   helperDialect: mysql
   params: count=countSql

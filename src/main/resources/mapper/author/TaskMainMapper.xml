@@ -16,10 +16,10 @@
         <result column="task_start" jdbcType="TIMESTAMP" property="taskStart" />
         <result column="task_end" jdbcType="TIMESTAMP" property="taskEnd" />
         <result column="parent_id" jdbcType="BIGINT" property="parentId" />
-        <result column="priority" jdbcType="INT" property="priority" />
+        <result column="priority" jdbcType="INTEGER" property="priority" />
         <result column="status" jdbcType="VARCHAR" property="status" />
         <result column="is_warning" jdbcType="VARCHAR" property="isWarning" />
-        <result column="warning_count" jdbcType="INT" property="warningCount" />
+        <result column="warning_count" jdbcType="INTEGER" property="warningCount" />
         <result column="create_by_id" jdbcType="BIGINT" property="createById" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
         <result column="update_by_id" jdbcType="BIGINT" property="updateById" />

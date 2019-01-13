@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<div th:replace="web/shareHtml/shareHead"></div>
+	<title>首页</title>
+</head>
+<body>
+<div th:replace="web/shareHtml/shareHeader"></div>
+<div class="container-fluid mt-4">
+	<div class="row m-0">
+		<div class="col-9">
+			<div class="cursor-pointer">
+				<span class="articleType p-2 text-danger ">精华</span>
+				<span class="articleType p-2 ">候选</span>
+				<strong class="p-2 ml-5">语言：</strong>
+				<span class="languageType p-2 ">全部</span>
+				<span class="languageType p-2 ">java</span>
+				<span class="languageType p-2 ">java</span>
+				<span class="languageType p-2 ">java</span>
+				<span class="languageType p-2 ">java</span>
+			</div>
+			<div class="row mt-4">
+				<ul class="list-group w-100" th:each="homeRecommendArticle:${homeRecommendArticleList}">
+					<li class="list-group-item"> <span th:if="${homeRecommendArticle.seriesTitle!=null}">[<span th:text="${homeRecommendArticle.seriesTitle}"></span>]</span> <span th:text="${homeRecommendArticle.articleTitle}">多种实现的依赖注入</span></li>
+				</ul>
+			</div>
+			<div class="row mt-4">
+				<ul class="list-unstyled">
+					<li class="media">
+						<img class="mr-3 rounded h-120px" src="assets/images/avatars/avatar-1.png" alt="user avatar">
+						<div class="media-body">
+							<h5 class="mt-0 mb-1">【系列】原来日本人这样看待 AV 女优
+								<small class="float-right text-danger font-weight-normal mr-4">gitHub</small>
+							</h5>
+							<div class="h-66px ov-hidden">
+								设置方法 使用慢查询日志里捕获 启用之前需要先进行一些设置 方法一：全局变量设置
+								设置慢查询日志的日志文件位置 set global slow_query_log_file = "D:/slow_log/slow_log.log" ;
+								设置是否对未使用索引的SQL进行记录
+							</div>
+
+							<div class="mt-1">
+								<a href="">作者：xxx</a>
+								<a href="">评论：xxx</a>
+								<a href="">阅读：xxx</a>
+								<a href="">实践：xxx</a>
+							</div>
+						</div>
+					</li>
+					<li class="media my-4">
+						<img class="mr-3 rounded h-120px" src="assets/images/avatars/avatar-2.png" alt="user avatar">
+						<div class="media-body">
+							<h5 class="mt-0 mb-1">【系列】原来日本人这样看待 AV 女优
+								<small class="float-right text-danger font-weight-normal mr-4">gitHub</small>
+							</h5>
+							<div class="h-66px ov-hidden">
+								设置方法 使用慢查询日志里捕获 启用之前需要先进行一些设置 方法一：全局变量设置
+								设置慢查询日志的日志文件位置 set global slow_query_log_file = "D:/slow_log/slow_log.log" ;
+								设置是否对未使用索引的SQL进行记录
+							</div>
+
+							<div class="mt-1">
+								<a href="">作者：xxx</a>
+								<a href="">评论：xxx</a>
+								<a href="">阅读：xxx</a>
+								<a href="">实践：xxx</a>
+							</div>
+						</div>
+					</li>
+					<li class="media my-4">
+						<img class="mr-3 rounded h-120px" src="assets/images/avatars/avatar-3.png" alt="user avatar">
+						<div class="media-body">
+							<h5 class="mt-0 mb-1">【系列】原来日本人这样看待 AV 女优
+								<small class="float-right text-danger font-weight-normal mr-4">gitHub</small>
+							</h5>
+							<div class="h-66px ov-hidden">
+								设置方法 使用慢查询日志里捕获 启用之前需要先进行一些设置 方法一：全局变量设置
+								设置慢查询日志的日志文件位置 set global slow_query_log_file = "D:/slow_log/slow_log.log" ;
+								设置是否对未使用索引的SQL进行记录
+							</div>
+
+							<div class="mt-1">
+								<a href="">作者：xxx</a>
+								<a href="">评论：xxx</a>
+								<a href="">阅读：xxx</a>
+								<a href="">实践：xxx</a>
+							</div>
+						</div>
+					</li>
+					<li class="media my-4">
+						<img class="mr-3 rounded h-120px" src="assets/images/avatars/avatar-4.png" alt="user avatar">
+						<div class="media-body">
+							<h5 class="mt-0 mb-1">【系列】原来日本人这样看待 AV 女优
+								<small class="float-right text-danger font-weight-normal mr-4">gitHub</small>
+							</h5>
+							<div class="h-66px ov-hidden">
+								设置方法 使用慢查询日志里捕获 启用之前需要先进行一些设置 方法一：全局变量设置
+								设置慢查询日志的日志文件位置 set global slow_query_log_file = "D:/slow_log/slow_log.log" ;
+								设置是否对未使用索引的SQL进行记录
+							</div>
+
+							<div class="mt-1">
+								<a href="">作者：xxx</a>
+								<a href="">评论：xxx</a>
+								<a href="">阅读：xxx</a>
+								<a href="">实践：xxx</a>
+							</div>
+						</div>
+					</li>
+					<li class="media">
+						<img class="mr-3 rounded h-120px" src="assets/images/avatars/avatar-5.png" alt="user avatar">
+						<div class="media-body">
+							<h5 class="mt-0 mb-1">【系列】原来日本人这样看待 AV 女优
+								<small class="float-right text-danger font-weight-normal mr-4">gitHub</small>
+							</h5>
+							<div class="h-66px ov-hidden">
+								设置方法 使用慢查询日志里捕获 启用之前需要先进行一些设置 方法一：全局变量设置
+								设置慢查询日志的日志文件位置 set global slow_query_log_file = "D:/slow_log/slow_log.log" ;
+								设置是否对未使用索引的SQL进行记录
+							</div>
+
+							<div class="mt-1">
+								<a href="">作者：xxx</a>
+								<a href="">评论：xxx</a>
+								<a href="">阅读：xxx</a>
+								<a href="">实践：xxx</a>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="row mt-4">
+				<ul class="pagination pagination-separate">
+					<li class="page-item"><a class="page-link" href="javascript:void(0);">上一页</a></li>
+					<li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+					<li class="page-item active"><a class="page-link" href="javascript:void(0);">2</a></li>
+					<li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+					<li class="page-item"><a class="page-link" href="javascript:void(0);">下一页</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card">
+				<div class="card-header text-white bg-dark">编辑推荐</div>
+				<ul class="list-group">
+					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
+					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
+					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
+					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
+					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
+					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
+					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
+					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
+					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
+
+				</ul>
+				<!--<div class="card-footer">Card footer</div>-->
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div th:replace="web/shareHtml/shareFoot"></div>
+<script src="/web/js/home.js"></script>
+</body>
+</html>
