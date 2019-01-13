@@ -1,36 +1,54 @@
 package com.shoueb.itworld.author.model;
 
 import com.shoueb.itworld.common.entity.BaseEntity;
-
-import javax.persistence.Column;
 import javax.persistence.Table;
 import java.io.Serializable;
 
 @Table(name = "t_author_user")
 public class AuthorUser extends BaseEntity implements Serializable {
-
+    /**
+     *用户唯一ID
+     */
     private String muuid;
     /**
-     *
+     *用户名
      */
     private String userName;
-
+    /**
+     *密码
+     */
     private String pwd;
-
+    /**
+     *武侠昵称
+     */
     private String khName;
-
+    /**
+     *武侠id
+     */
     private String khUuid;
-
+    /**
+     *姓名
+     */
     private String realName;
-
+    /**
+     *身份类型
+     */
     private String codeType;
-
+    /**
+     *身份证码
+     */
     private String codeNo;
-
+    /**
+     *作者关注我数量
+     */
     private Long authorFollowCount;
-
+    /**
+     *我关注的作者数量
+     */
     private Long myFollowCount;
-
+    /**
+     *状态 0冻结 1正常
+     */
     private String status;
 
     public String getMuuid() {
