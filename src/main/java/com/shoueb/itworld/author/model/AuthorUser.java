@@ -4,11 +4,15 @@ import com.shoueb.itworld.common.entity.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Table(name = "t_author_user")
-public class AuthorUser extends BaseEntity {
+public class AuthorUser extends BaseEntity implements Serializable {
 
     private String muuid;
+    /**
+     *
+     */
     private String userName;
 
     private String pwd;

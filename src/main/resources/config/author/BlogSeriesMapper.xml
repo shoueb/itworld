@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shoueb.itworld.author.mapper.BlogSeriesMapper">
+    <resultMap id="BlogSeriesMap" type="com.shoueb.itworld.author.model.BlogSeries">
+        <result column="id" jdbcType="BIGINT" property="id" />
+        <result column="series_title" jdbcType="VARCHAR" property="seriesTitle" />
+        <result column="series_mem" jdbcType="VARCHAR" property="seriesMem" />
+        <result column="author_id" jdbcType="BIGINT" property="authorId" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="series_type" jdbcType="VARCHAR" property="seriesType" />
+        <result column="delete_flag" jdbcType="VARCHAR" property="deleteFlag" />
+        <result column="create_by_id" jdbcType="BIGINT" property="createById" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_by_id" jdbcType="BIGINT" property="updateById" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    </resultMap>
+
+</mapper>

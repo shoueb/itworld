@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shoueb.itworld.author.mapper.AuthorUserMapper">
+    <resultMap id="TaskMainMap" type="com.shoueb.itworld.author.model.TaskMain">
+        <result column="id" jdbcType="BIGINT" property="id" />
+        <result column="author_id" jdbcType="BIGINT" property="authorId" />
+        <result column="author_user_name" jdbcType="VARCHAR" property="authorUserName" />
+        <result column="author_realname" jdbcType="VARCHAR" property="authorRealName" />
+        <result column="author_kh_name" jdbcType="VARCHAR" property="authorKhName" />
+        <result column="project_id" jdbcType="BIGINT" property="projectId" />
+        <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+        <result column="board_id" jdbcType="BIGINT" property="boardId" />
+        <result column="board_name" jdbcType="VARCHAR" property="boardName" />
+        <result column="task_mem" jdbcType="VARCHAR" property="taskMem" />
+        <result column="attachment_defualt_url" jdbcType="VARCHAR" property="attachmentDefualtUrl" />
+        <result column="task_start" jdbcType="TIMESTAMP" property="taskStart" />
+        <result column="task_end" jdbcType="TIMESTAMP" property="taskEnd" />
+        <result column="parent_id" jdbcType="BIGINT" property="parentId" />
+        <result column="priority" jdbcType="INT" property="priority" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="is_warning" jdbcType="VARCHAR" property="isWarning" />
+        <result column="warning_count" jdbcType="INT" property="warningCount" />
+        <result column="create_by_id" jdbcType="BIGINT" property="createById" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_by_id" jdbcType="BIGINT" property="updateById" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    </resultMap>
+
+</mapper>

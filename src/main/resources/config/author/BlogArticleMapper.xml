@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shoueb.itworld.author.mapper.BlogArticleMapper">
+    <resultMap id="BlogArticleMap" type="com.shoueb.itworld.author.model.BlogArticle">
+        <result column="id" jdbcType="BIGINT" property="id" />
+        <result column="author_id" jdbcType="BIGINT" property="authorId" />
+        <result column="article_title" jdbcType="VARCHAR" property="articleTitle" />
+        <result column="article_type" jdbcType="VARCHAR" property="articleType" />
+        <result column="language_type" jdbcType="VARCHAR" property="languageType" />
+        <result column="article_mem" jdbcType="VARCHAR" property="articleMem" />
+        <result column="content_url" jdbcType="VARCHAR" property="contentUrl" />
+        <result column="img_url_min" jdbcType="VARCHAR" property="imgUrlMin" />
+        <result column="img_url_max" jdbcType="VARCHAR" property="imgUrlMax" />
+        <result column="content_keys" jdbcType="VARCHAR" property="contentKeys" />
+        <result column="github_url" jdbcType="VARCHAR" property="githubUrl" />
+        <result column="comment_count" jdbcType="BIGINT" property="commentCount" />
+        <result column="read_count" jdbcType="BIGINT" property="readCount" />
+        <result column="practice_count" jdbcType="BIGINT" property="practiceCount" />
+        <result column="delete_flag" jdbcType="VARCHAR" property="deleteFlag" />
+        <result column="show_position" jdbcType="VARCHAR" property="showPosition" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="create_by_id" jdbcType="BIGINT" property="createById" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_by_id" jdbcType="BIGINT" property="updateById" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+
+    </resultMap>
+
+
+
+
+
+    <!--查询所有内容-->
+    <select id="getAllMess" resultMap="BlogArticle">
+        select tba.* ,tab.user_name from t_blog_article tba left join t_author_user tau on tba.author_id
+        where tba.author_id = tau.id
+    </select>
+
+
+
+</mapper>
