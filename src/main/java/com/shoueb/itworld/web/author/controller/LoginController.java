@@ -40,10 +40,10 @@ public class LoginController extends BaseController {
      * @param pwd  密码
      * @return 返回登录结果集
      */
-    @RequestMapping(value = "doLogin" ,method = RequestMethod.POST)
+    @RequestMapping(value = "doLogin" ,method = {RequestMethod.POST})
     @ResponseBody
-    public ResultRO doLogin(@RequestParam("username") String userName,
-                            @RequestParam("pwd") String pwd){
+    public ResultRO doLogin(@RequestParam(value="username") String userName,
+                            @RequestParam(value="pwd") String pwd){
         try {
             //验证条件
             Preconditions.checkNotNull(userName, "用户名不能为空");
