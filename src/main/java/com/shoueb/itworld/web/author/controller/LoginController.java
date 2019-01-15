@@ -40,7 +40,7 @@ public class LoginController extends BaseController {
      * @param pwd  密码
      * @return 返回登录结果集
      */
-    @RequestMapping(value = "doLogin" ,method = {RequestMethod.POST})
+    @RequestMapping(value = "doLogin" ,method = RequestMethod.POST)
     @ResponseBody
     public ResultRO doLogin(@RequestParam(value="username") String userName,
                             @RequestParam(value="pwd") String pwd){

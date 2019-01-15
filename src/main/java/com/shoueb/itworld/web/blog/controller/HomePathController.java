@@ -65,7 +65,9 @@ public class HomePathController extends BaseController {
     @GetMapping("weblogin")
     public String login(){
         return "web/webLogin";
+       /* return  "shareHtml/test";*/
     }
+
 
     @GetMapping("singup")
     public String sinup(){

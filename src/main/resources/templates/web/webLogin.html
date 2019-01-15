@@ -4,6 +4,29 @@
 	<meta charset="UTF-8">
 	<div th:replace="web/shareHtml/shareHead"></div>
 	<title>登录</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+        function login() {
+            $.ajax({
+                //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "doLogin" ,//url
+               /* data: $('#form1').serialize(),*/
+                data: {username:$("#username").val(), pwd:$("#pwd").val()},
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    if (result.resultCode == 200) {
+                        alert("SUCCESS");
+                    }
+                    ;
+                },
+                error : function() {
+                    alert("异常！");
+                }
+            });
+        }
+	</script>
 </head>
 <body class="bg-dark">
 <!-- Start wrapper-->
@@ -15,7 +38,7 @@
 					<img src="/assets/images/logo-icon.png" alt="logo icon">
 				</div>
 				<div class="card-title text-uppercase text-center py-3">登&nbsp;&nbsp;录</div>
-				<form  d="form1" onsubmit="return false" action="##"o method="post" >
+				<form  id="form1" onsubmit="return false" action="##" method="post" >
 					<div class="form-group">
 						<label for="username" class="">用户名</label>
 						<div class="position-relative has-icon-right">
