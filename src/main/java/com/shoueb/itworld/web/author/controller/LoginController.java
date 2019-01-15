@@ -56,6 +56,7 @@ public class LoginController extends BaseController {
             }
             //密码  用户名+密码  唯一   用户名唯一
             pwd= MD5Utils.md5Password(userName.trim()+pwd);
+            System.out.println("pwd："+pwd);
             //设置值===对象
             AuthorUser authorUser=new AuthorUser();
             authorUser.setUserName(userName);
