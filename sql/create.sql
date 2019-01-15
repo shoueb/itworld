@@ -1,3 +1,4 @@
+#数据库参考设计https://www.cnblogs.com/aaron-leb/p/5706176.html
 CREATE TABLE `t_test` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(64) DEFAULT NULL,
