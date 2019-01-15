@@ -1,13 +1,16 @@
 package com.shoueb.itworld.web.blog.controller;
 
+
 import com.shoueb.itworld.author.model.BlogArticleHot;
 import com.shoueb.itworld.common.controller.BaseController;
 import com.shoueb.itworld.common.enums.BlogShowHomeEnum;
 import com.shoueb.itworld.common.enums.BlogShowPositionEnum;
+import com.shoueb.itworld.web.blog.service.DetailsService;
 import com.shoueb.itworld.web.blog.service.HomeServcie;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -33,13 +36,23 @@ public class HomePathController extends BaseController {
        if(StringUtils.isBlank(page)){
            page="1";
        }
-        String essence= request.getParameter("essence");
+       String essence= request.getParameter("essence");
+       String candidate= request.getParameter("candidate");
+        BlogArticleHot blogArticleHot=new BlogArticleHot();
         if(StringUtils.isBlank(essence)){
             essence= BlogShowPositionEnum.ESSENCE.getKey();
         }
+
         String language= request.getParameter("language");
-        BlogArticleHot blogArticleHot=new BlogArticleHot();
-        blogArticleHot.setShowPosition(essence);
+      /*  BlogArticleHot blogArticleHot=new BlogArticleHot();*/
+        if (candidate !=null){
+            candidate= BlogShowPositionEnum.CANDIDATE.getKey();
+            blogArticleHot.setShowPosition(candidate);
+        }else{
+            essence= BlogShowPositionEnum.ESSENCE.getKey();
+            blogArticleHot.setShowPosition(essence);
+        }
+  /*      blogArticleHot.setShowPosition(essence);*/
         blogArticleHot.setLanguageType(language);
         blogArticleHot.setShowHome(BlogShowHomeEnum.YES.getKey());
         blogArticleHot.setPage(Integer.valueOf(page));
@@ -55,10 +68,15 @@ public class HomePathController extends BaseController {
         return "web/blog/home";
     }
 
+    @Autowired
+    DetailsService detailsService;
 
 
     @GetMapping("details")
-    public String details(){
+    public String details(Model model, BlogArticleHot blogArticleHot){
+        Long id = blogArticleHot.getId();
+        BlogArticleHot article = detailsService.queryArticleById(id);
+        model.addAttribute("article",article);
         return "web/details";
     }
 

@@ -55,3 +55,16 @@ function login() {
         }
     });
 }
+
+function click_essence(id) {
+    if(id=='essence') {
+        alert("11111");
+        $.ajax({
+            type:"post",
+            dataType:"text",
+            data:{"essence":essence},
+        })
+    }else{
+        alert("00000")
+    };
+}

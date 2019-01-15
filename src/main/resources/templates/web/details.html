@@ -7,10 +7,10 @@
 </head>
 <body>
 <div th:replace="web/shareHtml/shareHeader"></div>
-<main class="container-fluid mt-4">
+<main class="container-fluid mt-4" th:each="article:${article}">
 	<div class="row m-0">
 		<div class="col-9">
-			<h2 class="text-center">
+			<h2 class="text-center" th:text="${article.articleTitle}">
 				标题标题标题标题标题标题标题
 			</h2>
 
