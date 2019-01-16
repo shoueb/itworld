@@ -11,14 +11,13 @@
 	<div class="row m-0">
 		<div class="col-9">
 			<div class="cursor-pointer" >
-				<span class="articleType p-2"><a href="/?position=1" th:class="${showPosition=='1'}? 'text-danger' : ''">精选</a></span>
-				<span class="articleType p-2 "><a href="/?position=2" th:class="${showPosition=='2'}? 'text-danger' : ''">候选</a></span>
+				<span class="articleType p-2"><a th:href="@{'/?position=2&language='+${language}}" th:class="${showPosition=='2'}? 'text-danger' : ''">精选</a></span>
+				<span class="articleType p-2 "><a th:href="@{'/?position=1&language='+${language}}" th:class="${showPosition=='1'}? 'text-danger' : ''">候选</a></span>
 				<strong class="p-2 ml-5">语言：</strong>
-				<span class="languageType p-2 ">全部</span>
-				<span class="languageType p-2 ">java</span>
-				<span class="languageType p-2 ">java</span>
-				<span class="languageType p-2 ">java</span>
-				<span class="languageType p-2 ">java</span>
+				<span class="languageType p-2 "><a th:href="@{'/?position='+${showPosition}}" th:class="${language==''}? 'text-danger' : ''">全部</a></span>
+				<span class="languageType p-2 "><a th:href="@{'/?position='+${showPosition}+'&language=java'}" th:class="${language=='java'}? 'text-danger' : ''">java</a></span>
+				<span class="languageType p-2 "><a th:href="@{'/?position='+${showPosition}+'&language=.net'}" th:class="${language=='.net'}? 'text-danger' : ''">.net</a></span>
+				<span class="languageType p-2 "><a th:href="@{'/?position='+${showPosition}+'&language=js'}" th:class="${language=='js'}? 'text-danger' : ''">js</a></span>
 			</div>
 			<div class="row mt-4">
 				<ul class="list-group w-100" th:each="homeRecommendArticle:${homeRecommendArticleList}">

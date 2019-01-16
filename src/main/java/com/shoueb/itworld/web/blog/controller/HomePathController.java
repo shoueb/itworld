@@ -41,6 +41,9 @@ public class HomePathController extends BaseController {
         if(StringUtils.isBlank(showPosition)){
             showPosition= BlogShowPositionEnum.ESSENCE.getKey();
         }
+        if(StringUtils.isBlank(language)){
+            language="";
+        }
         blogArticleHot.setShowPosition(showPosition);
         blogArticleHot.setLanguageType(language);
         blogArticleHot.setShowHome(BlogShowHomeEnum.YES.getKey());
