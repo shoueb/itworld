@@ -5,7 +5,6 @@ import com.shoueb.itworld.author.model.BlogArticleHot;
 import com.shoueb.itworld.common.controller.BaseController;
 import com.shoueb.itworld.common.enums.BlogShowHomeEnum;
 import com.shoueb.itworld.common.enums.BlogShowPositionEnum;
-import com.shoueb.itworld.web.blog.service.DetailsService;
 import com.shoueb.itworld.web.blog.service.HomeServcie;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,23 +35,13 @@ public class HomePathController extends BaseController {
        if(StringUtils.isBlank(page)){
            page="1";
        }
-       String essence= request.getParameter("essence");
-       String candidate= request.getParameter("candidate");
-        BlogArticleHot blogArticleHot=new BlogArticleHot();
-        if(StringUtils.isBlank(essence)){
-            essence= BlogShowPositionEnum.ESSENCE.getKey();
-        }
-
+       String showPosition= request.getParameter("position");
         String language= request.getParameter("language");
-      /*  BlogArticleHot blogArticleHot=new BlogArticleHot();*/
-        if (candidate !=null){
-            candidate= BlogShowPositionEnum.CANDIDATE.getKey();
-            blogArticleHot.setShowPosition(candidate);
-        }else{
-            essence= BlogShowPositionEnum.ESSENCE.getKey();
-            blogArticleHot.setShowPosition(essence);
+        BlogArticleHot blogArticleHot=new BlogArticleHot();
+        if(StringUtils.isBlank(showPosition)){
+            showPosition= BlogShowPositionEnum.ESSENCE.getKey();
         }
-  /*      blogArticleHot.setShowPosition(essence);*/
+        blogArticleHot.setShowPosition(showPosition);
         blogArticleHot.setLanguageType(language);
         blogArticleHot.setShowHome(BlogShowHomeEnum.YES.getKey());
         blogArticleHot.setPage(Integer.valueOf(page));
@@ -65,25 +54,23 @@ public class HomePathController extends BaseController {
         request.setAttribute("homeRecommendArticleList",homeRecommendArticle);
         request.setAttribute("editorRecommendArticleList",editorRecommendArticle);
         request.setAttribute("homeArticleList",homeArticle);
+        //回显
+        request.setAttribute("showPosition",showPosition);
+        request.setAttribute("language",language);
         return "web/blog/home";
     }
 
-    @Autowired
-    DetailsService detailsService;
-
-
     @GetMapping("details")
     public String details(Model model, BlogArticleHot blogArticleHot){
-        Long id = blogArticleHot.getId();
-        BlogArticleHot article = detailsService.queryArticleById(id);
-        model.addAttribute("article",article);
+//        Long id = blogArticleHot.getId();
+//        BlogArticleHot article = detailsService.queryArticleById(id);
+//        model.addAttribute("article",article);
         return "web/details";
     }
 
     @GetMapping("weblogin")
     public String login(){
         return "web/webLogin";
-       /* return  "shareHtml/test";*/
     }
 
 

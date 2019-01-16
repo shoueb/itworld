@@ -11,8 +11,8 @@
 	<div class="row m-0">
 		<div class="col-9">
 			<div class="cursor-pointer" >
-				<span class="articleType p-2 text-danger "><a href="/?essence=essence">精选</a></span>
-				<span class="articleType p-2 "><a href="/?candidate=candidate">候选</a></span>
+				<span class="articleType p-2"><a href="/?position=1" th:class="${showPosition=='1'}? 'text-danger' : ''">精选</a></span>
+				<span class="articleType p-2 "><a href="/?position=2" th:class="${showPosition=='2'}? 'text-danger' : ''">候选</a></span>
 				<strong class="p-2 ml-5">语言：</strong>
 				<span class="languageType p-2 ">全部</span>
 				<span class="languageType p-2 ">java</span>
@@ -22,7 +22,7 @@
 			</div>
 			<div class="row mt-4">
 				<ul class="list-group w-100" th:each="homeRecommendArticle:${homeRecommendArticleList}">
-					<li class="list-group-item"><a th:href="@{'http://localhost:8080/details/?id='+${homeRecommendArticle.id}}" > <span th:if="${homeRecommendArticle.seriesTitle!=null}">[<span th:text="${homeRecommendArticle.seriesTitle}"></span>]</span> <span th:text="${homeRecommendArticle.articleTitle}">多种实现的依赖注入</span></a></li>
+					<li class="list-group-item"><a th:href="@{'/details/?id='+${homeRecommendArticle.id}}" > <span th:if="${homeRecommendArticle.seriesTitle!=null}">[<span th:text="${homeRecommendArticle.seriesTitle}"></span>]</span> <span th:text="${homeRecommendArticle.articleTitle}">多种实现的依赖注入</span></a></li>
 				</ul>
 			</div>
 			<div class="row ">
@@ -39,7 +39,7 @@
 
 							<div class="mt-1">
 								<a href="" th:text="${homeArticle.khName}"></a>
-								<a th:href="@{'http://localhost:8080/details/?id='+${homeArticle.id}}" >评论:<span th:text="${homeArticle.commentCount}"></span></a>
+								<a th:href="@{'/details/?id='+${homeArticle.id}}" >评论:<span th:text="${homeArticle.commentCount}"></span></a>
 								<a href="" >阅读:<span th:text="${homeArticle.readCount}"></span></a>
 								<a href="">实践:<span  th:text="${homeArticle.practiceCount}"></span></a>
 							</div>
@@ -51,10 +51,9 @@
 			<div class="row mt-4">
 				<ul class="pagination pagination-separate">
 					<li class="page-item"><a class="page-link" href="javascript:void(0);">上一页</a></li>
-<!--					<li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+					<li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
 					<li class="page-item active"><a class="page-link" href="javascript:void(0);">2</a></li>
-					<li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>-->
-					<li class="page-item"><a class="page-link" href="javascript:void(0);"><span th:text="${page}"></span></a></li>
+					<li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
 					<li class="page-item"><a class="page-link" href="javascript:void(0);">下一页</a></li>
 				</ul>
 			</div>
@@ -64,7 +63,7 @@
 				<div class="card-header text-white bg-dark">编辑推荐</div>
 				<ul class="list-group" th:each="editorRecommendArticle:${editorRecommendArticleList}">
 					<li class="list-group-item">
-						<a th:href="@{'http://localhost:8080/details/?id='+${editorRecommendArticle.id}}" ><span th:if="${editorRecommendArticle.seriesTitle!=null}">
+						<a th:href="@{'/details/?id='+${editorRecommendArticle.id}}" ><span th:if="${editorRecommendArticle.seriesTitle!=null}">
 							[<span th:text="${editorRecommendArticle.seriesTitle}"></span>]</span><span th:text="${editorRecommendArticle.articleTitle}">多种实现的依赖注入</span></a>
 					</li>
 
