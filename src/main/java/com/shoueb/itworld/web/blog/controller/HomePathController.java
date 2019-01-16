@@ -28,14 +28,14 @@ public class HomePathController extends BaseController {
     /**
      * @return 跳转到首页
      **/
-    @GetMapping("/")
+    @GetMapping(value = "/")
     public String index(){
         //条件
-       String page= request.getParameter("page");
-       if(StringUtils.isBlank(page)){
-           page="1";
-       }
-       String showPosition= request.getParameter("position");
+        String page= request.getParameter("page");
+        if(StringUtils.isBlank(page)){
+            page="1";
+        }
+        String showPosition= request.getParameter("position");
         String language= request.getParameter("language");
         BlogArticleHot blogArticleHot=new BlogArticleHot();
         if(StringUtils.isBlank(showPosition)){

@@ -28,9 +28,12 @@
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     </resultMap>
     <sql id="query_where">
-        <if test="showPosition != null and showPosition != ''"> and a.show_position = #{showPosition}</if>
-        <if test="showHome != null and showHome != ''"> and  a.show_home = #{showHome}</if>
-        <if test="editorRecommend != null and editorRecommend != ''"> and  a.editor_recommend = #{editorRecommend}</if>
+        <trim prefix="AND" prefixOverrides="AND |OR">
+            <if test="showPosition != null and showPosition != ''"> and a.show_position = #{showPosition}</if>
+            <if test="showHome != null and showHome != ''"> and  a.show_home = #{showHome}</if>
+            <if test="editorRecommend != null and editorRecommend != ''"> and  a.editor_recommend = #{editorRecommend}</if>
+            <if test="languageType != null and languageType != ''"> and  a.language_type = #{languageType}</if>
+        </trim>
     </sql>
     <select id="queryHomeRecommendArticle" parameterType="com.shoueb.itworld.author.model.BlogArticleHot"
     resultMap="BlogArticleHotROMap">
