@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<div th:replace="web/shareHtml/shareHead"></div>
+	<title>文章管理</title>
+</head>
+<body>
+<div class="container-fluid">
+<div class="">
+	<div class="articleNav bg-dark">
+		<div class="card bg-dark">
+			<ul class="list-group list-group-dark mb-3">
+				<li class="list-group-item bg-info">笔记本</li>
+				<li class="list-group-item ">随笔</li>
+				<li class="list-group-item bg-light text-dark">15天玩转redis</li>
+				<li class="list-group-item">15天玩转redis</li>
+				<li class="list-group-item">15天玩转redis</li>
+				<li class="list-group-item text-center"><i aria-hidden="true" class="fa fa-plus"></i></li>
+			</ul>
+
+		</div>
+	</div>
+	<div class="contentNav bg-white">
+		<div class="list-group ">
+			<a href="javaScript:void(0);" class="list-group-item list-group-item-action flex-column align-items-start">
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1 ">第一篇 开始入手</h5>
+					<small><span class="badge badge-danger m-1">15</span></small>
+				</div>
+				<small>
+					<span class="badge bg-light-primary text-primary m-1">
+						<i aria-hidden="true" class="fa fa-home" title="首页"></i>
+					</span>
+					<span class="badge bg-light-success text-success m-1">
+						<i aria-hidden="true" class="fa fa-arrow-circle-up" title="置顶"></i>
+					</span>
+					<span class="badge bg-light-danger text-danger m-1">
+						<i aria-hidden="true" class="fa fa-trophy" title="精华"></i>
+					</span>
+				</small>
+			</a>
+			<a href="javaScript:void(0);" class="list-group-item list-group-item-action flex-column align-items-start ">
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1 ">第一篇 开始入手</h5>
+					<small><span class="badge badge-danger m-1">15</span></small>
+				</div>
+				<!--<small class="text-muted">Donec id elit non mi porta.</small>-->
+			</a>
+			<a href="javaScript:void(0);" class="list-group-item list-group-item-action flex-column align-items-start">
+				<div class="d-flex w-100 justify-content-between">
+					<h5 class="mb-1 ">第一篇 开始入手</h5>
+					<small><span class="badge badge-danger m-1">15</span></small>
+				</div>
+				<!--<small class="text-muted">Donec id elit non mi porta.</small>-->
+			</a>
+		</div>
+	</div>
+	<main class="article-content">
+`		<div class="row">
+			<div class="col-12 content-btn pb-2">
+				<button class="btn btn-primary">置顶</button>
+				<button class="btn btn-primary">首页发布</button>
+				<button class="btn btn-primary">写文章[富文本]</button>
+				<button class="btn btn-primary">写文章[Markdown]</button>
+				<button class="btn btn-primary">修改文章</button>
+			</div>
+		</div>
+		<div class="row mt-5">
+			<div class="col-12">
+				<iframe src="/article/content" id="contentIframe" frameborder="0" class="w-100">
+
+				</iframe>
+			</div>
+		</div>
+		<div class="row mt-5">
+			<div class="col-12">
+				<iframe src="/article/review" id="reviewIframe" frameborder="0" class="w-100"></iframe>
+			</div>
+		</div>
+	</main>
+</div>
+
+</div>
+
+
+<div th:replace="web/shareHtml/shareFoot"></div>
+<script src="/web/js/author/articleManage.js"></script>
+</body>
+</html>

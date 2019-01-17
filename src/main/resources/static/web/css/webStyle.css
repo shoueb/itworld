@@ -1,0 +1,26 @@
+.articleNav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+
+}
+.contentNav{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 200px;
+    width: 240px;
+}
+.contentNav .list-unstyled p{
+    width: 100%;
+    display: block;
+}
+.article-content{
+    margin-left: 440px;
+
+}
+.content-btn{
+    border-bottom: 1px solid #1d2124;
+}
