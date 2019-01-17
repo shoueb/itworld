@@ -60,6 +60,8 @@ public class HomePathController extends BaseController {
         //回显
         request.setAttribute("showPosition",showPosition);
         request.setAttribute("language",language);
+        request.setAttribute("page",page);
+
         return "web/blog/home";
     }
 

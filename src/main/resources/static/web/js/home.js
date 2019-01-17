@@ -7,7 +7,8 @@ $(function(){
 
     oButtonInit = new ButtonInit();
     oButtonInit.Init();
-
+    //执行分页方法
+    buildPage();
 });
 
 /*页面加载完成后需要初始化的东西放这 */
@@ -56,15 +57,28 @@ function login() {
     });
 }
 
-function click_essence(id) {
-    if(id=='essence') {
-        alert("11111");
-        $.ajax({
-            type:"post",
-            dataType:"text",
-            data:{"essence":essence},
-        })
+//构建分页
+function buildPage() {
+    var str="";
+    if(1==page) {
+        str = str + " <li class=\"page-item active\"><a class=\"page-link\" href=\"javascript:void(0);\">1</a></li>";
     }else{
-        alert("00000")
-    };
+        str = str + " <li class=\"page-item \"><a class=\"page-link\" href=\"javascript:void(0);\">1</a></li>";
+    }
+    if(page<=5){
+        for(var i=2;i<20;i++){
+            if(i==page){
+                str=str+" <li class=\"page-item active\"><a class=\"page-link\" href=\"javascript:void(0);\">"+i+"</a></li>";
+            }else{
+                str=str+" <li class=\"page-item \"><a class=\"page-link\" href=\"javascript:void(0);\">"+i+"</a></li>";
+            }
+        }
+    }
+    if(200==page) {
+        str = str + " <li class=\"page-item active\"><a class=\"page-link\" href=\"javascript:void(0);\">200</a></li>";
+    }else{
+        str = str + " <li class=\"page-item \"><a class=\"page-link\" href=\"javascript:void(0);\">...</a></li>";
+        str = str + " <li class=\"page-item \"><a class=\"page-link\" href=\"javascript:void(0);\">200</a></li>";
+    }
+    $("#page").html(str);
 }
