@@ -69,42 +69,42 @@ function buildPage() {
     }
     //先考虑1的情况
     if(1==page) {
-        str = str + " <li class=\"page-item active\"><a class=\"page-link\" href=\"javascript:void(0);\">1</a></li>";
+        str = str + " <li class=\"page-item active\"><a class=\"page-link\" href=\"\?position="+position+"&language="+language+"&page=1\">1</a></li>";
     }else{
-        str = str + " <li class=\"page-item \"><a class=\"page-link\" href=\"javascript:void(0);\">1</a></li>";
+        str = str + " <li class=\"page-item \"><a class=\"page-link\" href=\"\?position="+position+"&language="+language+"&page=1\">1</a></li>";
     }
     //小于5的情况
     if(page<=5){
         for(var i=2;i<20;i++){
             if(i==page){
-                str=str+" <li class=\"page-item active\"><a class=\"page-link\" href=\"javascript:void(0);\">"+i+"</a></li>";
+                str=str+" <li class=\"page-item active\"><a class=\"page-link\" href=\"\?position="+position+"&language="+language+"&page="+i+"\">"+i+"</a></li>";
             }else{
-                str=str+" <li class=\"page-item \"><a class=\"page-link\" href=\"javascript:void(0);\">"+i+"</a></li>";
+                str=str+" <li class=\"page-item \"><a class=\"page-link\" href=\"\?position="+position+"&language="+language+"&page="+i+"\">"+i+"</a></li>";
             }
         }
     }else if(page<200){
         //page 大于5 小于200的情况
         str = str + " <li class=\"page-item \"><a class=\"page-link\" href=\"javascript:void(0);\">...</a></li>";
         for(var i=page-4;i<page;i++){
-            str=str+" <li class=\"page-item \"><a class=\"page-link\" href=\"javascript:void(0);\">"+i+"</a></li>";
+            str=str+" <li class=\"page-item \"><a class=\"page-link\" href=\"\?position="+position+"&language="+language+"&page="+i+"\">"+i+"</a></li>";
         }
-        str=str+" <li class=\"page-item active\"><a class=\"page-link\" href=\"javascript:void(0);\">"+page+"</a></li>";
+        str=str+" <li class=\"page-item active\"><a class=\"page-link\" href=\"\?position="+position+"&language="+language+"&page="+i+"\">"+page+"</a></li>";
         for(var i=page+1;i<page+15;i++){
             if(i<199) {
-                str = str + " <li class=\"page-item \"><a class=\"page-link\" href=\"javascript:void(0);\">" + i + "</a></li>";
+                str = str + " <li class=\"page-item \"><a class=\"page-link\" href=\"\?position="+position+"&language="+language+"&page="+i+"\">" + i + "</a></li>";
             }
         }
     }else{
         //等于200
         str = str + " <li class=\"page-item \"><a class=\"page-link\" href=\"javascript:void(0);\">...</a></li>";
         for(var i=183;i<200;i++){
-            str = str + " <li class=\"page-item \"><a class=\"page-link\" href=\"javascript:void(0);\">" + i + "</a></li>";
+            str = str + " <li class=\"page-item \"><a class=\"page-link\" href=\"\?position="+position+"&language="+language+"&page="+i+"\">" + i + "</a></li>";
         }
-        str = str + " <li class=\"page-item active\"><a class=\"page-link\" href=\"javascript:void(0);\">200</a></li>";
+        str = str + " <li class=\"page-item active\"><a class=\"page-link\" href=\"\?position="+position+"&language="+language+"&page=200\">200</a></li>";
     }
     if(page<200) {
         str = str + " <li class=\"page-item \"><a class=\"page-link\" href=\"javascript:void(0);\">...</a></li>";
-        str = str + " <li class=\"page-item \"><a class=\"page-link\" href=\"javascript:void(0);\">200</a></li>";
+        str = str + " <li class=\"page-item \"><a class=\"page-link\" href=\"\?position="+position+"&language="+language+"&page=200\">200</a></li>";
     }
     $("#page").html(str);
 }
