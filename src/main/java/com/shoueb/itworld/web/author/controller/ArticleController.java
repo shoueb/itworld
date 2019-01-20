@@ -22,4 +22,15 @@ public class ArticleController {
     public String goReview(){
         return "/web/author/articleReview";
     }
+
+    @GetMapping("markdown")
+    public  String gomarkdown(){
+        return "/web/author/markdownEdit";
+    }
+
+
+    @GetMapping("richtext")
+    public  String goRichtext(){
+        return "web/author/richtextEdit";
+    }
 }

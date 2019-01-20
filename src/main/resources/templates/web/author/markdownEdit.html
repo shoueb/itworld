@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <div th:replace="web/shareHtml/shareHead"></div>
+    <title>markdown</title>
+</head>
+<body>
+<main class=" " id="wrapper">
+    <div class="container-fluid">
+        <div id="makdownNav" class="row bg-dark  pt-1 h-40px">
+            <div class="col-6">
+                <div class="form-inline pl-4">
+                    <a class="text-white-50 p-2 font-size-3  " href="javascript:void(0)" title="粗体">
+                        <i aria-hidden="true" class="fa fa-bold"></i>
+                    </a>
+                    <a class="text-white-50 p-2 font-size-3  mr-5" href="javascript:void(0)" title="斜体">
+                        <i aria-hidden="true" class="fa fa-italic"></i>
+                    </a>
+                    <a class="text-white-50 p-2 font-size-3  " href="javascript:void(0)" title="链接">
+                        <i aria-hidden="true" class="fa fa-chain"></i>
+                    </a>
+                    <a class="text-white-50 p-2 font-size-3  " href="javascript:void(0)" title="引用">
+                        <i aria-hidden="true" class="fa fa-quote-left"></i>
+                    </a>
+                    <a class="text-white-50 p-2 font-size-3  " href="javascript:void(0)" title="代码">
+                        <i aria-hidden="true" class="fa fa-code"></i>
+                    </a>
+                    <a class="text-success p-2 font-size-3 mr-5" href="javascript:void(0)" title="图片">
+                        <i aria-hidden="true" class="fa fa-image"></i>
+                    </a>
+                    <a class="text-white-50 p-2 font-size-3  " href="javascript:void(0)" title="有序列表">
+                        <i aria-hidden="true" class="fa fa-list-ol"></i>
+                    </a>
+                    <a class="text-white-50 p-2 font-size-3  " href="javascript:void(0)" title="无序列表">
+                        <i aria-hidden="true" class="fa fa-list-ul"></i>
+                    </a>
+                    <a class="text-white-50 p-2 font-size-3  " href="javascript:void(0)" title="标题">
+                        <i aria-hidden="true" class="fa fa-list-alt"></i>
+                    </a>
+                    <a class="text-white-50 p-2 font-size-3  mr-5" href="javascript:void(0)" title="分割线">
+                        <i aria-hidden="true" class="fa fa-minus"></i>
+                    </a>
+                    <a class="text-white-50 p-2 font-size-3  " href="javascript:void(0)" title="撤销">
+                        <i aria-hidden="true" class="fa fa-reply"></i>
+                    </a>
+
+                </div>
+            </div>
+            <div class="col-6 text-right pt-1">
+                <a class="text-success p-2 font-size-3  " href="javascript:void(0)">
+                    <small>发布</small>
+                </a>
+                <a class="text-success p-2 font-size-3  " href="javascript:void(0)">
+                    <small>
+                        发布到首页
+                    </small>
+                </a>
+                <a class="text-success p-2 font-size-3  " href="javascript:void(0)">
+                    <small>
+                        储存为草稿
+                    </small>
+                </a>
+                <a class="text-white-50 p-2 font-size-3  " href="/article/manage">
+                    <small>
+                        返回
+                    </small>
+                </a>
+            </div>
+        </div>
+        <div class="row p-0">
+            <div class="col-6 bg-white" id="makdownEditDiv" >
+                <textarea class="w-100 border-0 pt-3" id="oriContent" style="resize:none"></textarea>
+            </div>
+            <div class="col-6 pt-4" id="result" tyle="overflow-y: auto">
+            </div>
+        </div>
+    </div>
+
+</main>
+<div th:replace="web/shareHtml/shareFoot"></div>
+<script src="/showdown/dist/showdown.js"></script>
+<script src="/web/js/author/markdownEdit.js"></script>
+</body>
+</html>
