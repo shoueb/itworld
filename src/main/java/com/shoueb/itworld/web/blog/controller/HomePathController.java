@@ -81,7 +81,8 @@ public class HomePathController extends BaseController {
             //报错跳转到404
         }
         BlogArticleHot article = detailsService.queryArticleById(Long.valueOf(id));
-        AuthorUser authorMessage = detailsService.queryAuthorById(Long.valueOf(id));
+        Long authorId = article.getAuthorId();
+        AuthorUser authorMessage = detailsService.queryAuthorById(authorId );
         List<BlogArticleHot> editorRecommendArticleList = detailsService.queryEditorRecommendArticle();
         model.addAttribute("article",article);
         model.addAttribute("author",authorMessage);

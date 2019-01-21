@@ -26,8 +26,8 @@
 
   <select id="queryAuthorById" parameterType="com.shoueb.itworld.author.model.AuthorUser"
           resultMap="BaseResultMap">
-  select c.* from t_author_user c
-    where c.status = '1'
+      select c.* from t_author_user c left join t_blog_article_hot a on a.author_id = c.id
+      where c.status = '1' and c.id=#{authorId}
 </select>
 
 
