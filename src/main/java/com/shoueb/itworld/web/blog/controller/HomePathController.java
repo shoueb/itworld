@@ -1,10 +1,12 @@
 package com.shoueb.itworld.web.blog.controller;
 
 
+import com.shoueb.itworld.author.model.AuthorUser;
 import com.shoueb.itworld.author.model.BlogArticleHot;
 import com.shoueb.itworld.common.controller.BaseController;
 import com.shoueb.itworld.common.enums.BlogShowHomeEnum;
 import com.shoueb.itworld.common.enums.BlogShowPositionEnum;
+import com.shoueb.itworld.web.blog.service.DetailsService;
 import com.shoueb.itworld.web.blog.service.HomeServcie;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,11 +67,18 @@ public class HomePathController extends BaseController {
         return "web/blog/home";
     }
 
+    @Autowired
+    DetailsService detailsService;
     @GetMapping("details")
     public String details(Model model, BlogArticleHot blogArticleHot){
-//        Long id = blogArticleHot.getId();
-//        BlogArticleHot article = detailsService.queryArticleById(id);
-//        model.addAttribute("article",article);
+       Long id = blogArticleHot.getId();
+        BlogArticleHot article = detailsService.queryArticleById(id);
+        AuthorUser authorMessage = detailsService.queryAuthorById(id);
+        List<BlogArticleHot> editorRecommendArticleList = detailsService.queryEditorRecommendArticle();
+        model.addAttribute("article",article);
+        model.addAttribute("author",authorMessage);
+        model.addAttribute("editorRecommendArticleList",editorRecommendArticleList);
+
         return "web/details";
     }
 

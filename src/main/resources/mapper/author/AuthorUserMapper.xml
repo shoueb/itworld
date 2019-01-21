@@ -13,21 +13,22 @@
     <result column="code_no" jdbcType="VARCHAR" property="codeNo" />
     <result column="author_follow_count" jdbcType="BIGINT" property="authorFollowCount" />
     <result column="my_follow_count" jdbcType="BIGINT" property="myFollowCount" />
+      <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+      <result column="favor_count" jdbcType="BIGINT" property="favorCount" />
+      <result column="writen_count" jdbcType="BIGINT" property="writenCount" />
     <result column="status" jdbcType="VARCHAR" property="status" />
     <result column="create_by_id" jdbcType="BIGINT" property="createById" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_by_id" jdbcType="BIGINT" property="updateById" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+
   </resultMap>
 
-
-  
-<!--
-  <select id="loginByNameAndPwd" parameterType="java.lang.String"
-          resultMap="AuthorUser"
-  >
-  select * from t_author_user where user_name = #{userName} and pwd = #{pwd}
-  </select>-->
+  <select id="queryAuthorById" parameterType="com.shoueb.itworld.author.model.AuthorUser"
+          resultMap="BaseResultMap">
+  select c.* from t_author_user c
+    where c.status = '1'
+</select>
 
 
 </mapper>

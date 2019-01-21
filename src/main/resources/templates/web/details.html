@@ -11,14 +11,13 @@
 	<div class="row m-0">
 		<div class="col-9">
 			<h2 class="text-center" th:text="${article.articleTitle}">
-				标题标题标题标题标题标题标题
 			</h2>
 
 			<div class="text-center mt-2">
-				<a href="">作者：xxx</a>
-				<a href="">评论：xxx</a>
-				<a href="">阅读：xxx</a>
-				<a href="">实践：xxx</a>
+				<a href="">作者：<span th:text="${article.khName}"></span></a>
+				<a href="">评论:<span th:text="${article.commentCount}"></span></a>
+				<a href="">阅读:<span th:text="${article.readCount}"></span></a>
+				<a href="">实践:<span th:text="${article.practiceCount}"></span></a>
 			</div>
 			<hr>
 			<div>
@@ -27,41 +26,7 @@
 					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
 					富文本
 				</p>
-				<p>
-					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
-					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
-					富文本
-				</p>
-				<p>
-					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
-					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
-					富文本
-				</p>
-				<p>
-					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
-					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
-					富文本
-				</p>
-				<p>
-					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
-					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
-					富文本
-				</p>
-				<p>
-					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
-					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
-					富文本
-				</p>
-				<p>
-					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
-					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
-					富文本
-				</p>
-				<p>
-					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
-					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
-					富文本
-				</p>
+
 			</div>
 			<div class="mt-4 text-center">
 				<h4 class="">小礼物来一波</h4>
@@ -75,16 +40,16 @@
 					<div class="card ">
 						<div class="card-body">
 							<ul class="list-unstyled mb-0">
-								<li class="media ">
-									<img class="mr-3 rounded-circle h-80px" src="assets/images/avatars/avatar-1.png" alt="user avatar">
+								<li class="media " th:each="author:${author}">
+									<img class="mr-3 rounded-circle h-80px" th:src="@{${author.imgUrl}}" alt="user avatar">
 									<div class="media-body">
 										<div class="row">
 											<div class="col-10">
-												<h5 class="mt-3 mb-1 ">哈哈哈
+												<h5 class="mt-3 mb-1 "><span th:text="${author.khName}"></span></a>
 													<!--<small class="float-right text-danger font-weight-normal mr-4">gitHub</small>-->
 												</h5>
 												<p class="text-black-50 mt-2">
-													写了:1000个字；被36人关注；获得120个喜欢
+                                                    <a href="">写了:<span th:text="${author.writenCount}"></span>个字</a>；<a href="">被<span th:text="${author.authorFollowCount}"></span>人关注</a>；<a href="">获得<span th:text="${author.favorCount}"></span>个喜欢</a>
 												</p>
 											</div>
 											<div class="col-2 pt-4 text-right">
@@ -182,19 +147,14 @@
 		<div class="col-3">
 			<div class="card">
 				<div class="card-header text-white bg-dark">编辑推荐</div>
-				<ul class="list-group">
-					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
-					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
-					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
-					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
-					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
-					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
-					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
-					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
-					<li class="list-group-item">[系列] 多种实现的依赖注入</li>
+                <ul class="list-group" th:each="editorRecommendArticle:${editorRecommendArticleList}">
+                    <li class="list-group-item">
+                        <a th:href="@{'/details/?id='+${editorRecommendArticle.id}}" ><span th:if="${editorRecommendArticle.seriesTitle!=null}">
+							[<span th:text="${editorRecommendArticle.seriesTitle}"></span>]</span><span th:text="${editorRecommendArticle.articleTitle}">多种实现的依赖注入</span></a>
+                    </li>
 
-				</ul>
-				<!--<div class="card-footer">Card footer</div>-->
+                    <!--<div class="card-footer">Card footer</div>-->
+                </ul>
 			</div>
 		</div>
 	</div>

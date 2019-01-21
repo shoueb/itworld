@@ -61,7 +61,7 @@
 
     <select id="queryArticleById" parameterType="com.shoueb.itworld.author.model.BlogArticleHot"
             resultMap="BlogArticleHotROMap">
-        select a.*,b.series_title,c.kh_name  from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
+        select a.*,b.series_title,c.kh_name from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
         left join t_author_user c on  a.author_id = c.id
         where a.delete_flag='1' and a.id=#{id}
     </select>

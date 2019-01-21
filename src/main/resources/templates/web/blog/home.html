@@ -29,7 +29,7 @@
 					<li class="media my-4" th:each="homeArticle:${homeArticleList}">
 						<img class="mr-3 rounded h-120px" th:src="@{${homeArticle.imgUrlMin}}" alt="user avatar">
 						<div class="media-body">
-							<h5 class="mt-0 mb-1"><span th:if="${homeArticle.seriesTitle!=null}">[<span th:text="${homeArticle.seriesTitle}"></span>]</span> <span th:text="${homeArticle.articleTitle}"></span>
+                            <h5 class="mt-0 mb-1"><a th:href="@{'/details/?id='+${homeArticle.id}}" ><span th:if="${homeArticle.seriesTitle!=null}">[<span th:text="${homeArticle.seriesTitle}"></span>]</span> <span th:text="${homeArticle.articleTitle}"></span></a>
 								<small class="float-right text-danger font-weight-normal mr-4">gitHub</small>
 							</h5>
 							<div class="h-66px ov-hidden">
@@ -38,9 +38,9 @@
 
 							<div class="mt-1">
 								<a href="" th:text="${homeArticle.khName}"></a>
-								<a th:href="@{'/details/?id='+${homeArticle.id}}" >评论:<span th:text="${homeArticle.commentCount}"></span></a>
-								<a href="" >阅读:<span th:text="${homeArticle.readCount}"></span></a>
-								<a href="">实践:<span  th:text="${homeArticle.practiceCount}"></span></a>
+								<a th:href="@{'/details/?id='+${homeArticle.id}}">评论:<span th:text="${homeArticle.commentCount}"></span></a>
+								<a th:href="@{'/details/?id='+${homeArticle.id}}">阅读:<span th:text="${homeArticle.readCount}"></span></a>
+								<a th:href="@{'/details/?id='+${homeArticle.id}}">实践:<span  th:text="${homeArticle.practiceCount}"></span></a>
 							</div>
 						</div>
 					</li>

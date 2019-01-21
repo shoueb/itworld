@@ -5,4 +5,10 @@ import com.shoueb.itworld.author.model.AuthorUser;
 
 public interface AuthorUserMapper extends MyMapper<AuthorUser> {
     AuthorUser loginByNameAndPwd(String userName,String pwd);
+    /*
+    * 搜索作者的信息
+    * */
+
+
+    AuthorUser queryAuthorById(Long id);
 }

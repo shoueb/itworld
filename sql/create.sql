@@ -29,6 +29,9 @@ CREATE TABLE `t_author_user` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_by_id` bigint(20) DEFAULT NULL COMMENT '修改ID',
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `img_url` varchar(200) DEFAULT NULL COMMENT '用户头像',
+  `favor_count` bigint(20) DEFAULT NULL COMMENT '用户收获喜欢数',
+  `writen_count` bigint(20) DEFAULT NULL COMMENT '已写字数',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='作者表';
 

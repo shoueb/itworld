@@ -51,6 +51,21 @@ public class AuthorUser extends BaseEntity implements Serializable {
      */
     private String status;
 
+    /*
+    * 用户头像
+    * */
+    private String imgUrl;
+    /*
+    * 用户收获喜欢数
+    *
+    * */
+    private Long favorCount;
+
+    /*
+    * 用户已写字数
+    * */
+    private Long writenCount;
+
     public String getMuuid() {
         return muuid;
     }
@@ -138,5 +153,30 @@ public class AuthorUser extends BaseEntity implements Serializable {
     public void setStatus(String status) {
         this.status = status == null ? null : status.trim();
     }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public Long getFavorCount() {
+        return favorCount;
+    }
+
+    public void setFavorCount(Long favorCount) {
+        this.favorCount = favorCount;
+    }
+
+    public Long getWritenCount() {
+        return writenCount;
+    }
+
+    public void setWritenCount(Long writenCount) {
+        this.writenCount = writenCount;
+    }
+
 
 }
