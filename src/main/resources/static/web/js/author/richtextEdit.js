@@ -11,7 +11,7 @@ $(function () {
 })
 
 function Init() {
-    oInit = new Object()
+    var oInit = new Object()
     oInit.Init = function(){
 
     }
@@ -20,7 +20,7 @@ function Init() {
     return oInit;
 }
 function RichtextInit(){
-    oInit = new Object()
+    var oInit = new Object()
     var um = UM.getEditor('myEditor');
     oInit.getUe =function(){
         return um;
@@ -28,7 +28,7 @@ function RichtextInit(){
     return oInit;
 }
 function ButtonInit(){
-    oButtonInit = new Object()
+    var oButtonInit = new Object()
     oButtonInit.Init = function(){
 
     }

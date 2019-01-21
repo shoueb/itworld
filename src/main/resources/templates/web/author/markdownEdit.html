@@ -11,40 +11,42 @@
         <div id="makdownNav" class="row bg-dark  pt-1 h-40px">
             <div class="col-6">
                 <div class="form-inline pl-4">
-                    <a class="text-white-50 p-2 font-size-3  " href="javascript:void(0)" title="粗体">
+                    <a class="text-white-50 p-2 font-size-3  " id="setBold" href="javascript:void(0)" title="粗体">
                         <i aria-hidden="true" class="fa fa-bold"></i>
                     </a>
-                    <a class="text-white-50 p-2 font-size-3  mr-5" href="javascript:void(0)" title="斜体">
+                    <a class="text-white-50 p-2 font-size-3  mr-5" id="setItalic" href="javascript:void(0)" title="斜体">
                         <i aria-hidden="true" class="fa fa-italic"></i>
                     </a>
-                    <a class="text-white-50 p-2 font-size-3  " href="javascript:void(0)" title="链接">
+                    <a class="text-white-50 p-2 font-size-3  " id="setLink" href="javascript:void(0)" title="链接">
                         <i aria-hidden="true" class="fa fa-chain"></i>
                     </a>
-                    <a class="text-white-50 p-2 font-size-3  " href="javascript:void(0)" title="引用">
+                    <a class="text-white-50 p-2 font-size-3  " id="setQuote" href="javascript:void(0)" title="引用">
                         <i aria-hidden="true" class="fa fa-quote-left"></i>
                     </a>
-                    <a class="text-white-50 p-2 font-size-3  " href="javascript:void(0)" title="代码">
+                    <a class="text-white-50 p-2 font-size-3  " id="setCode" href="javascript:void(0)" title="代码">
                         <i aria-hidden="true" class="fa fa-code"></i>
                     </a>
-                    <a class="text-success p-2 font-size-3 mr-5" href="javascript:void(0)" title="图片">
+                    <a class="text-success p-2 font-size-3 mr-5" id="setImage" href="javascript:void(0)" title="图片">
                         <i aria-hidden="true" class="fa fa-image"></i>
                     </a>
-                    <a class="text-white-50 p-2 font-size-3  " href="javascript:void(0)" title="有序列表">
+                    <a class="text-white-50 p-2 font-size-3  " id="setListOl" href="javascript:void(0)" title="有序列表">
                         <i aria-hidden="true" class="fa fa-list-ol"></i>
                     </a>
-                    <a class="text-white-50 p-2 font-size-3  " href="javascript:void(0)" title="无序列表">
+                    <a class="text-white-50 p-2 font-size-3  " id="setListUl" href="javascript:void(0)" title="无序列表">
                         <i aria-hidden="true" class="fa fa-list-ul"></i>
                     </a>
-                    <a class="text-white-50 p-2 font-size-3  " href="javascript:void(0)" title="标题">
+                    <a class="text-white-50 p-2 font-size-3  " id="setTitle" href="javascript:void(0)" title="标题">
                         <i aria-hidden="true" class="fa fa-list-alt"></i>
                     </a>
-                    <a class="text-white-50 p-2 font-size-3  mr-5" href="javascript:void(0)" title="分割线">
+                    <a class="text-white-50 p-2 font-size-3  mr-5" id="setDividingLine" href="javascript:void(0)" title="分割线">
                         <i aria-hidden="true" class="fa fa-minus"></i>
                     </a>
-                    <a class="text-white-50 p-2 font-size-3  " href="javascript:void(0)" title="撤销">
+                    <a class="text-white-50 p-2 font-size-3  " id="btnReply" href="javascript:void(0)" title="撤销">
                         <i aria-hidden="true" class="fa fa-reply"></i>
                     </a>
-
+                    <a class="text-white-50 p-2 font-size-3  " id="btnRedo" href="javascript:void(0)" title="重做">
+                        <i aria-hidden="true" class="fa fa-share"></i>
+                    </a>
                 </div>
             </div>
             <div class="col-6 text-right pt-1">
@@ -70,7 +72,7 @@
         </div>
         <div class="row p-0">
             <div class="col-6 bg-white" id="makdownEditDiv" >
-                <textarea class="w-100 border-0 pt-3" id="oriContent" style="resize:none"></textarea>
+                <textarea class="w-100 border-0 pt-3" id="oriContent" style="resize:none" autofocus></textarea>
             </div>
             <div class="col-6 pt-4" id="result" tyle="overflow-y: auto">
             </div>

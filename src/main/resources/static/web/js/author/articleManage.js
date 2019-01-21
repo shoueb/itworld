@@ -16,7 +16,7 @@ $(function () {
 
 var ContentIframeInit = function(){
 
-    oInit = new Object();
+    var oInit = new Object();
     oInit.Init = function(){
         var iframe = document.getElementById('contentIframe');
         iframe.height =  iframe.contentWindow.document.documentElement.scrollHeight;
@@ -25,7 +25,7 @@ var ContentIframeInit = function(){
 }
 
 var ReviewIframeInit = function(){
-    oInit = new Object();
+    var oInit = new Object();
     oInit.Init = function(){
         var iframe = document.getElementById('reviewIframe');
         iframe.height =  iframe.contentWindow.document.documentElement.scrollHeight;
@@ -34,7 +34,7 @@ var ReviewIframeInit = function(){
 }
 
 var Init = function () {
-    oInit = new Object();
+    var oInit = new Object();
     oInit.Init = function(){
 
     }
