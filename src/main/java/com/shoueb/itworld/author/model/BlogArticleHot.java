@@ -89,6 +89,10 @@ public class BlogArticleHot extends BaseEntity implements Serializable {
      *状态0新建1发布2审核通过3审核不通过4系统删除
      */
     private String status;
+    /*
+    * 文章内容
+    * */
+    private String content;
 
     public Long getAuthorId() {
         return authorId;
@@ -242,4 +246,13 @@ public class BlogArticleHot extends BaseEntity implements Serializable {
     public void setShowHome(String showHome) {
         this.showHome = showHome;
     }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
 }

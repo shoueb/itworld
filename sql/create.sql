@@ -130,6 +130,7 @@ CREATE TABLE `t_blog_article_hot` (
   `create_time` datetime DEFAULT NULL,
   `update_by_id` bigint(20) DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
+  `content` text COMMENT '文章内容',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='热门文章';
 

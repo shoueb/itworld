@@ -26,6 +26,7 @@
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
         <result column="update_by_id" jdbcType="BIGINT" property="updateById" />
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+        <result column="content" jdbcType="VARCHAR" property="content" />
     </resultMap>
     <sql id="query_where">
         <trim prefix="AND" prefixOverrides="AND |OR">
