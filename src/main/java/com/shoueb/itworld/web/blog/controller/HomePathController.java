@@ -26,7 +26,9 @@ import java.util.List;
 @RequestMapping("/")
 public class HomePathController extends BaseController {
     @Autowired
-    HomeServcie homeServcie;
+    private HomeServcie homeServcie;
+    @Autowired
+    private DetailsService detailsService;
     /**
      * @return 跳转到首页
      **/
@@ -67,19 +69,25 @@ public class HomePathController extends BaseController {
         return "web/blog/home";
     }
 
-    @Autowired
-    DetailsService detailsService;
+    /**
+     * 根据ID获取博客详情
+     * @param model
+     * @return
+     */
     @GetMapping("details")
-    public String details(Model model, BlogArticleHot blogArticleHot){
-       Long id = blogArticleHot.getId();
-        BlogArticleHot article = detailsService.queryArticleById(id);
-        AuthorUser authorMessage = detailsService.queryAuthorById(id);
+    public String details(Model model){
+        String id= request.getParameter("id");
+        if(StringUtils.isBlank(id)){
+            //报错跳转到404
+        }
+        BlogArticleHot article = detailsService.queryArticleById(Long.valueOf(id));
+        AuthorUser authorMessage = detailsService.queryAuthorById(Long.valueOf(id));
         List<BlogArticleHot> editorRecommendArticleList = detailsService.queryEditorRecommendArticle();
         model.addAttribute("article",article);
         model.addAttribute("author",authorMessage);
         model.addAttribute("editorRecommendArticleList",editorRecommendArticleList);
 
-        return "web/details";
+        return "web/blog/details";
     }
 
     @GetMapping("weblogin")

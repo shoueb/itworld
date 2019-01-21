@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<div th:replace="web/shareHtml/shareHead"></div>
+	<title>首页</title>
+</head>
+<body>
+<div th:replace="web/shareHtml/shareHeader"></div>
+<main class="container-fluid mt-4" th:each="article:${article}">
+	<div class="row m-0">
+		<div class="col-9">
+			<h2 class="text-center" th:text="${article.articleTitle}">
+			</h2>
+
+			<div class="text-center mt-2">
+				<a href="">作者：<span th:text="${article.khName}"></span></a>
+				<a href="">评论:<span th:text="${article.commentCount}"></span></a>
+				<a href="">阅读:<span th:text="${article.readCount}"></span></a>
+				<a href="">实践:<span th:text="${article.practiceCount}"></span></a>
+			</div>
+			<hr>
+			<div>
+				<p>
+					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
+					富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本富文本
+					富文本
+				</p>
+
+			</div>
+			<div class="mt-4 text-center">
+				<h4 class="">小礼物来一波</h4>
+				<button class="btn btn-danger btn-lg btn-round mt-3 ">
+					<i aria-hidden="true" class="fa fa-thumbs-up"></i>
+					&nbsp小额赞赏
+				</button>
+			</div>
+			<div class="row mt-5">
+				<div class="col-12">
+					<div class="card ">
+						<div class="card-body">
+							<ul class="list-unstyled mb-0">
+								<li class="media " th:each="author:${author}">
+									<img class="mr-3 rounded-circle h-80px" th:src="@{${author.imgUrl}}" alt="user avatar">
+									<div class="media-body">
+										<div class="row">
+											<div class="col-10">
+												<h5 class="mt-3 mb-1 "><span th:text="${author.khName}"></span></a>
+													<!--<small class="float-right text-danger font-weight-normal mr-4">gitHub</small>-->
+												</h5>
+												<p class="text-black-50 mt-2">
+                                                    <a href="">写了:<span th:text="${author.writenCount}"></span>个字</a>；<a href="">被<span th:text="${author.authorFollowCount}"></span>人关注</a>；<a href="">获得<span th:text="${author.favorCount}"></span>个喜欢</a>
+												</p>
+											</div>
+											<div class="col-2 pt-4 text-right">
+												<button class="btn btn-success btn-round mr-2"><i aria-hidden="true" class="fa fa-plus"></i>&nbsp;关注</button>
+											</div>
+										</div>
+
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row mt-5">
+				<div class="col-12">
+					<ul class="list-unstyled">
+						<li class="media">
+							<img class="mr-3 rounded-circle customer-img" src="assets/images/avatars/avatar-1.png" alt="user avatar"/>
+							<div class="media-body">
+								<h6 class="mt-0 mb-1">用户111111111</h6>
+								<p class="text-black-50 mb-1"><small>21楼 2019-01-12 12:59:00</small></p>
+								<p>
+									Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Donec lacinia congue felis in faucibus.
+								</p>
+								<div>
+									<span class="cursor-pointer">
+										<i aria-hidden="true" class="fa fa-thumbs-up"></i>&nbsp;1212
+									</span>
+									<a href="#" class="ml-2">回复</a>
+								</div>
+								<ul class="list-unstyled  border-left pl-4">
+									<li class="media mt-3">
+										<!--<img class="mr-3 rounded-circle customer-img" src="assets/images/avatars/avatar-1.png" alt="user avatar"/>-->
+										<div class="media-body">
+											<!--<h6 class="mt-0 mb-1">用户111111111</h6>-->
+											<!--<p class="text-black-50 mb-1"><small>21楼 2019-01-12 12:59:00</small></p>-->
+											<p class="mb-1">
+												<span class="text-primary">哈哈哈：</span><span class="text-primary">@呵呵呵呵</span>
+												Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Donec lacinia congue felis in faucibus.
+											</p>
+											<div>
+												<span class="text-black-50">2019-01-12 12:59:00</span>
+												<a href="#" class="ml-2">回复</a>
+											</div>
+										</div>
+									</li>
+									<li class="media mt-3">
+										<!--<img class="mr-3 rounded-circle customer-img" src="assets/images/avatars/avatar-1.png" alt="user avatar"/>-->
+										<div class="media-body">
+											<!--<h6 class="mt-0 mb-1">用户111111111</h6>-->
+											<!--<p class="text-black-50 mb-1"><small>21楼 2019-01-12 12:59:00</small></p>-->
+											<p class="mb-1">
+												<span class="text-primary">哈哈哈：</span><span class="text-primary">@呵呵呵呵</span>
+												Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Donec lacinia congue felis in faucibus.
+											</p>
+											<div>
+												<span class="text-black-50">2019-01-12 12:59:00</span>
+												<a href="#" class="ml-2">回复</a>
+											</div>
+										</div>
+									</li>
+									<li class="media mt-3">
+										<!--<img class="mr-3 rounded-circle customer-img" src="assets/images/avatars/avatar-1.png" alt="user avatar"/>-->
+										<div class="media-body">
+											<div class="cursor-pointer">
+												<i aria-hidden="true" class="fa fa-edit"></i>&nbsp; 添加新评论
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="media my-4">
+							<img class="mr-3 rounded-circle customer-img" src="assets/images/avatars/avatar-2.png" alt="user avatar"/>
+							<div class="media-body">
+								<h6 class="mt-0 mb-1">用户111111111</h6>
+								<p class="text-black-50"><small>21楼 2019-01-12 12:59:00</small></p>
+								<p>
+								Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Donec lacinia congue felis in faucibus.
+								</p>
+								<div>
+									<span class="cursor-pointer">
+										<i aria-hidden="true" class="fa fa-thumbs-o-up"></i>&nbsp;1212
+									</span>
+									<a href="#" class="ml-2">回复</a>
+								</div>
+							</div>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<div class="card">
+				<div class="card-header text-white bg-dark">编辑推荐</div>
+                <ul class="list-group" th:each="editorRecommendArticle:${editorRecommendArticleList}">
+                    <li class="list-group-item">
+                        <a th:href="@{'/details/?id='+${editorRecommendArticle.id}}" ><span th:if="${editorRecommendArticle.seriesTitle!=null}">
+							[<span th:text="${editorRecommendArticle.seriesTitle}"></span>]</span><span th:text="${editorRecommendArticle.articleTitle}">多种实现的依赖注入</span></a>
+                    </li>
+
+                    <!--<div class="card-footer">Card footer</div>-->
+                </ul>
+			</div>
+		</div>
+	</div>
+</main>
+<footer class="pt-5">
+&nbsp;
+</footer>
+
+<div th:replace="web/shareHtml/shareFoot"></div>
+<script src="/web/js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <div th:replace="web/shareHtml/shareHead"></div>
+    <title>解决方案</title>
+</head>
+<body>
+<div th:replace="web/shareHtml/shareHeader"></div>
+<div class="container-fluid mt-4">
+    <div class="row m-0">
+        <div class="col-9">
+            <div class="cursor-pointer">
+                <span class="articleType p-2 text-danger "><a th:href ="@{'position=2'}"th:class="${showPosition=='2'}? 'text-danger' : ''">精华</a></span>
+                <span class="articleType p-2 "><a th:href ="@{'position=1'}"th:class="${showPosition=='1'}? 'text-danger' : ''">候选</a></span>
+                <strong class="p-2 ml-5">语言：</strong>
+                <span class="languageType p-2 "><a th:href ="@{'position='+${language}}"th:class="${language==''}? 'text-danger' : ''">全部</a></span>
+                <span class="languageType p-2 ">java</span>
+                <span class="languageType p-2 ">.net</span>
+                <span class="languageType p-2 ">js</span>
+                <span class="languageType p-2 ">lua</span>
+            </div>
+            <div class="row mt-4">
+                <ul class="list-group w-100">
+                    <li class="list-group-item"th:each="editor:${editorArticleList}">[<a th:href="'solution?id='+${editor.articleSeriesId}" th:text="${editor.seriesTitle}">系列</a>] <a th:href="'details?id='+${editor.id}"  th:text="${editor.articleTitle}">多种实现的依赖注入</a></li>
+                </ul>
+            </div>
+            <div class="row mt-4">
+                <ul class="list-unstyled">
+                    <li class="media"th:each="article:${articleRecommendList}">
+                        <img class="mr-3 rounded h-120px" src="assets/images/avatars/avatar-1.png" alt="user avatar">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1"><span th:if="${article.seriesTitle!=null}">[<span th:text="${article.seriesTitle}"></span>]</span> <span th:text="${article.articleTitle}"></span>
+                                <small class="float-right text-danger font-weight-normal mr-4">gitHub</small>
+                            </h5>
+                            <div class="h-66px ov-hidden">
+                                <a th:href="'detail?id='+${article.id}" th:text="${article.articleMem}"></a>
+                            </div>
+
+                            <div class="mt-1">
+                                <a th:href="'detail?id='+${article.id}"><span th:text="${article.khName}"></span></a>
+                                <a th:href="'detail?id='+${article.id}">评论：<span th:text="${article.commentCount}"></span></a>
+                                <a th:href="'detail?id='+${article.id}">阅读：<span th:text="${article.readCount}"></span></a>
+                                <a th:href="'detail?id='+${article.id}">实践：<span th:text="${article.practiceCount}"></span></a>
+                            </div>
+                        </div>
+                    </li>
+
+
+                </ul>
+            </div>
+            <div class="row mt-4">
+                <ul class="pagination pagination-separate">
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">上一页</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                    <li class="page-item active"><a class="page-link" href="javascript:void(0);">2</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">下一页</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="card">
+                <div class="card-header text-white bg-dark"><span th:text="${title}">编辑推荐</span></div>
+                <ul class="list-group">
+                    <li class="list-group-item" th:each="editor:${editorRecommendList}">[<a th:href="'solution?id='+${editor.articleSeriesId}" th:text="${editor.seriesTitle}">系列</a>] <a th:href="'details?id='+${editor.id}"  th:text="${editor.articleTitle}">多种实现的依赖注入</a></li>
+
+                </ul>
+                <!--<div class="card-footer">Card footer</div>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="web/shareHtml/shareFoot"></div>
+<script src="/web/js/home.js"></script>
+</body>
+</html>
