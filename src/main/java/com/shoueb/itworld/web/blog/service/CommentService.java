@@ -1,7 +1,8 @@
 package com.shoueb.itworld.web.blog.service;
 
 
-import com.shoueb.itworld.author.ro.BlogArticleCommentRO;
+
+import com.shoueb.itworld.author.model.BlogArticleComment;
 
 import java.util.List;
 
@@ -11,6 +12,6 @@ import java.util.List;
  * @Date: 2019/1/22
  */
 public interface CommentService {
-    List<BlogArticleCommentRO> queryArticleCommentById(Long id);
+    List<BlogArticleComment> queryArticleCommentById(Long id);
    /* List<BlogArticleCommentRO> queryAllCommentId(Long id);*/
 }

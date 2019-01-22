@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.shoueb.itworld.author.mapper.BlogArticleHotMapper">
+<mapper namespace="com.shoueb.itworld.author.mapper.BlogArticleCommentMapper">
     <resultMap id="BlogArticleCommentROMap" type="com.shoueb.itworld.author.ro.BlogArticleCommentRO">
         <result column="id" jdbcType="BIGINT" property="id" />
         <result column="author_id" jdbcType="BIGINT" property="authorId" />

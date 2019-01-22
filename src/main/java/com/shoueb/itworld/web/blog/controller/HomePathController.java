@@ -2,6 +2,7 @@ package com.shoueb.itworld.web.blog.controller;
 
 
 import com.shoueb.itworld.author.model.AuthorUser;
+import com.shoueb.itworld.author.model.BlogArticleComment;
 import com.shoueb.itworld.author.model.BlogArticleHot;
 import com.shoueb.itworld.author.ro.BlogArticleCommentRO;
 import com.shoueb.itworld.common.controller.BaseController;
@@ -89,7 +90,7 @@ public class HomePathController extends BaseController {
         Long authorId = article.getAuthorId();
         AuthorUser authorMessage = detailsService.queryAuthorById(authorId );
         List<BlogArticleHot> editorRecommendArticleList = detailsService.queryEditorRecommendArticle();
-        List<BlogArticleCommentRO> articleCommentROList = commentService.queryArticleCommentById(Long.valueOf(id));
+        List<BlogArticleComment> articleCommentROList = commentService.queryArticleCommentById(Long.valueOf(id));
 
         model.addAttribute("article",article);
         model.addAttribute("author",authorMessage);
