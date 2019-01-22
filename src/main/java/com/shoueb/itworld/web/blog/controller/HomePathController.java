@@ -3,9 +3,11 @@ package com.shoueb.itworld.web.blog.controller;
 
 import com.shoueb.itworld.author.model.AuthorUser;
 import com.shoueb.itworld.author.model.BlogArticleHot;
+import com.shoueb.itworld.author.ro.BlogArticleCommentRO;
 import com.shoueb.itworld.common.controller.BaseController;
 import com.shoueb.itworld.common.enums.BlogShowHomeEnum;
 import com.shoueb.itworld.common.enums.BlogShowPositionEnum;
+import com.shoueb.itworld.web.blog.service.CommentService;
 import com.shoueb.itworld.web.blog.service.DetailsService;
 import com.shoueb.itworld.web.blog.service.HomeServcie;
 import org.apache.commons.lang3.StringUtils;
@@ -29,6 +31,9 @@ public class HomePathController extends BaseController {
     private HomeServcie homeServcie;
     @Autowired
     private DetailsService detailsService;
+
+    @Autowired
+    private CommentService commentService;
     /**
      * @return 跳转到首页
      **/
@@ -84,9 +89,12 @@ public class HomePathController extends BaseController {
         Long authorId = article.getAuthorId();
         AuthorUser authorMessage = detailsService.queryAuthorById(authorId );
         List<BlogArticleHot> editorRecommendArticleList = detailsService.queryEditorRecommendArticle();
+        List<BlogArticleCommentRO> articleCommentROList = commentService.queryArticleCommentById(Long.valueOf(id));
+
         model.addAttribute("article",article);
         model.addAttribute("author",authorMessage);
         model.addAttribute("editorRecommendArticleList",editorRecommendArticleList);
+        model.addAttribute("comment",articleCommentROList);
 
         return "web/blog/details";
     }

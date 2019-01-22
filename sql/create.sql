@@ -135,4 +135,18 @@ CREATE TABLE `t_blog_article_hot` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='热门文章';
 
 
+CREATE TABLE `t_blog_article_comment` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `author_id` bigint(20) DEFAULT NULL COMMENT '用户id',
+  `article_id` bigint(20) NOT NULL COMMENT '文章id',
+  `content` text COMMENT '评论内容',
+  `delete_flag` char(1) DEFAULT NULL COMMENT '数据状态1正常 0 删除',
+  `status` varchar(10) DEFAULT NULL COMMENT '状态0新建1发布2审核通过3审核不通过4系统删除',
+  `create_by_id` bigint(20) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_by_id` bigint(20) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
 
