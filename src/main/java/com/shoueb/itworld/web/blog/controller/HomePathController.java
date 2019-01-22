@@ -95,7 +95,7 @@ public class HomePathController extends BaseController {
         model.addAttribute("article",article);
         model.addAttribute("author",authorMessage);
         model.addAttribute("editorRecommendArticleList",editorRecommendArticleList);
-        model.addAttribute("comment",articleCommentROList);
+        model.addAttribute("comments",articleCommentROList);
 
         return "web/blog/details";
     }

@@ -146,6 +146,7 @@ CREATE TABLE `t_blog_article_comment` (
   `create_time` datetime DEFAULT NULL,
   `update_by_id` bigint(20) DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
+  `favor_count` bigint(20) DEFAULT NULL COMMENT '收获点赞数',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 

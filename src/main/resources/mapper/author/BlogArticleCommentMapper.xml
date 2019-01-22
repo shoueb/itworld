@@ -14,6 +14,7 @@
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
         <result column="kh_name" jdbcType="VARCHAR" property="khName" />
         <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+        <result column="favor_count" jdbcType="BIGINT" property="favorCount" />
     </resultMap>
 <!--    <select id="queryAllCommentId" parameterType="com.shoueb.itworld.author.model.BlogArticleComment"
             resultMap="BlogArticleCommentROMap">

@@ -65,17 +65,17 @@
 			<div class="row mt-5">
 				<div class="col-12">
 					<ul class="list-unstyled">
-						<li class="media">
-							<img class="mr-3 rounded-circle customer-img" src="assets/images/avatars/avatar-1.png" alt="user avatar"/>
+						<li class="media" th:each="comments:${comments}">
+							<img class="mr-3 rounded-circle customer-img" th:src="@{${comments.imgUrl}}" alt="user avatar"/>
 							<div class="media-body">
-								<h6 class="mt-0 mb-1">用户111111111</h6>
-								<p class="text-black-50 mb-1"><small>21楼 2019-01-12 12:59:00</small></p>
+								<h6 class="mt-0 mb-1"><span th:text="${comments.khName}"></span></h6>
+								<p class="text-black-50 mb-1"><small>21楼 <span th:text="${comments.createTime}"></span></small></p>
 								<p>
-									Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Donec lacinia congue felis in faucibus.
+                                    <span th:text="${comments.content}"></span>
 								</p>
 								<div>
 									<span class="cursor-pointer">
-										<i aria-hidden="true" class="fa fa-thumbs-up"></i>&nbsp;1212
+										<i aria-hidden="true" class="fa fa-thumbs-up"></i>&nbsp;<span th:text="${comments.favorCount}"></span>
 									</span>
 									<a href="#" class="ml-2">回复</a>
 								</div>
@@ -121,22 +121,7 @@
 								</ul>
 							</div>
 						</li>
-						<li class="media my-4">
-							<img class="mr-3 rounded-circle customer-img" src="assets/images/avatars/avatar-2.png" alt="user avatar"/>
-							<div class="media-body">
-								<h6 class="mt-0 mb-1">用户111111111</h6>
-								<p class="text-black-50"><small>21楼 2019-01-12 12:59:00</small></p>
-								<p>
-								Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Donec lacinia congue felis in faucibus.
-								</p>
-								<div>
-									<span class="cursor-pointer">
-										<i aria-hidden="true" class="fa fa-thumbs-o-up"></i>&nbsp;1212
-									</span>
-									<a href="#" class="ml-2">回复</a>
-								</div>
-							</div>
-						</li>
+
 
 					</ul>
 				</div>

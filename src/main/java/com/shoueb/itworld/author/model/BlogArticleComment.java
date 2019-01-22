@@ -33,6 +33,10 @@ public class BlogArticleComment extends BaseEntity implements Serializable {
      *状态0新建1发布2审核通过3审核不通过4系统删除
      */
     private String stauts;
+    /*
+    * 收获点赞数
+    * */
+    private Long favorCount;
 
     public Long getAuthorId() {
         return authorId;
@@ -73,5 +77,14 @@ public class BlogArticleComment extends BaseEntity implements Serializable {
     public void setStauts(String stauts) {
         this.stauts = stauts;
     }
+
+    public Long getFavorCount() {
+        return favorCount;
+    }
+
+    public void setFavorCount(Long favorCount) {
+        this.favorCount = favorCount;
+    }
+
 
 }
