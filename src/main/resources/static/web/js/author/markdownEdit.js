@@ -53,7 +53,7 @@ function ButtonInit(){
             var MARK = "粗体文本";
             if (!textSelection || textSelection === MARK) {
                 //没有文字选中，光标处插入
-                oInit.funInsertMark(oTextarea,"**粗体文本**");
+                oInit.funInsertMark(oTextarea,"**粗体文本**",2,6);
             } else {
                 oInit.funTextAsMark(oTextarea, "**" + textSelection + "**");
             }
@@ -64,14 +64,24 @@ function ButtonInit(){
             var MARK = "斜体文本";
             if (!textSelection || textSelection === MARK) {
                 //没有文字选中，光标处插入
-                oInit.funInsertMark(oTextarea,"*斜体文本*");
+                oInit.funInsertMark(oTextarea,"*斜体文本*",1,5);
             } else {
                 oInit.funTextAsMark(oTextarea, "*" + textSelection + "*");
             }
         })
-        /*链接*/
+        /*链接*/ //[baidu](http://jianshu.com)
         $('#setLink').off('click').on('click',function(){
-
+            $('#linkInput').val('');
+            $('.linkModal').modal("show");
+        })
+        $('#setLinkModelBtn').off('click').on('click',function(){
+            var link = $('#linkInput').val();
+            if (link!==null&&link!=null){
+                var markvlue = "[请在此处输入链接名称]("+link+")"
+                oInit.funInsertMark(oTextarea,markvlue,1,11)
+                $('.linkModal').modal("hide");
+                oTextarea.focus();
+            }
         })
         /*引用*/
         $('#setQuote').off('click').on('click',function(){
@@ -79,7 +89,7 @@ function ButtonInit(){
             var MARK = "段落引用";
             if (!textSelection || textSelection === MARK) {
                 //没有文字选中，光标处插入
-                oInit.funInsertMark(oTextarea,">段落引用");
+                oInit.funInsertMark(oTextarea,">段落引用",1,5);
             } else {
                 oInit.funTextAsMark(oTextarea, ">" + textSelection );
             }
@@ -90,14 +100,14 @@ function ButtonInit(){
             var MARK = "此处输入代码";
             if (!textSelection || textSelection === MARK) {
                 //没有文字选中，光标处插入
-                oInit.funInsertMark(oTextarea,"    此处输入代码");
+                oInit.funInsertMark(oTextarea,"`此处输入代码`",1,7);
             } else {
-                oInit.funTextAsMark(oTextarea, "    " + textSelection );
+                oInit.funTextAsMark(oTextarea, "`" + textSelection+"`" );
             }
         })
         /*图片*/
         $('#setImage').off('click').on('click',function(){
-
+            $('.imageModal').modal("show");
         })
         /*有序列表*/
         $('#setListOl').off('click').on('click',function(){
@@ -105,7 +115,7 @@ function ButtonInit(){
             var MARK = "列表项";
             if (!textSelection || textSelection === MARK) {
                 //没有文字选中，光标处插入
-                oInit.funInsertMark(oTextarea,"1.列表项");
+                oInit.funInsertMark(oTextarea,"1.列表项",2,5);
             } else {
                 oInit.funTextAsMark(oTextarea, "1." + textSelection );
             }
@@ -116,9 +126,9 @@ function ButtonInit(){
             var MARK = "列表项";
             if (!textSelection || textSelection === MARK) {
                 //没有文字选中，光标处插入
-                oInit.funInsertMark(oTextarea,"-列表项");
+                oInit.funInsertMark(oTextarea,"- 列表项",2,5);
             } else {
-                oInit.funTextAsMark(oTextarea, "-" + textSelection );
+                oInit.funTextAsMark(oTextarea, "- " + textSelection );
             }
         })
         /*标题*/
@@ -128,9 +138,10 @@ function ButtonInit(){
         /*分割线*/
         $('#setDividingLine').off('click').on('click',function(){
             var textSelection = oInit.funGetSelected(oTextarea);
+            var MARK = "----------";
             if (!textSelection || textSelection === MARK) {
                 //没有文字选中，光标处插入
-                oInit.funInsertMark(oTextarea,"----------");
+                oInit.funInsertMark(oTextarea,"----------",0,10);
             } else {
                 oInit.funTextAsMark(oTextarea, "----------" + textSelection );
             }
@@ -153,8 +164,9 @@ function ButtonInit(){
             return element.value.substr(element.selectionStart, element.selectionEnd - element.selectionStart);
         }
     }
-    oInit.funInsertMark = function(textObj,markvalue){
+    oInit.funInsertMark = function(textObj,markvalue,cursorStart,cursorEnd){
         var topic = markvalue, value = textObj.value, index = value.indexOf(topic);
+        var start =cursorStart,end=cursorEnd
         if (index === -1) {
             //匹配
             oInit.funTextAsMark(textObj, topic);
@@ -164,11 +176,11 @@ function ButtonInit(){
         if (textObj.createTextRange) {
             var range = textObj.createTextRange();
             range.moveEnd("character", -1 * value.length)
-            range.moveEnd("character", index + 5);
+            range.moveEnd("character", index + 6);
             range.moveStart("character", index + 1);
             range.select();
         } else {
-            textObj.setSelectionRange(index + 1, index + 5);
+            textObj.setSelectionRange(index + start, index + end);
             textObj.focus();
         }
     }
