@@ -78,6 +78,10 @@
 										<i aria-hidden="true" class="fa fa-thumbs-up"></i>&nbsp;<span th:text="${comments.favorCount}"></span>
 									</span>
 									<a href="#" class="ml-2">回复</a>
+									<form action="form_action.asp" method="get">
+										<input type="text" name="fname" />
+										<input type="submit" value="Submit" />
+									</form>
 								</div>
 								<ul class="list-unstyled  border-left pl-4">
 									<li class="media mt-3">
@@ -91,7 +95,7 @@
 											</p>
 											<div>
 												<span class="text-black-50">2019-01-12 12:59:00</span>
-												<a href="#" class="ml-2">回复</a>
+                                                <a href="#" class="ml-2">回复</a>
 											</div>
 										</div>
 									</li>

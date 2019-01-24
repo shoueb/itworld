@@ -4,7 +4,6 @@ package com.shoueb.itworld.web.blog.controller;
 import com.shoueb.itworld.author.model.AuthorUser;
 import com.shoueb.itworld.author.model.BlogArticleComment;
 import com.shoueb.itworld.author.model.BlogArticleHot;
-import com.shoueb.itworld.author.ro.BlogArticleCommentRO;
 import com.shoueb.itworld.common.controller.BaseController;
 import com.shoueb.itworld.common.enums.BlogShowHomeEnum;
 import com.shoueb.itworld.common.enums.BlogShowPositionEnum;
@@ -57,6 +56,7 @@ public class HomePathController extends BaseController {
         blogArticleHot.setShowPosition(showPosition);
         blogArticleHot.setLanguageType(language);
         blogArticleHot.setShowHome(BlogShowHomeEnum.YES.getKey());
+
         blogArticleHot.setPage(Integer.valueOf(page));
         //servce 调用
         //1：主页推荐【3条】  2：编辑推荐【20条】 3：首页的文章【15条】
@@ -91,7 +91,6 @@ public class HomePathController extends BaseController {
         AuthorUser authorMessage = detailsService.queryAuthorById(authorId );
         List<BlogArticleHot> editorRecommendArticleList = detailsService.queryEditorRecommendArticle();
         List<BlogArticleComment> articleCommentROList = commentService.queryArticleCommentById(Long.valueOf(id));
-
         model.addAttribute("article",article);
         model.addAttribute("author",authorMessage);
         model.addAttribute("editorRecommendArticleList",editorRecommendArticleList);

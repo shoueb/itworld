@@ -11,4 +11,8 @@ public interface AuthorUserMapper extends MyMapper<AuthorUser> {
 
 
     AuthorUser queryAuthorById(Long id);
+
+    AuthorUser insertUser(AuthorUser authorUser);
+
+
 }

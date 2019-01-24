@@ -57,6 +57,29 @@ function login() {
     });
 }
 
+function signup() {
+    $.ajax({
+        //几个参数需要注意一下
+        type: "POST",//方法类型
+        dataType: "json",//预期服务器返回的数据类型
+        url: "/dosignup" ,//url
+        data: {username:$("#username").val(), pwd:$("#pwd").val(), repwd:$("#repwd").val()},
+        success: function (result) {
+            console.log(result);//打印服务端返回的数据(调试用)
+            if (result.code === 1) {
+                window.location.href="/login";
+                return true;
+            }else{
+                alert(result.msg);
+            }
+        },
+        error : function() {
+            alert("系统异常！");
+        }
+    });
+}
+
+
 //构建分页
 function buildPage() {
     var str="";

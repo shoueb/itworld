@@ -30,5 +30,8 @@
       where c.status = '1' and c.id=#{authorId}
 </select>
 
+  <insert id="insertUser" parameterType="com.shoueb.itworld.author.model.AuthorUser">
+    insert into t_author_user(user_name, pwd) values(#{userName}, #{pwd})
+  </insert>
 
 </mapper>

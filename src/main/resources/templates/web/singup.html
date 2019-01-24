@@ -15,29 +15,29 @@
 					<img src="/assets/images/logo-icon.png" alt="logo icon">
 				</div>
 				<div class="card-title text-uppercase text-center py-3">登&nbsp;&nbsp;录</div>
-				<form>
+				<form id="form2" onsubmit="return false" action="##" method="post" >
 					<div class="form-group">
-						<label for="exampleInputUsername" class="">用户名</label>
+						<label for="username" class="">用户名</label>
 						<div class="position-relative has-icon-right">
-							<input type="text" id="exampleInputUsername" class="form-control input-shadow" placeholder="请输入用户名">
+							<input type="text" id="username" name="username" class="form-control input-shadow" placeholder="请输入用户名">
 							<div class="form-control-position">
 								<i class="icon-user"></i>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="examplePhoneId" class="">密码</label>
+						<label for="pwd" class="">密码</label>
 						<div class="position-relative has-icon-right">
-							<input type="password" id="examplePhoneId" class="form-control input-shadow" placeholder="请输入密码">
+							<input type="password" id="pwd" name="pwd" class="form-control input-shadow" placeholder="请输入密码">
 							<div class="form-control-position">
 								<i class="icon-lock"></i>
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="exampleInputPassword" class="">重复密码</label>
+						<label for="repwd" class="">重复密码</label>
 						<div class="position-relative has-icon-right">
-							<input type="password" id="exampleInputPassword" class="form-control input-shadow" placeholder="请重复密码">
+							<input type="password" id="repwd"  name="repwd" class="form-control input-shadow" placeholder="请重复密码">
 							<div class="form-control-position">
 								<i class="icon-lock"></i>
 							</div>
@@ -54,7 +54,7 @@
 							<!--<a href="authentication-reset-password.html">重置密码</a>-->
 						</div>
 					</div>
-					<button type="button" class="btn btn-primary shadow-primary btn-block waves-effect waves-light">注册</button>
+					<button type="button"  onclick="signup()" class="btn btn-primary shadow-primary btn-block waves-effect waves-light">注册</button>
 					<!--<div class="text-center mt-3">Sign In With</div>
 
 					<div class="form-row mt-4">

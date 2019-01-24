@@ -27,7 +27,7 @@
 			<div class="row ">
 				<ul class="list-unstyled" >
 					<li class="media my-4" th:each="homeArticle:${homeArticleList}">
-						<img class="mr-3 rounded h-120px" th:src="@{${homeArticle.imgUrlMin}}" alt="user avatar">
+						<a th:href="@{'/details/?id='+${homeArticle.id}}"><img class="mr-3 rounded h-120px" th:src="@{${homeArticle.imgUrlMin}}" alt="user avatar"></a>
 						<div class="media-body">
                             <h5 class="mt-0 mb-1"><a th:href="@{'/details/?id='+${homeArticle.id}}" ><span th:if="${homeArticle.seriesTitle!=null}">[<span th:text="${homeArticle.seriesTitle}"></span>]</span> <span th:text="${homeArticle.articleTitle}"></span></a>
 								<small class="float-right text-danger font-weight-normal mr-4">gitHub</small>
