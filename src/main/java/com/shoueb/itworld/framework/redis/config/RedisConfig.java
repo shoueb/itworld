@@ -33,8 +33,10 @@ import java.util.Map;
 @Configuration
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
-
-
+    /**
+     *
+     * @return
+     */
     @Override
     @Bean
     public KeyGenerator keyGenerator() {
@@ -51,6 +53,12 @@ public class RedisConfig extends CachingConfigurerSupport {
             }
         };
     }
+
+    /**
+     * 缓存管理器
+     * @param redisConnectionFactory
+     * @return
+     */
     @Bean
     public CacheManager cacheManager(RedisConnectionFactory redisConnectionFactory) {
         return new RedisCacheManager(
@@ -68,6 +76,7 @@ public class RedisConfig extends CachingConfigurerSupport {
      */
     private Map<String, RedisCacheConfiguration> getRedisCacheConfigurationMap() {
         Map<String, RedisCacheConfiguration> redisCacheConfigurationMap = new HashMap<>();
+        //解决分组失效时间
         redisCacheConfigurationMap.put("hot", this.getRedisCacheConfigurationWithTtl(3000));
         redisCacheConfigurationMap.put("UserInfoListAnother", this.getRedisCacheConfigurationWithTtl(18000));
 
@@ -84,7 +93,9 @@ public class RedisConfig extends CachingConfigurerSupport {
         ObjectMapper om = new ObjectMapper();
         om.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         om.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+        //去除null
         om.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+
         jackson2JsonRedisSerializer.setObjectMapper(om);
 
         RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig();
@@ -110,7 +121,7 @@ public class RedisConfig extends CachingConfigurerSupport {
         //value序列化
         redisTemplate.setValueSerializer(new Jackson2JsonRedisSerializer(Object.class));
         redisTemplate.setHashKeySerializer(new StringRedisSerializer());
-        redisTemplate.setHashValueSerializer(new Jackson2JsonRedisSerializer(Object.class));
+        redisTemplate.setHashValueSerializer(new JdkSerializationRedisSerializer());
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
     }
