@@ -37,7 +37,7 @@ function MarkdownInit(){
 }
 function ButtonInit(){
     var oInit = new Object()
-
+    var flag = 1;
     var oTextarea = document.getElementById("oriContent");
 
 
@@ -46,6 +46,7 @@ function ButtonInit(){
         $('#oriContent').on('keyup focus ',function () {
             var html = oMarkdownInit.getCoverterHtml();
             $("#result").html(html)
+            hljs.initHighlighting();
         });
         /*粗体*/
         $('#setBold').off('click').on('click',function(){
@@ -100,9 +101,9 @@ function ButtonInit(){
             var MARK = "此处输入代码";
             if (!textSelection || textSelection === MARK) {
                 //没有文字选中，光标处插入
-                oInit.funInsertMark(oTextarea,"`此处输入代码`",1,7);
+                oInit.funInsertMark(oTextarea,"```\r\n此处输入代码\r\n```",5,11);
             } else {
-                oInit.funTextAsMark(oTextarea, "`" + textSelection+"`" );
+                oInit.funTextAsMark(oTextarea, "```\r\n" + textSelection+"\r\n```" );
             }
         })
         /*图片*/
@@ -133,6 +134,31 @@ function ButtonInit(){
         })
         /*标题*/
         $('#setTitle').off('click').on('click',function(){
+            var textSelection = oInit.funGetSelected(oTextarea);
+            var MARK=''
+            switch (flag%2) {
+                case 0:
+                    MARK='标题'
+                    if (!textSelection || textSelection === MARK) {
+                        //没有文字选中，光标处插入
+                        oInit.funInsertMark(oTextarea,"标题\r\n---",1,3);
+                    } else {
+                        oInit.funTextAsMark(oTextarea, textSelection+"\r\n---" );
+                    }
+                    flag= flag + 1;
+                    break;
+                case 1:
+                    MARK='标题'
+                    if (!textSelection || textSelection === MARK) {
+                        //没有文字选中，光标处插入
+                        oInit.funInsertMark(oTextarea,"标题\r\n===",1,3);
+                    } else {
+                        oInit.funTextAsMark(oTextarea, textSelection+"\r\n===" );
+                    }
+                    flag= flag + 1;
+                    break;
+            }
+
 
         })
         /*分割线*/
@@ -205,6 +231,7 @@ function ButtonInit(){
 
 
 
+/*
 
 $.fn.insertText = function (text) {
     var obj = $(this)[0];
@@ -232,4 +259,4 @@ $.fn.insertText = function (text) {
         j.addRange(range);
         this.focus();
     }
-}
+}*/
