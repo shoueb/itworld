@@ -1,7 +1,7 @@
 package com.shoueb.itworld.common.enums;
 
 /**
- * @Description:
+ * @Description: 显示位置
  * @Author: yuangui.hu
  * @Date: 2019/1/13 15:26
  */
@@ -9,17 +9,9 @@ public enum  BlogShowPositionEnum {
     DEFUALT("0", "默认"),
     CANDIDATE("1", "候选"),
     ESSENCE("2", "精华");
-
-
-
     private String key;
     private String value;
 
-    /**
-     * 合同是否有押金枚举
-     * @param key key
-     * @param value 值
-     */
     BlogShowPositionEnum(String key, String value) {
         this.key = key;
         this.value = value;

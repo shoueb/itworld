@@ -1,6 +1,5 @@
 package com.shoueb.itworld.web.blog.controller;
 
-
 import com.shoueb.itworld.author.model.AuthorUser;
 import com.shoueb.itworld.author.model.BlogArticleComment;
 import com.shoueb.itworld.author.model.BlogArticleHot;
@@ -41,27 +40,31 @@ public class HomePathController extends BaseController {
     public String index(){
         //条件
         String page= request.getParameter("page");
-        if(StringUtils.isBlank(page)){
-            page="1";
-        }
         String showPosition= request.getParameter("position");
         String language= request.getParameter("language");
-        BlogArticleHot blogArticleHot=new BlogArticleHot();
+        if(StringUtils.isBlank(page)){
+            page="0";
+        }
         if(StringUtils.isBlank(showPosition)){
             showPosition= BlogShowPositionEnum.ESSENCE.getKey();
         }
         if(StringUtils.isBlank(language)){
             language="";
         }
+        //就近原则
+        BlogArticleHot blogArticleHot=new BlogArticleHot();
         blogArticleHot.setShowPosition(showPosition);
         blogArticleHot.setLanguageType(language);
         blogArticleHot.setShowHome(BlogShowHomeEnum.YES.getKey());
-
         blogArticleHot.setPage(Integer.valueOf(page));
         //servce 调用
-        //1：主页推荐【3条】  2：编辑推荐【20条】 3：首页的文章【15条】
+        //1：主页推荐【3条】
         List<BlogArticleHot> homeRecommendArticle= homeServcie.queryHomeRecommendArticle();
+        //2：编辑推荐【20条】
+        blogArticleHot.setRows(20);
         List<BlogArticleHot> editorRecommendArticle= homeServcie.queryEditorRecommendArticle(blogArticleHot);
+        //3：首页的文章【15条】
+        blogArticleHot.setRows(15);
         List<BlogArticleHot> homeArticle= homeServcie.queryHomeArticle(blogArticleHot);
         //设置值
         request.setAttribute("homeRecommendArticleList",homeRecommendArticle);
@@ -71,7 +74,7 @@ public class HomePathController extends BaseController {
         request.setAttribute("showPosition",showPosition);
         request.setAttribute("language",language);
         request.setAttribute("page",page);
-
+        //跳转
         return "web/blog/home";
     }
 

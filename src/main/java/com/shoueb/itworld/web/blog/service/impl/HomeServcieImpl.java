@@ -8,6 +8,8 @@ import com.shoueb.itworld.common.enums.BlogShowHomeEnum;
 import com.shoueb.itworld.common.enums.BlogShowPositionEnum;
 import com.shoueb.itworld.web.blog.service.HomeServcie;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +19,7 @@ import java.util.List;
  * @Author: yuangui.hu
  * @Date: 2019/1/13 10:41
  */
+@CacheConfig(cacheNames = "hot")
 @Service
 public class HomeServcieImpl  implements HomeServcie {
     /**
@@ -26,9 +29,10 @@ public class HomeServcieImpl  implements HomeServcie {
     private BlogArticleHotMapper blogArticleHotMapper;
 
     /**
-     *
-     * @return
+     *主页推荐【3条】
+     * @return 返回主页推荐结果集
      */
+    @Cacheable(key="'article_'")
     @Override
     public List<BlogArticleHot> queryHomeRecommendArticle() {
         PageHelper.startPage(0,3);
@@ -40,22 +44,25 @@ public class HomeServcieImpl  implements HomeServcie {
     }
 
     /**
-     *
+     *编辑推荐【20条】
      * @return
      */
+    @Cacheable( key="'edre_lgt'+#blogArticleHot.languageType")
     @Override
     public List<BlogArticleHot> queryEditorRecommendArticle(BlogArticleHot blogArticleHot) {
-        PageHelper.startPage(0,20);
+        PageHelper.startPage(blogArticleHot.getPage(),blogArticleHot.getRows());
         return blogArticleHotMapper.queryEditorRecommendArticle(blogArticleHot);
     }
 
     /**
-     * return blogArticleHotMapper.selectAll();
+     *
      * @return
      */
+    @Cacheable( key="'article_p'+#blogArticleHot.page+'_l'" +
+            "+#blogArticleHot.languageType+'_sh'+#blogArticleHot.showHome+'_sp'+#blogArticleHot.showPosition")
     @Override
     public List<BlogArticleHot> queryHomeArticle(BlogArticleHot blogArticleHot) {
-        PageHelper.startPage(blogArticleHot.getPage(),15);
+        PageHelper.startPage(blogArticleHot.getPage(),blogArticleHot.getRows());
         return blogArticleHotMapper.queryHomeArticle(blogArticleHot);
     }
 }
