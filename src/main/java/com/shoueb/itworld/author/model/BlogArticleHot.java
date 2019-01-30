@@ -1,5 +1,6 @@
 package com.shoueb.itworld.author.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.shoueb.itworld.common.entity.BaseEntity;
 
 import javax.persistence.Table;
@@ -254,5 +255,4 @@ public class BlogArticleHot extends BaseEntity implements Serializable {
     public void setContent(String content) {
         this.content = content;
     }
-
 }

@@ -15,8 +15,25 @@ public interface BlogArticleHotMapper extends MyMapper<BlogArticleHot> {
      * @return
      */
     List<BlogArticleHot> queryHomeRecommendArticle(BlogArticleHot blogArticleHot);
+
+    /**
+     *查询文章
+     * @param blogArticleHot
+     * @return
+     */
     List<BlogArticleHot> queryHomeArticle(BlogArticleHot blogArticleHot);
+
+    /**
+     *编辑推荐
+     * @param blogArticleHot
+     * @return
+     */
     List<BlogArticleHot> queryEditorRecommendArticle(BlogArticleHot blogArticleHot);
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     BlogArticleHot queryArticleById(Long id);
 }

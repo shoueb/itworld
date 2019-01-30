@@ -1,6 +1,8 @@
 
 package com.shoueb.itworld.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -44,9 +46,11 @@ public class BaseEntity {
     private Date updateTime;
 
     @Transient
+    @JsonIgnore
     private Integer page = 1;
 
     @Transient
+    @JsonIgnore
     private Integer rows = 10;
 
     public Long getId() {

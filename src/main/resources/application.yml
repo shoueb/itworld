@@ -16,8 +16,8 @@ mybatis:
 pagehelper:
   helperDialect: mysql
   params: count=countSql
-  reasonable: true
   supportMethodsArguments: true
+  reasonable: false
 server:
   port: 8080
   tomcat:

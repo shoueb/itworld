@@ -55,14 +55,15 @@ public class HomeServcieImpl  implements HomeServcie {
     }
 
     /**
-     *
+     * 查询文章
      * @return
      */
     @Cacheable( key="'article_p'+#blogArticleHot.page+'_l'" +
             "+#blogArticleHot.languageType+'_sh'+#blogArticleHot.showHome+'_sp'+#blogArticleHot.showPosition")
     @Override
     public List<BlogArticleHot> queryHomeArticle(BlogArticleHot blogArticleHot) {
-        PageHelper.startPage(blogArticleHot.getPage(),blogArticleHot.getRows());
+        //分页不统计
+        PageHelper.startPage(blogArticleHot.getPage(),blogArticleHot.getRows(),false);
         return blogArticleHotMapper.queryHomeArticle(blogArticleHot);
     }
 }
