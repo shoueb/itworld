@@ -3,12 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <div th:replace="web/shareHtml/shareHead"></div>
-    <link rel="stylesheet" href="/assets/prism/codemirror/lib/codemirror.css">
-    <link rel="stylesheet" href="/assets/prism/codemirror/theme/material.css">
-    <link rel="stylesheet" href="/assets/prism/codemirror/addon/dialog/dialog.css">
-    <link rel="stylesheet" href="/assets/prism/stylesheets/style.css">
-    <link rel="stylesheet" href="/assets/prism/stylesheets/github-markdown.css">
-    <link rel="stylesheet" href="/assets/prism/stylesheets/prism.css">
+    <link href="/assets/prism/prism.css" rel="stylesheet" />
     <title>markdown</title>
 </head>
 <body>
@@ -77,12 +72,19 @@
             </div>
         </div>
         <div class="row p-0">
-            <div class="col-6 bg-white editor-wrap" id="makdownEditDiv" >
-                <textarea name="editor" id="editor" cols="30" rows="10"></textarea>
+            <div class="col-6 bg-white" id="makdownEditDiv" >
+                <textarea class="w-100 border-0 pt-3" id="oriContent" style="resize:none" autofocus></textarea>
             </div>
 
-            <div class="col-6 preview-wrap markdown-body"  tyle="overflow-y: auto">
-            </div>
+            <!--<div class="col-6 pt-4 " id="result" tyle="overflow-y: auto">-->
+ <pre class="line-numbers"><code class="language-php language-css">
+            <?php
+            echo "Hello World!";
+            ?>
+            </code>
+            </pre>
+            <!--</div>-->
+
 
         </div>
     </div>
@@ -93,20 +95,20 @@
 <div class="modal fade linkModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">链接</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+           <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">链接</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="input-1">请输入链接地址</label>
+                <input type="text" class="form-control" id="linkInput" placeholder="http://example.com/">
             </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="input-1">请输入链接地址</label>
-                    <input type="text" class="form-control" id="linkInput" placeholder="http://example.com/">
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary" id="setLinkModelBtn">确认</button>
-            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary" id="setLinkModelBtn">确认</button>
+        </div>
         </div>
     </div>
 </div>
@@ -135,20 +137,8 @@
     </div>
 </div>
 <div th:replace="web/shareHtml/shareFoot"></div>
-<script src="/assets/prism/javascripts/jquery.min.js"></script>
-<script src="/assets/prism/javascripts/marked.min.js"></script>
-<script src="/assets/prism/codemirror/lib/codemirror.js"></script>
-<script src="/assets/prism/codemirror/addon/edit/continuelist.js"></script>
-<script src="/assets/prism/codemirror/addon/edit/matchbrackets.js"></script>
-<script src="/assets/prism/codemirror/addon/edit/closebrackets.js"></script>
-<script src="/assets/prism/codemirror/mode/markdown/markdown.js"></script>
-<script src="/assets/prism/codemirror/keymap/sublime.js"></script>
-<script src="/assets/prism/codemirror/addon/search/search.js"></script>
-<script src="/assets/prism/codemirror/addon/search/searchcursor.js"></script>
-<script src="/assets/prism/codemirror/addon/dialog/dialog.js"></script>
-<script src="/assets/prism/codemirror/addon/comment/comment.js"></script>
-<script src="/assets/prism/codemirror/addon/wrap/hardwrap.js"></script>
-<script src="/assets/prism/javascripts/prism.js"></script>
-<script src="/assets/prism/javascripts/main.js"></script>
+<script src="/showdown/dist/showdown.js"></script>
+<script src="/web/js/author/markdownEdit.js"></script>
+<script src="/assets/prism/prism.js"></script>
 </body>
 </html>

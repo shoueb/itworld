@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
+import java.math.BigDecimal;
+
 /**
  * @Description: 程序启动入库
  * @Author: yuangui.hu
@@ -21,6 +23,11 @@ public class ItworldApplication {
     public static void main(String[] args) {
         //Spring Boot + Mybatis +th模板 +Mymapper【tk】+分页插件
         SpringApplication.run(ItworldApplication.class, args);
+
+       /* BigDecimal goodsNum=new BigDecimal("0");
+        if(new BigDecimal(goodsNum.intValue()).compareTo(goodsNum)!=0 || goodsNum.compareTo(BigDecimal.ZERO)<0){
+            System.out.println("goodsNum: 货物数量不能带有小数或小于等于0");
+        }*/
     }
 
 }
