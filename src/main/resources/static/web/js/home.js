@@ -24,6 +24,7 @@ var Init = function(){
 var ButtonInit = function(){
     oButtonInit = new Object();
     oButtonInit.Init = function(){
+        
         $(".articleType").off('click').on('click',function(){
             $(this).addClass("text-danger").siblings('.articleType').removeClass("text-danger");
         });
