@@ -75,7 +75,7 @@ public class BlogArticleServiceImpl implements BlogArticleService {
 
     @Override
     public AuthorUser queryAuthorById(Long id) {
-        return authorUserMapper.queryAuthorById(id);
+        return authorUserMapper.selectByPrimaryKey(id);
     }
 
     /**

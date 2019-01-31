@@ -5,6 +5,7 @@ import com.shoueb.itworld.blog.model.BlogArticleComment;
 import com.shoueb.itworld.blog.model.BlogArticleHot;
 import com.shoueb.itworld.blog.ro.BlogArticleHotRO;
 import com.shoueb.itworld.common.controller.BaseController;
+import com.shoueb.itworld.common.enums.BlogShowHomeEnum;
 import com.shoueb.itworld.web.blog.service.BlogArticleCommentService;
 import com.shoueb.itworld.web.blog.service.BlogArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,14 +40,17 @@ public class BlogArticlePathController extends BaseController {
     public String article(@PathVariable("uid") String uid){
         //根据uid获取博客----》为什么不用id获取博客   防止他人遍历我们的文章
         BlogArticleHotRO article = blogArticleService.queryArticleByUid(uid);
-        AuthorUser authorMessage = blogArticleService.queryAuthorById(article.getAuthorId() );
-
-//        List<BlogArticleHot> editorRecommendArticleList = blogArticleService.queryEditorRecommendArticle();
+        AuthorUser authorUser = blogArticleService.queryAuthorById(article.getAuthorId() );
+        BlogArticleHot blogArticleHot=new BlogArticleHot();
+        blogArticleHot.setShowHome(BlogShowHomeEnum.YES.getKey());
+        blogArticleHot.setPage(1);
+        blogArticleHot.setRows(20);
+        List<BlogArticleHotRO> editorRecommendArticle= blogArticleService.queryEditorRecommendArticle(blogArticleHot);
         List<BlogArticleComment> articleCommentROList = blogArticleCommentService.queryArticleCommentById(article.getId());
 
         request.setAttribute("article",article);
-        request.setAttribute("author",authorMessage);
-//        request.setAttribute("editorRecommendArticleList",editorRecommendArticleList);
+        request.setAttribute("author",authorUser);
+        request.setAttribute("editorRecommendArticleList",editorRecommendArticle);
         request.setAttribute("comments",articleCommentROList);
 
         return "/web/blog/article";

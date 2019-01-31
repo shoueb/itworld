@@ -1,6 +1,7 @@
 package com.shoueb.itworld.blog.model;
 
 import com.shoueb.itworld.common.entity.BaseEntity;
+import lombok.Data;
 
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -10,17 +11,18 @@ import java.io.Serializable;
  * @Date: 2019/1/22
  */
 @Table(name= "t_blog_article_comment")
+@Data
 public class BlogArticleComment extends BaseEntity implements Serializable {
 
-    /*
+    /**
      *用户ID
      * */
     private Long authorId;
-    /*
+    /**
     * 文章ID
     * */
     private Long articleId;
-    /*
+    /**
     *评论内容
     * */
     private String content;
@@ -32,59 +34,9 @@ public class BlogArticleComment extends BaseEntity implements Serializable {
     /**
      *状态0新建1发布2审核通过3审核不通过4系统删除
      */
-    private String stauts;
-    /*
+    private String status;
+    /**
     * 收获点赞数
     * */
     private Long favorCount;
-
-    public Long getAuthorId() {
-        return authorId;
-    }
-
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
-    }
-
-    public Long getArticleId() {
-        return articleId;
-    }
-
-    public void setArticleId(Long articleId) {
-        this.articleId = articleId;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getDeleteFlag() {
-        return deleteFlag;
-    }
-
-    public void setDeleteFlag(String deleteFlag) {
-        this.deleteFlag = deleteFlag;
-    }
-
-    public String getStauts() {
-        return stauts;
-    }
-
-    public void setStauts(String stauts) {
-        this.stauts = stauts;
-    }
-
-    public Long getFavorCount() {
-        return favorCount;
-    }
-
-    public void setFavorCount(Long favorCount) {
-        this.favorCount = favorCount;
-    }
-
-
 }

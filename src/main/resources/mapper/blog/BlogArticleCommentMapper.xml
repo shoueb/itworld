@@ -17,12 +17,14 @@
         <result column="favor_count" jdbcType="BIGINT" property="favorCount" />
     </resultMap>
 
+    <!--更加文章ID获取评论-->
     <select id="queryArticleCommentById" parameterType="Long"
             resultMap="BlogArticleCommentROMap">
-          select d.* ,c.kh_name,c.img_url from t_blog_article_comment d left join t_blog_article_hot a on a.id = d.article_id
-                                                               left join t_author_user c on c.id = d.author_id
+          select d.* ,c.kh_name,c.img_url
+          from t_blog_article_comment d
+          left join t_blog_article_hot a on a.id = d.article_id
+          left join t_author_user c on c.id = d.author_id
         where d.delete_flag = 1 and d.article_id=#{id}
     </select>
-
 
 </mapper>

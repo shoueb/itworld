@@ -38,13 +38,13 @@
 					&nbsp小额赞赏
 				</button>
 			</div>
-			<div class="row mt-5">
+			<div class="row mt-5" th:if="${author}">
 				<div class="col-12">
 					<div class="card ">
 						<div class="card-body">
 							<ul class="list-unstyled mb-0">
-								<li class="media " th:each="author:${author}">
-									<img class="mr-3 rounded-circle h-80px" th:src="@{${author.imgUrl}}" alt="user avatar">
+								<li class="media " >
+									<img class="mr-3 rounded-circle h-80px" th:src="${author.imgUrl}" alt="user avatar">
 									<div class="media-body">
 										<div class="row">
 											<div class="col-10">
@@ -59,7 +59,6 @@
 												<button class="btn btn-success btn-round mr-2"><i aria-hidden="true" class="fa fa-plus"></i>&nbsp;关注</button>
 											</div>
 										</div>
-
 									</div>
 								</li>
 							</ul>
@@ -141,11 +140,9 @@
 				<div class="card-header text-white bg-dark">编辑推荐</div>
                 <ul class="list-group" th:each="editorRecommendArticle:${editorRecommendArticleList}">
                     <li class="list-group-item">
-                        <a th:href="@{'/details/?id='+${editorRecommendArticle.id}}" ><span th:if="${editorRecommendArticle.seriesTitle!=null}">
-							[<span th:text="${editorRecommendArticle.seriesTitle}"></span>]</span><span th:text="${editorRecommendArticle.articleTitle}">多种实现的依赖注入</span></a>
-                    </li>
-
-                    <!--<div class="card-footer">Card footer</div>-->
+						<a th:if="${editorRecommendArticle.seriesTitle!=null}" th:href="@{'/series/'+${editorRecommendArticle.uid}}" > [<span th:text="${editorRecommendArticle.seriesTitle}">系列</span>]</a>
+						<a th:href="@{'/article/'+${editorRecommendArticle.uid}}" ><span th:text="${editorRecommendArticle.articleTitle}">多种实现的依赖注入</span></a>
+					</li>
                 </ul>
 			</div>
 		</div>
