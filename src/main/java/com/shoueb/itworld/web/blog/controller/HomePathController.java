@@ -1,18 +1,13 @@
 package com.shoueb.itworld.web.blog.controller;
 
-import com.shoueb.itworld.author.model.AuthorUser;
-import com.shoueb.itworld.author.model.BlogArticleComment;
-import com.shoueb.itworld.author.model.BlogArticleHot;
+import com.shoueb.itworld.blog.model.BlogArticleHot;
 import com.shoueb.itworld.common.controller.BaseController;
 import com.shoueb.itworld.common.enums.BlogShowHomeEnum;
 import com.shoueb.itworld.common.enums.BlogShowPositionEnum;
-import com.shoueb.itworld.web.blog.service.CommentService;
-import com.shoueb.itworld.web.blog.service.DetailsService;
-import com.shoueb.itworld.web.blog.service.HomeServcie;
+import com.shoueb.itworld.web.blog.service.BlogArticleService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,13 +21,12 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class HomePathController extends BaseController {
+    /**
+     * 博客Service
+     */
     @Autowired
-    private HomeServcie homeServcie;
-    @Autowired
-    private DetailsService detailsService;
+    private BlogArticleService blogArticleService;
 
-    @Autowired
-    private CommentService commentService;
     /**
      * @return 跳转到首页
      **/
@@ -59,13 +53,13 @@ public class HomePathController extends BaseController {
         blogArticleHot.setPage(Integer.valueOf(page));
         //servce 调用
         //1：主页推荐【3条】
-        List<BlogArticleHot> homeRecommendArticle= homeServcie.queryHomeRecommendArticle();
+        List<BlogArticleHot> homeRecommendArticle= blogArticleService.queryHomeRecommendArticle();
         //2：编辑推荐【20条】
         blogArticleHot.setRows(20);
-        List<BlogArticleHot> editorRecommendArticle= homeServcie.queryEditorRecommendArticle(blogArticleHot);
+        List<BlogArticleHot> editorRecommendArticle= blogArticleService.queryEditorRecommendArticle(blogArticleHot);
         //3：首页的文章【15条】
         blogArticleHot.setRows(15);
-        List<BlogArticleHot> homeArticle= homeServcie.queryHomeArticle(blogArticleHot);
+        List<BlogArticleHot> homeArticle= blogArticleService.queryHomeArticle(blogArticleHot);
         //设置值
         request.setAttribute("homeRecommendArticleList",homeRecommendArticle);
         request.setAttribute("editorRecommendArticleList",editorRecommendArticle);
@@ -77,40 +71,4 @@ public class HomePathController extends BaseController {
         //跳转
         return "web/blog/home";
     }
-
-    /**
-     * 根据ID获取博客详情
-     * @param model
-     * @return
-     */
-    @GetMapping("details")
-    public String details(Model model){
-        String id= request.getParameter("id");
-        if(StringUtils.isBlank(id)){
-            //报错跳转到404
-        }
-        BlogArticleHot article = detailsService.queryArticleById(Long.valueOf(id));
-        Long authorId = article.getAuthorId();
-        AuthorUser authorMessage = detailsService.queryAuthorById(authorId );
-        List<BlogArticleHot> editorRecommendArticleList = detailsService.queryEditorRecommendArticle();
-        List<BlogArticleComment> articleCommentROList = commentService.queryArticleCommentById(Long.valueOf(id));
-        model.addAttribute("article",article);
-        model.addAttribute("author",authorMessage);
-        model.addAttribute("editorRecommendArticleList",editorRecommendArticleList);
-        model.addAttribute("comments",articleCommentROList);
-
-        return "web/blog/details";
-    }
-
-    @GetMapping("weblogin")
-    public String login(){
-        return "web/webLogin";
-    }
-
-
-    @GetMapping("singup")
-    public String sinup(){
-        return  "web/singup";
-    }
-
 }

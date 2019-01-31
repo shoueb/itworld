@@ -1,4 +1,4 @@
-package com.shoueb.itworld.author.model;
+package com.shoueb.itworld.blog.model;
 
 import com.shoueb.itworld.common.entity.BaseEntity;
 

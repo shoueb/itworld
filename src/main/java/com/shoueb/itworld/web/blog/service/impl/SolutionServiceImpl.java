@@ -1,9 +1,8 @@
 package com.shoueb.itworld.web.blog.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.shoueb.itworld.author.mapper.BlogArticleHotMapper;
-import com.shoueb.itworld.author.mapper.BlogSeriesMapper;
-import com.shoueb.itworld.author.model.BlogArticleHot;
+import com.shoueb.itworld.blog.mapper.BlogArticleHotMapper;
+import com.shoueb.itworld.blog.model.BlogArticleHot;
 import com.shoueb.itworld.common.enums.BlogEditorRecommendEnum;
 import com.shoueb.itworld.common.enums.BlogShowHomeEnum;
 import com.shoueb.itworld.common.enums.BlogShowPositionEnum;

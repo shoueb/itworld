@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.shoueb.itworld.author.mapper.BlogArticleHotMapper">
-    <resultMap id="BlogArticleHotROMap" type="com.shoueb.itworld.author.ro.BlogArticleHotRO">
+<mapper namespace="com.shoueb.itworld.blog.mapper.BlogArticleHotMapper">
+    <resultMap id="BlogArticleHotROMap" type="com.shoueb.itworld.blog.ro.BlogArticleHotRO">
         <result column="id" jdbcType="BIGINT" property="id" />
         <result column="author_id" jdbcType="BIGINT" property="authorId" />
         <result column="kh_name" jdbcType="VARCHAR" property="khName" />
@@ -28,6 +28,7 @@
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
         <result column="content" jdbcType="VARCHAR" property="content" />
     </resultMap>
+    <!--查询Where-->
     <sql id="query_where">
         <trim prefix="AND" prefixOverrides="AND |OR">
             <if test="showPosition != null and showPosition != ''"> and a.show_position = #{showPosition}</if>
@@ -38,7 +39,7 @@
         </trim>
     </sql>
     <!--首页推荐-->
-    <select id="queryHomeRecommendArticle" parameterType="com.shoueb.itworld.author.model.BlogArticleHot"
+    <select id="queryHomeRecommendArticle" parameterType="com.shoueb.itworld.blog.model.BlogArticleHot"
     resultMap="BlogArticleHotROMap">
         select  a.id,a.uid,a.article_title,b.series_title
         from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
@@ -46,17 +47,17 @@
         <include refid="query_where"></include>
     </select>
     <!-- 查询文章 -->
-    <select id="queryHomeArticle" parameterType="com.shoueb.itworld.author.model.BlogArticleHot"
+    <select id="queryHomeArticle" parameterType="com.shoueb.itworld.blog.model.BlogArticleHot"
             resultMap="BlogArticleHotROMap">
-        select a.id,a.uid,a.article_title,a.article_mem,a.img_url_min,a.github_url,a.comment_count,a.read_count,a.practice_count,
-        b.series_title,c.kh_name
+        select a.id,a.uid,a.article_title,a.article_mem,a.img_url_min,a.github_url,
+        a.comment_count,a.read_count,a.practice_count,b.series_title,c.kh_name
         from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
               left join t_author_user c on  a.author_id = c.id
         where a.delete_flag='1'
         <include refid="query_where"></include>
     </select>
     <!--编辑推荐-->
-    <select id="queryEditorRecommendArticle" parameterType="com.shoueb.itworld.author.model.BlogArticleHot"
+    <select id="queryEditorRecommendArticle" parameterType="com.shoueb.itworld.blog.model.BlogArticleHot"
             resultMap="BlogArticleHotROMap">
         select  a.id,a.uid,a.article_title,b.series_title
         from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
@@ -64,12 +65,19 @@
         <include refid="query_where"></include>
     </select>
 
-    <select id="queryArticleById" parameterType="com.shoueb.itworld.author.model.BlogArticleHot"
+    <select id="queryArticleById" parameterType="com.shoueb.itworld.blog.model.BlogArticleHot"
             resultMap="BlogArticleHotROMap">
-        select a.*,b.series_title,c.kh_name from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
+        select a.*,b.series_title,c.kh_name
+        from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
         left join t_author_user c on  a.author_id = c.id
         where a.delete_flag='1' and a.id=#{id}
     </select>
 
-
+    <select id="queryArticleByUid" parameterType="String"
+            resultMap="BlogArticleHotROMap">
+        select a.*,b.series_title,c.kh_name
+        from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
+        left join t_author_user c on  a.author_id = c.id
+        where a.delete_flag='1' and a.uid=#{uid}
+    </select>
 </mapper>

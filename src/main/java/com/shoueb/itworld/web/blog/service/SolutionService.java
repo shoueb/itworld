@@ -1,6 +1,6 @@
 package com.shoueb.itworld.web.blog.service;
 
-import com.shoueb.itworld.author.model.BlogArticleHot;
+import com.shoueb.itworld.blog.model.BlogArticleHot;
 
 import java.util.List;
 

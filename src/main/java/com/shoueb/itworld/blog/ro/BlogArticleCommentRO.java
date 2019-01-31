@@ -1,6 +1,6 @@
-package com.shoueb.itworld.author.ro;
+package com.shoueb.itworld.blog.ro;
 
-import com.shoueb.itworld.author.model.BlogArticleComment;
+import com.shoueb.itworld.blog.model.BlogArticleComment;
 /**
  * @Description:
  * @Author: zzq

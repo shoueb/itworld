@@ -1,7 +1,6 @@
 package com.shoueb.itworld.web.blog.controller;
 
-
-import com.shoueb.itworld.author.model.BlogArticleHot;
+import com.shoueb.itworld.blog.model.BlogArticleHot;
 import com.shoueb.itworld.common.controller.BaseController;
 import com.shoueb.itworld.common.enums.BlogShowHomeEnum;
 import com.shoueb.itworld.common.enums.BlogShowPositionEnum;

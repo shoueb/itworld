@@ -1,6 +1,6 @@
-package com.shoueb.itworld.author.mapper;
+package com.shoueb.itworld.blog.mapper;
 import com.shoueb.comm.MyMapper;
-import com.shoueb.itworld.author.model.BlogArticle;
+import com.shoueb.itworld.blog.model.BlogArticle;
 public interface BlogArticleMapper extends MyMapper<BlogArticle> {
 
 }

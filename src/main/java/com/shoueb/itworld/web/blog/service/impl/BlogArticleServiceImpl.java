@@ -1,12 +1,14 @@
 package com.shoueb.itworld.web.blog.service.impl;
 
 import com.github.pagehelper.PageHelper;
-import com.shoueb.itworld.author.mapper.BlogArticleHotMapper;
-import com.shoueb.itworld.author.model.BlogArticleHot;
+import com.shoueb.itworld.author.mapper.AuthorUserMapper;
+import com.shoueb.itworld.blog.mapper.BlogArticleHotMapper;
+import com.shoueb.itworld.author.model.AuthorUser;
+import com.shoueb.itworld.blog.model.BlogArticleHot;
 import com.shoueb.itworld.common.enums.BlogEditorRecommendEnum;
 import com.shoueb.itworld.common.enums.BlogShowHomeEnum;
 import com.shoueb.itworld.common.enums.BlogShowPositionEnum;
-import com.shoueb.itworld.web.blog.service.HomeServcie;
+import com.shoueb.itworld.web.blog.service.BlogArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.Cacheable;
@@ -14,19 +16,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * @Description:  首页Service
- * @Author: yuangui.hu
- * @Date: 2019/1/13 10:41
- */
-@CacheConfig(cacheNames = "hot")
+@CacheConfig(cacheNames = "blog_")
 @Service
-public class HomeServcieImpl  implements HomeServcie {
+public class BlogArticleServiceImpl implements BlogArticleService {
     /**
      * 热门博客Mapper
      */
     @Autowired
     private BlogArticleHotMapper blogArticleHotMapper;
+    @Autowired
+    private AuthorUserMapper authorUserMapper;
 
     /**
      *主页推荐【3条】
@@ -66,4 +65,41 @@ public class HomeServcieImpl  implements HomeServcie {
         PageHelper.startPage(blogArticleHot.getPage(),blogArticleHot.getRows(),false);
         return blogArticleHotMapper.queryHomeArticle(blogArticleHot);
     }
+
+
+
+
+    @Override
+    public List<BlogArticleHot> queryEditorRecommendArticle() {
+        PageHelper.startPage(0,20);
+        BlogArticleHot blogArticleHot=new BlogArticleHot();
+        blogArticleHot.setShowPosition(BlogShowPositionEnum.ESSENCE.getKey());
+        blogArticleHot.setShowHome(BlogShowHomeEnum.YES.getKey());
+        blogArticleHot.setEditorRecommend(BlogEditorRecommendEnum.YES.getKey());
+        return blogArticleHotMapper.queryEditorRecommendArticle(blogArticleHot);
+    }
+
+    @Override
+    public BlogArticleHot queryArticleById(Long id) {
+        return blogArticleHotMapper.queryArticleById(id);
+    }
+
+
+    @Override
+    public AuthorUser queryAuthorById(Long id) {
+        return authorUserMapper.queryAuthorById(id);
+    }
+
+    /**
+     * 根据uid获取文章
+     * @param uid
+     * @return
+     */
+    @Cacheable()
+    @Override
+    public BlogArticleHot queryArticleByUid(String uid) {
+        return blogArticleHotMapper.queryArticleByUid(uid);
+    }
+
+
 }

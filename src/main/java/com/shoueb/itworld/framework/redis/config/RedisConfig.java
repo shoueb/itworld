@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * TODO::后续采用AOP进行添加一级缓存
  * @Description: redis 配置
  * @Author: yuangui.hu
  * @Date: 2019/1/30 13:22
@@ -34,7 +35,7 @@ import java.util.Map;
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport {
     /**
-     *
+     *keyGenerator
      * @return
      */
     @Override
@@ -76,8 +77,8 @@ public class RedisConfig extends CachingConfigurerSupport {
      */
     private Map<String, RedisCacheConfiguration> getRedisCacheConfigurationMap() {
         Map<String, RedisCacheConfiguration> redisCacheConfigurationMap = new HashMap<>();
-        //解决分组失效时间
-        redisCacheConfigurationMap.put("hot", this.getRedisCacheConfigurationWithTtl(3000));
+        //解决分组失效时间===>升级从配置文件来
+        redisCacheConfigurationMap.put("hot", this.getRedisCacheConfigurationWithTtl(600));
         redisCacheConfigurationMap.put("UserInfoListAnother", this.getRedisCacheConfigurationWithTtl(18000));
 
         return redisCacheConfigurationMap;
@@ -125,11 +126,4 @@ public class RedisConfig extends CachingConfigurerSupport {
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
     }
-
-    /*@Bean
-    public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
-        RedisCacheManager redisCacheManager = RedisCacheManager.builder(connectionFactory).build();
-        redisCacheManager.getCacheConfigurations().put("",new );
-        return redisCacheManager;
-    }*/
 }

@@ -1,7 +1,7 @@
-package com.shoueb.itworld.author.mapper;
+package com.shoueb.itworld.blog.mapper;
 
 import com.shoueb.comm.MyMapper;
-import com.shoueb.itworld.author.model.BlogArticleHot;
+import com.shoueb.itworld.blog.model.BlogArticleHot;
 
 import java.util.List;
 /**
@@ -36,4 +36,11 @@ public interface BlogArticleHotMapper extends MyMapper<BlogArticleHot> {
      * @return
      */
     BlogArticleHot queryArticleById(Long id);
+
+    /**
+     * 根据uid获取文章
+     * @param uid
+     * @return
+     */
+    BlogArticleHot queryArticleByUid(String uid);
 }

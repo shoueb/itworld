@@ -21,15 +21,15 @@
 			</div>
 			<div class="row mt-4">
 				<ul class="list-group w-100" th:each="homeRecommendArticle:${homeRecommendArticleList}">
-					<li class="list-group-item"><a th:href="@{'/details/?id='+${homeRecommendArticle.id}}" > <span th:if="${homeRecommendArticle.seriesTitle!=null}">[<span th:text="${homeRecommendArticle.seriesTitle}"></span>]</span> <span th:text="${homeRecommendArticle.articleTitle}">多种实现的依赖注入</span></a></li>
+					<li class="list-group-item"><a th:href="@{'/article/'+${homeRecommendArticle.uid}}" > <span th:if="${homeRecommendArticle.seriesTitle!=null}">[<span th:text="${homeRecommendArticle.seriesTitle}"></span>]</span> <span th:text="${homeRecommendArticle.articleTitle}">多种实现的依赖注入</span></a></li>
 				</ul>
 			</div>
 			<div class="row ">
 				<ul class="list-unstyled" >
 					<li class="media my-4" th:each="homeArticle:${homeArticleList}">
-						<a th:href="@{'/details/?id='+${homeArticle.id}}"><img class="mr-3 rounded h-120px" th:src="@{${homeArticle.imgUrlMin}}" alt="user avatar"></a>
+						<a th:href="@{'/article/'+${homeArticle.id}}"><img class="mr-3 rounded h-120px" th:src="@{${homeArticle.imgUrlMin}}" alt="user avatar"></a>
 						<div class="media-body">
-                            <h5 class="mt-0 mb-1"><a th:href="@{'/details/?id='+${homeArticle.id}}" ><span th:if="${homeArticle.seriesTitle!=null}">[<span th:text="${homeArticle.seriesTitle}"></span>]</span> <span th:text="${homeArticle.articleTitle}"></span></a>
+                            <h5 class="mt-0 mb-1"><a th:href="@{'/article/'+${homeArticle.uid}}" ><span th:if="${homeArticle.seriesTitle!=null}">[<span th:text="${homeArticle.seriesTitle}"></span>]</span> <span th:text="${homeArticle.articleTitle}"></span></a>
 								<small class="float-right text-danger font-weight-normal mr-4">gitHub</small>
 							</h5>
 							<div class="h-66px ov-hidden">
@@ -38,9 +38,9 @@
 
 							<div class="mt-1">
 								<a href="" th:text="${homeArticle.khName}"></a>
-								<a th:href="@{'/details/?id='+${homeArticle.id}}">评论:<span th:text="${homeArticle.commentCount}"></span></a>
-								<a th:href="@{'/details/?id='+${homeArticle.id}}">阅读:<span th:text="${homeArticle.readCount}"></span></a>
-								<a th:href="@{'/details/?id='+${homeArticle.id}}">实践:<span  th:text="${homeArticle.practiceCount}"></span></a>
+								<a th:href="@{'/article/'+${homeArticle.id}}">评论:<span th:text="${homeArticle.commentCount}"></span></a>
+								<a th:href="@{'/article/'+${homeArticle.id}}">阅读:<span th:text="${homeArticle.readCount}"></span></a>
+								<a th:href="@{'/article/'+${homeArticle.id}}">实践:<span  th:text="${homeArticle.practiceCount}"></span></a>
 							</div>
 						</div>
 					</li>
@@ -50,12 +50,6 @@
 			<div class="row mt-4">
 				<ul id="page" class="pagination pagination-separate" >
 
-<!--
-					<li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-					<li class="page-item active"><a class="page-link" href="javascript:void(0);">2</a></li>
-					<li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
--->
-
 				</ul>
 			</div>
 		</div>
@@ -64,7 +58,7 @@
 				<div class="card-header text-white bg-dark">编辑推荐</div>
 				<ul class="list-group" th:each="editorRecommendArticle:${editorRecommendArticleList}">
 					<li class="list-group-item">
-						<a th:href="@{'/details/?id='+${editorRecommendArticle.id}}" ><span th:if="${editorRecommendArticle.seriesTitle!=null}">
+						<a th:href="@{'/article/'+${editorRecommendArticle.uid}}" ><span th:if="${editorRecommendArticle.seriesTitle!=null}">
 							[<span th:text="${editorRecommendArticle.seriesTitle}"></span>]</span><span th:text="${editorRecommendArticle.articleTitle}">多种实现的依赖注入</span></a>
 					</li>
 
