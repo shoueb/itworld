@@ -73,7 +73,7 @@
 							<img class="mr-3 rounded-circle customer-img" th:src="@{${comments.imgUrl}}" alt="user avatar"/>
 							<div class="media-body">
 								<h6 class="mt-0 mb-1"><span th:text="${comments.khName}"></span></h6>
-								<p class="text-black-50 mb-1"><small>21楼 <span th:text="${comments.createTime}"></span></small></p>
+								<p class="text-black-50 mb-1"><span th:text="${#dates.format(comments.createTime, 'yyyy-MM-dd HH:mm')}"></span></p>
 								<p>
                                     <span th:text="${comments.content}"></span>
 								</p>
@@ -82,17 +82,10 @@
 										<i aria-hidden="true" class="fa fa-thumbs-up"></i>&nbsp;<span th:text="${comments.favorCount}"></span>
 									</span>
 									<a href="#" class="ml-2">回复</a>
-									<form action="form_action.asp" method="get">
-										<input type="text" name="fname" />
-										<input type="submit" value="Submit" />
-									</form>
 								</div>
 								<ul class="list-unstyled  border-left pl-4">
 									<li class="media mt-3">
-										<!--<img class="mr-3 rounded-circle customer-img" src="assets/images/avatars/avatar-1.png" alt="user avatar"/>-->
 										<div class="media-body">
-											<!--<h6 class="mt-0 mb-1">用户111111111</h6>-->
-											<!--<p class="text-black-50 mb-1"><small>21楼 2019-01-12 12:59:00</small></p>-->
 											<p class="mb-1">
 												<span class="text-primary">哈哈哈：</span><span class="text-primary">@呵呵呵呵</span>
 												Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.Donec lacinia congue felis in faucibus.
