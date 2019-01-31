@@ -1,6 +1,7 @@
 package com.shoueb.itworld.web.blog.controller;
 
 import com.shoueb.itworld.blog.model.BlogArticleHot;
+import com.shoueb.itworld.blog.ro.BlogArticleHotRO;
 import com.shoueb.itworld.common.controller.BaseController;
 import com.shoueb.itworld.common.enums.BlogShowHomeEnum;
 import com.shoueb.itworld.common.enums.BlogShowPositionEnum;
@@ -53,13 +54,13 @@ public class HomePathController extends BaseController {
         blogArticleHot.setPage(Integer.valueOf(page));
         //servce 调用
         //1：主页推荐【3条】
-        List<BlogArticleHot> homeRecommendArticle= blogArticleService.queryHomeRecommendArticle();
+        List<BlogArticleHotRO> homeRecommendArticle= blogArticleService.queryHomeRecommendArticle();
         //2：编辑推荐【20条】
         blogArticleHot.setRows(20);
-        List<BlogArticleHot> editorRecommendArticle= blogArticleService.queryEditorRecommendArticle(blogArticleHot);
-        //3：首页的文章【15条】
+        List<BlogArticleHotRO> editorRecommendArticle= blogArticleService.queryEditorRecommendArticle(blogArticleHot);
+        //3：文章【15条】
         blogArticleHot.setRows(15);
-        List<BlogArticleHot> homeArticle= blogArticleService.queryHomeArticle(blogArticleHot);
+        List<BlogArticleHotRO> homeArticle= blogArticleService.queryHomeArticle(blogArticleHot);
         //设置值
         request.setAttribute("homeRecommendArticleList",homeRecommendArticle);
         request.setAttribute("editorRecommendArticleList",editorRecommendArticle);

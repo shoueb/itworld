@@ -8,7 +8,6 @@ import com.shoueb.itworld.web.blog.service.BlogArticleCommentService;
 import com.shoueb.itworld.web.blog.service.BlogArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,12 +40,12 @@ public class BlogArticlePathController extends BaseController {
         BlogArticleHot article = blogArticleService.queryArticleByUid(uid);
         AuthorUser authorMessage = blogArticleService.queryAuthorById(article.getAuthorId() );
 
-        List<BlogArticleHot> editorRecommendArticleList = blogArticleService.queryEditorRecommendArticle();
+//        List<BlogArticleHot> editorRecommendArticleList = blogArticleService.queryEditorRecommendArticle();
         List<BlogArticleComment> articleCommentROList = blogArticleCommentService.queryArticleCommentById(article.getId());
 
         request.setAttribute("article",article);
         request.setAttribute("author",authorMessage);
-        request.setAttribute("editorRecommendArticleList",editorRecommendArticleList);
+//        request.setAttribute("editorRecommendArticleList",editorRecommendArticleList);
         request.setAttribute("comments",articleCommentROList);
 
         return "web/blog/details";

@@ -5,6 +5,7 @@ import com.shoueb.itworld.author.mapper.AuthorUserMapper;
 import com.shoueb.itworld.blog.mapper.BlogArticleHotMapper;
 import com.shoueb.itworld.author.model.AuthorUser;
 import com.shoueb.itworld.blog.model.BlogArticleHot;
+import com.shoueb.itworld.blog.ro.BlogArticleHotRO;
 import com.shoueb.itworld.common.enums.BlogEditorRecommendEnum;
 import com.shoueb.itworld.common.enums.BlogShowHomeEnum;
 import com.shoueb.itworld.common.enums.BlogShowPositionEnum;
@@ -33,7 +34,7 @@ public class BlogArticleServiceImpl implements BlogArticleService {
      */
     @Cacheable(key="'article_'")
     @Override
-    public List<BlogArticleHot> queryHomeRecommendArticle() {
+    public List<BlogArticleHotRO> queryHomeRecommendArticle() {
         PageHelper.startPage(0,3);
         BlogArticleHot blogArticleHot=new BlogArticleHot();
         blogArticleHot.setShowPosition(BlogShowPositionEnum.ESSENCE.getKey());
@@ -48,7 +49,7 @@ public class BlogArticleServiceImpl implements BlogArticleService {
      */
     @Cacheable( key="'edre_lgt'+#blogArticleHot.languageType")
     @Override
-    public List<BlogArticleHot> queryEditorRecommendArticle(BlogArticleHot blogArticleHot) {
+    public List<BlogArticleHotRO> queryEditorRecommendArticle(BlogArticleHot blogArticleHot) {
         PageHelper.startPage(blogArticleHot.getPage(),blogArticleHot.getRows());
         return blogArticleHotMapper.queryEditorRecommendArticle(blogArticleHot);
     }
@@ -60,23 +61,10 @@ public class BlogArticleServiceImpl implements BlogArticleService {
     @Cacheable( key="'article_p'+#blogArticleHot.page+'_l'" +
             "+#blogArticleHot.languageType+'_sh'+#blogArticleHot.showHome+'_sp'+#blogArticleHot.showPosition")
     @Override
-    public List<BlogArticleHot> queryHomeArticle(BlogArticleHot blogArticleHot) {
+    public List<BlogArticleHotRO> queryHomeArticle(BlogArticleHot blogArticleHot) {
         //分页不统计
         PageHelper.startPage(blogArticleHot.getPage(),blogArticleHot.getRows(),false);
         return blogArticleHotMapper.queryHomeArticle(blogArticleHot);
-    }
-
-
-
-
-    @Override
-    public List<BlogArticleHot> queryEditorRecommendArticle() {
-        PageHelper.startPage(0,20);
-        BlogArticleHot blogArticleHot=new BlogArticleHot();
-        blogArticleHot.setShowPosition(BlogShowPositionEnum.ESSENCE.getKey());
-        blogArticleHot.setShowHome(BlogShowHomeEnum.YES.getKey());
-        blogArticleHot.setEditorRecommend(BlogEditorRecommendEnum.YES.getKey());
-        return blogArticleHotMapper.queryEditorRecommendArticle(blogArticleHot);
     }
 
     @Override

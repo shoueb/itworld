@@ -2,6 +2,7 @@ package com.shoueb.itworld.blog.mapper;
 
 import com.shoueb.comm.MyMapper;
 import com.shoueb.itworld.blog.model.BlogArticleHot;
+import com.shoueb.itworld.blog.ro.BlogArticleHotRO;
 
 import java.util.List;
 /**
@@ -14,21 +15,21 @@ public interface BlogArticleHotMapper extends MyMapper<BlogArticleHot> {
      * 查询首页推荐
      * @return
      */
-    List<BlogArticleHot> queryHomeRecommendArticle(BlogArticleHot blogArticleHot);
+    List<BlogArticleHotRO> queryHomeRecommendArticle(BlogArticleHot blogArticleHot);
 
     /**
      *查询文章
      * @param blogArticleHot
      * @return
      */
-    List<BlogArticleHot> queryHomeArticle(BlogArticleHot blogArticleHot);
+    List<BlogArticleHotRO> queryHomeArticle(BlogArticleHot blogArticleHot);
 
     /**
      *编辑推荐
      * @param blogArticleHot
      * @return
      */
-    List<BlogArticleHot> queryEditorRecommendArticle(BlogArticleHot blogArticleHot);
+    List<BlogArticleHotRO> queryEditorRecommendArticle(BlogArticleHot blogArticleHot);
 
     /**
      *

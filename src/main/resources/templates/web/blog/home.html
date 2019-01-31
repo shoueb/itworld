@@ -21,7 +21,9 @@
 			</div>
 			<div class="row mt-4">
 				<ul class="list-group w-100" th:each="homeRecommendArticle:${homeRecommendArticleList}">
-					<li class="list-group-item"><a th:href="@{'/article/'+${homeRecommendArticle.uid}}" > <span th:if="${homeRecommendArticle.seriesTitle!=null}">[<span th:text="${homeRecommendArticle.seriesTitle}"></span>]</span> <span th:text="${homeRecommendArticle.articleTitle}">多种实现的依赖注入</span></a></li>
+					<li class="list-group-item">
+						<a th:if="${homeRecommendArticle.seriesTitle!=null}" th:href="@{'/series/'+${homeRecommendArticle.uid}}" > [<span th:text="${homeRecommendArticle.seriesTitle}">系列</span>]</a>
+						<a th:href="@{'/article/'+${homeRecommendArticle.uid}}" > <span th:text="${homeRecommendArticle.articleTitle}">多种实现的依赖注入</span></a></li>
 				</ul>
 			</div>
 			<div class="row ">
@@ -58,8 +60,8 @@
 				<div class="card-header text-white bg-dark">编辑推荐</div>
 				<ul class="list-group" th:each="editorRecommendArticle:${editorRecommendArticleList}">
 					<li class="list-group-item">
-						<a th:href="@{'/article/'+${editorRecommendArticle.uid}}" ><span th:if="${editorRecommendArticle.seriesTitle!=null}">
-							[<span th:text="${editorRecommendArticle.seriesTitle}"></span>]</span><span th:text="${editorRecommendArticle.articleTitle}">多种实现的依赖注入</span></a>
+						<a th:if="${editorRecommendArticle.seriesTitle!=null}" th:href="@{'/series/'+${editorRecommendArticle.uid}}" > [<span th:text="${editorRecommendArticle.seriesTitle}">系列</span>]</a>
+						<a th:href="@{'/article/'+${editorRecommendArticle.uid}}" ><span th:text="${editorRecommendArticle.articleTitle}">多种实现的依赖注入</span></a>
 					</li>
 				</ul>
 			</div>
@@ -68,7 +70,7 @@
 </div>
 
 <div th:replace="web/shareHtml/shareFoot"></div>
-<script src="/web/js/home.js"></script>
+<script src="/web/js/blog/home.js"></script>
 <script>
 	//1：从后端Controller把分页page信息传递到前端
     //2：设置分页的UL的ID为page
