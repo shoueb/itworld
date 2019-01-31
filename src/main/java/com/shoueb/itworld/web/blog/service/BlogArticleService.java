@@ -45,5 +45,5 @@ public interface BlogArticleService {
      * @param uid
      * @return
      */
-    BlogArticleHot queryArticleByUid(String uid);
+    BlogArticleHotRO queryArticleByUid(String uid);
 }

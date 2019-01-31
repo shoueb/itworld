@@ -83,11 +83,9 @@ public class BlogArticleServiceImpl implements BlogArticleService {
      * @param uid
      * @return
      */
-    @Cacheable()
+    @Cacheable( key="'article_uid'+#uid")
     @Override
-    public BlogArticleHot queryArticleByUid(String uid) {
+    public BlogArticleHotRO queryArticleByUid(String uid) {
         return blogArticleHotMapper.queryArticleByUid(uid);
     }
-
-
 }

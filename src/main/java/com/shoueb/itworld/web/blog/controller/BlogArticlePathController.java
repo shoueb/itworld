@@ -3,6 +3,7 @@ package com.shoueb.itworld.web.blog.controller;
 import com.shoueb.itworld.author.model.AuthorUser;
 import com.shoueb.itworld.blog.model.BlogArticleComment;
 import com.shoueb.itworld.blog.model.BlogArticleHot;
+import com.shoueb.itworld.blog.ro.BlogArticleHotRO;
 import com.shoueb.itworld.common.controller.BaseController;
 import com.shoueb.itworld.web.blog.service.BlogArticleCommentService;
 import com.shoueb.itworld.web.blog.service.BlogArticleService;
@@ -37,7 +38,7 @@ public class BlogArticlePathController extends BaseController {
     @GetMapping("article/{uid}")
     public String article(@PathVariable("uid") String uid){
         //根据uid获取博客----》为什么不用id获取博客   防止他人遍历我们的文章
-        BlogArticleHot article = blogArticleService.queryArticleByUid(uid);
+        BlogArticleHotRO article = blogArticleService.queryArticleByUid(uid);
         AuthorUser authorMessage = blogArticleService.queryAuthorById(article.getAuthorId() );
 
 //        List<BlogArticleHot> editorRecommendArticleList = blogArticleService.queryEditorRecommendArticle();
@@ -48,7 +49,7 @@ public class BlogArticlePathController extends BaseController {
 //        request.setAttribute("editorRecommendArticleList",editorRecommendArticleList);
         request.setAttribute("comments",articleCommentROList);
 
-        return "web/blog/details";
+        return "/web/blog/article";
     }
 
 }

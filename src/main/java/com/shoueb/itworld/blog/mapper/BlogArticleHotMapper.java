@@ -43,5 +43,5 @@ public interface BlogArticleHotMapper extends MyMapper<BlogArticleHot> {
      * @param uid
      * @return
      */
-    BlogArticleHot queryArticleByUid(String uid);
+    BlogArticleHotRO queryArticleByUid(String uid);
 }

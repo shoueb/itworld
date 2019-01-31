@@ -26,7 +26,7 @@
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
         <result column="update_by_id" jdbcType="BIGINT" property="updateById" />
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-        <result column="content" jdbcType="VARCHAR" property="content" />
+        <result column="content" jdbcType="LONGVARCHAR" property="content" />
     </resultMap>
     <!--查询Where-->
     <sql id="query_where">
@@ -72,12 +72,14 @@
         left join t_author_user c on  a.author_id = c.id
         where a.delete_flag='1' and a.id=#{id}
     </select>
-
+    <!--获取文章  注意是从t_blog_article 获取而不是热门文章-->
     <select id="queryArticleByUid" parameterType="String"
             resultMap="BlogArticleHotROMap">
-        select a.*,b.series_title,c.kh_name
-        from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
+        select a.*,b.series_title,c.kh_name,d.content
+        from t_blog_article a
+        left join t_blog_series b  on  a.article_series_id=b.id
         left join t_author_user c on  a.author_id = c.id
+        left join t_blog_article_context d on  a.id = d.article_id
         where a.delete_flag='1' and a.uid=#{uid}
     </select>
 </mapper>
