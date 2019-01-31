@@ -27,6 +27,7 @@
         <result column="update_by_id" jdbcType="BIGINT" property="updateById" />
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
         <result column="content" jdbcType="LONGVARCHAR" property="content" />
+        <result column="ismarkdown" jdbcType="VARCHAR" property="ismarkdown" />
     </resultMap>
     <!--查询Where-->
     <sql id="query_where">
@@ -75,7 +76,7 @@
     <!--获取文章  注意是从t_blog_article 获取而不是热门文章-->
     <select id="queryArticleByUid" parameterType="String"
             resultMap="BlogArticleHotROMap">
-        select a.*,b.series_title,c.kh_name,d.content
+        select a.*,b.series_title,c.kh_name,d.content,d.ismarkdown
         from t_blog_article a
         left join t_blog_series b  on  a.article_series_id=b.id
         left join t_author_user c on  a.author_id = c.id

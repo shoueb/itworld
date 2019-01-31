@@ -22,4 +22,8 @@ public class BlogArticleHotRO extends BlogArticleHot {
      * 文章内容
      **/
     private String content;
+    /**
+     * 是否为markdown  1是 0不是
+     */
+    private String ismarkdown;
 }

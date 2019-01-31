@@ -6,13 +6,14 @@
 	<meta name="description"  th:attr="content=${article.articleMem}+'...'"/>
 	<meta name="keys"  th:attr="content=${article.contentKeys}+'...'"/>
 	<div th:replace="web/shareHtml/shareHead"></div>
-
+    <div th:if="${article.ismarkdown=='1'}">
 	<link rel="stylesheet" href="/assets/prism/codemirror/lib/codemirror.css">
 	<link rel="stylesheet" href="/assets/prism/codemirror/theme/material.css">
 	<link rel="stylesheet" href="/assets/prism/codemirror/addon/dialog/dialog.css">
 	<link rel="stylesheet" href="/assets/prism/stylesheets/style.css">
 	<link rel="stylesheet" href="/assets/prism/stylesheets/github-markdown.css">
 	<link rel="stylesheet" href="/assets/prism/stylesheets/prism.css">
+    </div>
 </head>
 <body>
 <div th:replace="web/shareHtml/shareHeader"></div>
@@ -29,7 +30,8 @@
 				<a href="">实践:<span th:text="${article.practiceCount}"></span></a>
 			</div>
 			<hr>
-			<div class="markdown-body" tyle="overflow-y: auto">
+			<div class="markdown-body" tyle="overflow-y: auto" >
+                <div th:if="${article.ismarkdown=='0'}" th:utext="${article.content}"></div>
 			</div>
 			<div class="mt-4 text-center">
 				<h4 class="">小礼物来一波</h4>
@@ -146,8 +148,10 @@
 </footer>
 
 <div th:replace="web/shareHtml/shareFoot"></div>
-<textarea id="context" th:text="${article.content}" style="display: none;">
-</textarea>
+<textarea  id="context" th:if="${article.ismarkdown=='1'}" th:text="${article.content}" style="display: none;"></textarea>
+</div>
+
+<div th:if="${article.ismarkdown=='1'}">
 <script src="/assets/prism/javascripts/jquery.min.js"></script>
 <script src="/assets/prism/javascripts/marked.min.js"></script>
 <script src="/assets/prism/codemirror/lib/codemirror.js"></script>
@@ -163,5 +167,6 @@
 <script src="/assets/prism/codemirror/addon/wrap/hardwrap.js"></script>
 <script src="/assets/prism/javascripts/prism.js"></script>
 <script src="/assets/prism/javascripts/info.js"></script>
+</div>
 </body>
 </html>
