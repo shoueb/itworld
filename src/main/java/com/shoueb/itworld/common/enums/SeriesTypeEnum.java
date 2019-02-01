@@ -5,7 +5,7 @@ package com.shoueb.itworld.common.enums;
  * @Author: yuangui.hu
  * @Date: 2019/1/13 15:26
  */
-public enum  SeriesShowEnum{
+public enum SeriesTypeEnum {
     PROSE("0", "散文"),
     SERIAL("1", "系列文章"),
     SOLUTION("2", "解决方案"),
@@ -23,7 +23,7 @@ public enum  SeriesShowEnum{
      * @param key key
      * @param value 值
      */
-    SeriesShowEnum(String key, String value) {
+    SeriesTypeEnum(String key, String value) {
         this.key = key;
         this.value = value;
     }
@@ -44,7 +44,7 @@ public enum  SeriesShowEnum{
         if( null == key){
             return  null;
         }
-        for (SeriesShowEnum c : SeriesShowEnum.values()) {
+        for (SeriesTypeEnum c : SeriesTypeEnum.values()) {
             if (c.getKey().equals(key)) {
                 return c.getValue();
             }

@@ -5,6 +5,7 @@ import com.shoueb.itworld.blog.ro.BlogArticleHotRO;
 import com.shoueb.itworld.common.controller.BaseController;
 import com.shoueb.itworld.common.enums.BlogShowHomeEnum;
 import com.shoueb.itworld.common.enums.BlogShowPositionEnum;
+import com.shoueb.itworld.common.enums.SeriesTypeEnum;
 import com.shoueb.itworld.web.blog.service.BlogArticleService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 /**
- * @Description: 首页
+ * @Description: 系列
  * @Author: yuangui.hu
  * @Date: 2019/1/12 13:22
  */
 @Controller
 @RequestMapping("/")
-public class HomePathController extends BaseController {
+public class SeriesPathController extends BaseController {
     /**
      * 博客Service
      */
@@ -29,11 +30,11 @@ public class HomePathController extends BaseController {
     private BlogArticleService blogArticleService;
 
     /**
-     * @return 跳转到首页
+     * @return 跳转到系列
      **/
-    @GetMapping(value = "/")
+    @GetMapping(value = "/series")
     public String index(){
-        request.setAttribute("home","active");
+        request.setAttribute("series","active");
         //条件
         String page= request.getParameter("page");
         String showPosition= request.getParameter("position");
@@ -51,31 +52,27 @@ public class HomePathController extends BaseController {
         BlogArticleHot blogArticleHot=new BlogArticleHot();
         blogArticleHot.setShowPosition(showPosition);
         blogArticleHot.setLanguageType(language);
-        blogArticleHot.setShowHome(BlogShowHomeEnum.YES.getKey());
+        blogArticleHot.setSeriesType(SeriesTypeEnum.SERIAL.getKey());
         blogArticleHot.setPage(Integer.valueOf(page));
+
         //servce 调用
         //1：主页推荐【3条】
         List<BlogArticleHotRO> homeRecommendArticle= blogArticleService.queryHomeRecommendArticle();
-        //2：编辑推荐【10条】
-        blogArticleHot.setRows(10);
+        //2：编辑推荐【20条】
+        blogArticleHot.setRows(20);
         List<BlogArticleHotRO> editorRecommendArticle= blogArticleService.queryEditorRecommendArticle(blogArticleHot);
-        //2：最新实践【10条】
-        List<BlogArticleHotRO> practiceArticleList= blogArticleService.queryPracticeArticleList(blogArticleHot);
-
-
         //3：文章【15条】
         blogArticleHot.setRows(15);
         List<BlogArticleHotRO> homeArticle= blogArticleService.queryHomeArticle(blogArticleHot);
         //设置值
         request.setAttribute("homeRecommendArticleList",homeRecommendArticle);
         request.setAttribute("editorRecommendArticleList",editorRecommendArticle);
-        request.setAttribute("practiceArticleList",practiceArticleList);
         request.setAttribute("homeArticleList",homeArticle);
         //回显
         request.setAttribute("showPosition",showPosition);
         request.setAttribute("language",language);
         request.setAttribute("page",page);
         //跳转
-        return "web/blog/home";
+        return "web/blog/series";
     }
 }

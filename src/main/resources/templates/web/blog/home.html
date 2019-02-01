@@ -9,11 +9,11 @@
 <div th:replace="web/shareHtml/shareHeader"></div>
 <div class="container-fluid mt-4">
 	<div class="row m-0">
-		<div class="col-9">
+		<div class="col-8">
 			<div class="cursor-pointer" >
-				<span class="articleType p-2"><a th:href="@{'/?position=2&language='+${language}}" th:class="${showPosition=='2'}? 'text-danger' : ''">精选</a></span>
+				<!--<span class="articleType p-2"><a th:href="@{'/?position=2&language='+${language}}" th:class="${showPosition=='2'}? 'text-danger' : ''">精选</a></span>
 				<span class="articleType p-2 "><a th:href="@{'/?position=1&language='+${language}}" th:class="${showPosition=='1'}? 'text-danger' : ''">候选</a></span>
-				<strong class="p-2 ml-5">语言：</strong>
+				<strong class="p-2 ml-5">语言：</strong>-->
 				<span class="languageType p-2 "><a th:href="@{'/?position='+${showPosition}}" th:class="${language==''}? 'text-danger' : ''">全部</a></span>
 				<span class="languageType p-2 "><a th:href="@{'/?position='+${showPosition}+'&language=java'}" th:class="${language=='java'}? 'text-danger' : ''">java</a></span>
 				<span class="languageType p-2 "><a th:href="@{'/?position='+${showPosition}+'&language=.net'}" th:class="${language=='.net'}? 'text-danger' : ''">.net</a></span>
@@ -35,7 +35,7 @@
 								<small class="float-right text-danger font-weight-normal mr-4">gitHub</small>
 							</h5>
 							<div class="h-66px ov-hidden">
-								<span th:text="${homeArticle.articleMem}">
+								<span th:text="${homeArticle.articleMem}"/>
 							</div>
 
 							<div class="mt-1">
@@ -55,7 +55,16 @@
 				</ul>
 			</div>
 		</div>
-		<div class="col-3">
+		<div class="col-4">
+			<div class="card">
+				<div class="card-header text-white bg-dark">最新实践</div>
+				<ul class="list-group" th:each="practiceArticle:${practiceArticleList}">
+					<li class="list-group-item">
+						<a th:if="${practiceArticle.seriesTitle!=null}" th:href="@{'/series/'+${practiceArticle.uid}}" > [<span th:text="${practiceArticle.seriesTitle}">系列</span>]</a>
+						<a th:href="@{'/article/'+${practiceArticle.uid}}" ><span th:text="${practiceArticle.articleTitle}">多种实现的依赖注入</span></a>
+					</li>
+				</ul>
+			</div>
 			<div class="card">
 				<div class="card-header text-white bg-dark">编辑推荐</div>
 				<ul class="list-group" th:each="editorRecommendArticle:${editorRecommendArticleList}">
@@ -65,6 +74,7 @@
 					</li>
 				</ul>
 			</div>
+
 		</div>
 	</div>
 </div>

@@ -25,6 +25,9 @@ public class BlogArticleServiceImpl implements BlogArticleService {
      */
     @Autowired
     private BlogArticleHotMapper blogArticleHotMapper;
+    /**
+     * 作者
+     */
     @Autowired
     private AuthorUserMapper authorUserMapper;
 
@@ -35,7 +38,7 @@ public class BlogArticleServiceImpl implements BlogArticleService {
     @Cacheable(key="'article_'")
     @Override
     public List<BlogArticleHotRO> queryHomeRecommendArticle() {
-        PageHelper.startPage(0,3);
+        PageHelper.startPage(0,3,false);
         BlogArticleHot blogArticleHot=new BlogArticleHot();
         blogArticleHot.setShowPosition(BlogShowPositionEnum.ESSENCE.getKey());
         blogArticleHot.setShowHome(BlogShowHomeEnum.YES.getKey());
@@ -50,16 +53,27 @@ public class BlogArticleServiceImpl implements BlogArticleService {
     @Cacheable( key="'edre_lgt'+#blogArticleHot.languageType")
     @Override
     public List<BlogArticleHotRO> queryEditorRecommendArticle(BlogArticleHot blogArticleHot) {
-        PageHelper.startPage(blogArticleHot.getPage(),blogArticleHot.getRows());
+        PageHelper.startPage(blogArticleHot.getPage(),blogArticleHot.getRows(),false);
         return blogArticleHotMapper.queryEditorRecommendArticle(blogArticleHot);
     }
-
+    /**
+     * 查询最新实践
+     * @param blogArticleHot
+     * @return
+     */
+    @Cacheable( key="'edre_lgp'+#blogArticleHot.languageType")
+    @Override
+    public List<BlogArticleHotRO> queryPracticeArticleList(BlogArticleHot blogArticleHot) {
+        PageHelper.startPage(blogArticleHot.getPage(),blogArticleHot.getRows(),false);
+        return blogArticleHotMapper.queryPracticeArticleList(blogArticleHot);
+    }
     /**
      * 查询文章
      * @return
      */
     @Cacheable( key="'article_p'+#blogArticleHot.page+'_l'" +
-            "+#blogArticleHot.languageType+'_sh'+#blogArticleHot.showHome+'_sp'+#blogArticleHot.showPosition")
+            "+#blogArticleHot.languageType+'_sh'+#blogArticleHot.showHome+'_sp'+#blogArticleHot.showPosition" +
+            "+'_st'+#blogArticleHot.seriesType")
     @Override
     public List<BlogArticleHotRO> queryHomeArticle(BlogArticleHot blogArticleHot) {
         //分页不统计
@@ -88,4 +102,6 @@ public class BlogArticleServiceImpl implements BlogArticleService {
     public BlogArticleHotRO queryArticleByUid(String uid) {
         return blogArticleHotMapper.queryArticleByUid(uid);
     }
+
+
 }

@@ -71,6 +71,10 @@ public class BlogArticle extends BaseEntity implements Serializable {
      */
     private Long practiceCount;
     /**
+     *实践父类文章ID ,自己为0
+     */
+    private Long practiceParentId;
+    /**
      *数据状态1正常 0 删除
      */
     private String deleteFlag;

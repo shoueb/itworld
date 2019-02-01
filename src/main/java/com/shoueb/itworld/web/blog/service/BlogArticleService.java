@@ -46,4 +46,6 @@ public interface BlogArticleService {
      * @return
      */
     BlogArticleHotRO queryArticleByUid(String uid);
+
+    List<BlogArticleHotRO> queryPracticeArticleList(BlogArticleHot blogArticleHot);
 }

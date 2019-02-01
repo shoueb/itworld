@@ -34,6 +34,10 @@ public class BlogArticleHot extends BaseEntity implements Serializable {
      */
     private Long articleSeriesId;
     /**
+     * 系列类别0散文1系列文章2解决方案3优秀开源
+     */
+    private String seriesType;
+    /**
      *文章类型
      */
     private String articleType;
@@ -77,6 +81,10 @@ public class BlogArticleHot extends BaseEntity implements Serializable {
      *实践总数
      */
     private Long practiceCount;
+    /**
+     *实践父类文章ID ,自己为0
+     */
+    private Long practiceParentId;
     /**
      *数据状态1正常 0 删除
      */

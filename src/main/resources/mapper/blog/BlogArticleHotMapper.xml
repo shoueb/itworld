@@ -32,6 +32,7 @@
     <!--查询Where-->
     <sql id="query_where">
         <trim prefix="AND" prefixOverrides="AND |OR">
+            <if test="seriesType != null and seriesType != ''"> and a.series_type = #{seriesType}</if>
             <if test="showPosition != null and showPosition != ''"> and a.show_position = #{showPosition}</if>
             <if test="showHome != null and showHome != ''"> and  a.show_home = #{showHome}</if>
             <if test="editorRecommend != null and editorRecommend != ''"> and  a.editor_recommend = #{editorRecommend}</if>
@@ -65,6 +66,17 @@
         where a.delete_flag='1'
         <include refid="query_where"></include>
     </select>
+    <!--最新实践-->
+    <select id="queryPracticeArticleList" parameterType="com.shoueb.itworld.blog.model.BlogArticleHot"
+            resultMap="BlogArticleHotROMap">
+        select  a.id,a.uid,a.article_title,b.series_title
+        from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
+        where a.delete_flag='1' and a.practice_parent_id>0
+        <include refid="query_where"></include>
+        order by a.id desc
+    </select>
+
+
 
     <select id="queryArticleById" parameterType="com.shoueb.itworld.blog.model.BlogArticleHot"
             resultMap="BlogArticleHotROMap">
