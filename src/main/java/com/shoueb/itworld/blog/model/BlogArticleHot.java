@@ -70,6 +70,10 @@ public class BlogArticleHot extends BaseEntity implements Serializable {
      */
     private String githubUrl;
     /**
+     *AI评论
+     */
+    private String aiComment;
+    /**
      *评论总数
      */
     private Long commentCount;

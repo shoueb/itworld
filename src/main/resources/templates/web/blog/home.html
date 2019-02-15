@@ -10,16 +10,16 @@
 <div class="container-fluid mt-4">
 	<div class="row m-0">
 		<div class="col-8">
-			<div class="cursor-pointer" >
-				<!--<span class="articleType p-2"><a th:href="@{'/?position=2&language='+${language}}" th:class="${showPosition=='2'}? 'text-danger' : ''">精选</a></span>
+			<!--<div class="cursor-pointer" >
+				&lt;!&ndash;<span class="articleType p-2"><a th:href="@{'/?position=2&language='+${language}}" th:class="${showPosition=='2'}? 'text-danger' : ''">精选</a></span>
 				<span class="articleType p-2 "><a th:href="@{'/?position=1&language='+${language}}" th:class="${showPosition=='1'}? 'text-danger' : ''">候选</a></span>
-				<strong class="p-2 ml-5">语言：</strong>-->
+				<strong class="p-2 ml-5">语言：</strong>&ndash;&gt;
 				<span class="languageType p-2 "><a th:href="@{'/?position='+${showPosition}}" th:class="${language==''}? 'text-danger' : ''">全部</a></span>
 				<span class="languageType p-2 "><a th:href="@{'/?position='+${showPosition}+'&language=java'}" th:class="${language=='java'}? 'text-danger' : ''">java</a></span>
 				<span class="languageType p-2 "><a th:href="@{'/?position='+${showPosition}+'&language=.net'}" th:class="${language=='.net'}? 'text-danger' : ''">.net</a></span>
 				<span class="languageType p-2 "><a th:href="@{'/?position='+${showPosition}+'&language=js'}" th:class="${language=='js'}? 'text-danger' : ''">js</a></span>
-			</div>
-			<div class="row mt-4">
+			</div>-->
+			<div class="row mt-4" style="margin-top: 0.2rem!important;">
 				<ul class="list-group w-100" th:each="homeRecommendArticle:${homeRecommendArticleList}">
 					<li class="list-group-item">
 						<a th:if="${homeRecommendArticle.seriesTitle!=null}" th:href="@{'/series/'+${homeRecommendArticle.uid}}" > [<span th:text="${homeRecommendArticle.seriesTitle}">系列</span>]</a>
@@ -31,7 +31,9 @@
 					<li class="media my-4" th:each="homeArticle:${homeArticleList}">
 						<a th:href="@{'/article/'+${homeArticle.uid}}"><img class="mr-3 rounded h-120px" th:src="@{${homeArticle.imgUrlMin}}" alt="user avatar"></a>
 						<div class="media-body">
-                            <h5 class="mt-0 mb-1"><a th:href="@{'/article/'+${homeArticle.uid}}" ><span th:if="${homeArticle.seriesTitle!=null}">[<span th:text="${homeArticle.seriesTitle}"></span>]</span> <span th:text="${homeArticle.articleTitle}"></span></a>
+                            <h5 class="mt-0 mb-1">
+								<a th:if="${homeArticle.seriesTitle!=null}" th:href="@{'/article/'+${homeArticle.uid}}"  style="font-size: 16px;font-weight:bold " th:text="@{'【'+${homeArticle.seriesTitle}+'】'}"></a>
+								<a th:href="@{'/article/'+${homeArticle.uid}}"  style="font-size: 16px;font-weight:bold " th:text="${homeArticle.articleTitle}"></a>
 								<small class="float-right text-danger font-weight-normal mr-4">gitHub</small>
 							</h5>
 							<div class="h-66px ov-hidden">
@@ -43,6 +45,7 @@
 								<a th:href="@{'/article/'+${homeArticle.uid}}">评论:<span th:text="${homeArticle.commentCount}"></span></a>
 								<a th:href="@{'/article/'+${homeArticle.uid}}">阅读:<span th:text="${homeArticle.readCount}"></span></a>
 								<a th:href="@{'/article/'+${homeArticle.uid}}">实践:<span  th:text="${homeArticle.practiceCount}"></span></a>
+								<span th:if="${homeArticle.aiComment!=null}"  style="color: red;" th:text="@{'AI:'+${homeArticle.aiComment}}"></span>
 							</div>
 						</div>
 					</li>

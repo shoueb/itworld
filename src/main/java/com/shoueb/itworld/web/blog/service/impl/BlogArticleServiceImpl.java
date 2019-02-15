@@ -42,7 +42,7 @@ public class BlogArticleServiceImpl implements BlogArticleService {
         BlogArticleHot blogArticleHot=new BlogArticleHot();
         blogArticleHot.setShowPosition(BlogShowPositionEnum.ESSENCE.getKey());
         blogArticleHot.setShowHome(BlogShowHomeEnum.YES.getKey());
-        blogArticleHot.setEditorRecommend(BlogEditorRecommendEnum.YES.getKey());
+        blogArticleHot.setEditorRecommend(BlogEditorRecommendEnum.HEADER_RECOMMEND.getKey());
         return blogArticleHotMapper.queryHomeRecommendArticle(blogArticleHot);
     }
 

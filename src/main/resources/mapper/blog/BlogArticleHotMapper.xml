@@ -16,6 +16,7 @@
         <result column="img_url_max" jdbcType="VARCHAR" property="imgUrlMax" />
         <result column="content_keys" jdbcType="VARCHAR" property="contentKeys" />
         <result column="github_url" jdbcType="VARCHAR" property="githubUrl" />
+        <result column="ai_comment" jdbcType="BIGINT" property="aiComment" />
         <result column="comment_count" jdbcType="BIGINT" property="commentCount" />
         <result column="read_count" jdbcType="BIGINT" property="readCount" />
         <result column="practice_count" jdbcType="BIGINT" property="practiceCount" />
@@ -51,7 +52,7 @@
     <!-- 查询文章 -->
     <select id="queryHomeArticle" parameterType="com.shoueb.itworld.blog.model.BlogArticleHot"
             resultMap="BlogArticleHotROMap">
-        select a.id,a.uid,a.article_title,a.article_mem,a.img_url_min,a.github_url,
+        select a.id,a.uid,a.article_title,a.article_mem,a.img_url_min,a.github_url,a.ai_comment,
         a.comment_count,a.read_count,a.practice_count,b.series_title,c.kh_name
         from t_blog_article_hot a left join t_blog_series b  on  a.article_series_id=b.id
               left join t_author_user c on  a.author_id = c.id

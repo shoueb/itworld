@@ -3,8 +3,10 @@ package com.shoueb.itworld.web.blog.controller;
 import com.shoueb.itworld.blog.model.BlogArticleHot;
 import com.shoueb.itworld.blog.ro.BlogArticleHotRO;
 import com.shoueb.itworld.common.controller.BaseController;
+import com.shoueb.itworld.common.enums.BlogEditorRecommendEnum;
 import com.shoueb.itworld.common.enums.BlogShowHomeEnum;
 import com.shoueb.itworld.common.enums.BlogShowPositionEnum;
+import com.shoueb.itworld.common.enums.SeriesTypeEnum;
 import com.shoueb.itworld.web.blog.service.BlogArticleService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,20 +53,23 @@ public class HomePathController extends BaseController {
         BlogArticleHot blogArticleHot=new BlogArticleHot();
         blogArticleHot.setShowPosition(showPosition);
         blogArticleHot.setLanguageType(language);
-        blogArticleHot.setShowHome(BlogShowHomeEnum.YES.getKey());
         blogArticleHot.setPage(Integer.valueOf(page));
         //servce 调用
-        //1：主页推荐【3条】
+        //1：头部推荐【3条】
         List<BlogArticleHotRO> homeRecommendArticle= blogArticleService.queryHomeRecommendArticle();
         //2：编辑推荐【10条】
         blogArticleHot.setRows(10);
+        blogArticleHot.setEditorRecommend(BlogEditorRecommendEnum.EDITOR_RECOMMEND.getKey());
         List<BlogArticleHotRO> editorRecommendArticle= blogArticleService.queryEditorRecommendArticle(blogArticleHot);
         //2：最新实践【10条】
+        blogArticleHot.setEditorRecommend(BlogEditorRecommendEnum.ALL.getKey());
+        blogArticleHot.setSeriesType(SeriesTypeEnum.PRACTICE.getKey());
         List<BlogArticleHotRO> practiceArticleList= blogArticleService.queryPracticeArticleList(blogArticleHot);
 
-
-        //3：文章【15条】
+        //3：精选15条 文章【15条】
         blogArticleHot.setRows(15);
+        blogArticleHot.setEditorRecommend(BlogEditorRecommendEnum.ALL.getKey());
+        blogArticleHot.setSeriesType(SeriesTypeEnum.ALL.getKey());
         List<BlogArticleHotRO> homeArticle= blogArticleService.queryHomeArticle(blogArticleHot);
         //设置值
         request.setAttribute("homeRecommendArticleList",homeRecommendArticle);

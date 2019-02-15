@@ -1,23 +1,19 @@
 package com.shoueb.itworld.common.enums;
 
 /**
- * @Description:
+ * @Description: 系列类型
  * @Author: yuangui.hu
  * @Date: 2019/1/13 15:26
  */
 public enum SeriesTypeEnum {
+    ALL("", "全部"),
     PROSE("0", "散文"),
     SERIAL("1", "系列文章"),
     SOLUTION("2", "解决方案"),
-    OPENSOURCE("3", "优秀开源");
-
-
-
-
-
+    OPENSOURCE("3", "优秀开源"),
+    PRACTICE("4", "实践");
     private String key;
     private String value;
-
     /**
      * 合同是否有押金枚举
      * @param key key

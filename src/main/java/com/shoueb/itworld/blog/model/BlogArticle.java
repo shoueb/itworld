@@ -1,6 +1,5 @@
 package com.shoueb.itworld.blog.model;
 
-
 import com.shoueb.itworld.common.entity.BaseEntity;
 import lombok.Data;
 import javax.persistence.Table;
@@ -58,6 +57,10 @@ public class BlogArticle extends BaseEntity implements Serializable {
      *开源地址
      */
     private String githubUrl;
+    /**
+     *AI评论
+     */
+    private String aiComment;
     /**
      *评论总数
      */

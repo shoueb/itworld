@@ -6,10 +6,10 @@ package com.shoueb.itworld.common.enums;
  * @Date: 2019/1/13 15:26
  */
 public enum BlogEditorRecommendEnum {
-    NO("0", "否"),
-    YES("1", "是");
-
-
+    ALL("", "全部"),
+    NO("0", "默认"),
+    HEADER_RECOMMEND("1", "头部推荐"),
+    EDITOR_RECOMMEND("2", "编辑推荐");
 
     private String key;
     private String value;
