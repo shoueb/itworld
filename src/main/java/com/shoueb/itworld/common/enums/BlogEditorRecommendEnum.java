@@ -7,7 +7,7 @@ package com.shoueb.itworld.common.enums;
  */
 public enum BlogEditorRecommendEnum {
     ALL("", "全部"),
-    NO("0", "默认"),
+    DEFAULT("0", "默认"),
     HEADER_RECOMMEND("1", "头部推荐"),
     EDITOR_RECOMMEND("2", "编辑推荐");
 

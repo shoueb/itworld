@@ -11,7 +11,13 @@ public enum SeriesTypeEnum {
     SERIAL("1", "系列文章"),
     SOLUTION("2", "解决方案"),
     OPENSOURCE("3", "优秀开源"),
-    PRACTICE("4", "实践");
+    PRACTICE("4", "实践"),
+    WORKPLACE_SECRET("5", "职场秘闻"),
+    TITLE("6", "标题党"),
+    GROWTH_HACKER("7", "增长黑客"),
+    WEBSITE_DEV("8", "网站进展"),
+    SOLUTION_PRACTICE("9", "解决方案实践"),
+    OPENSOURCE_PRACTICE("10", "开源实践");
     private String key;
     private String value;
     /**

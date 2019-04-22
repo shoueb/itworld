@@ -15,4 +15,5 @@ public interface AuthorUserMapper extends MyMapper<AuthorUser> {
     AuthorUser insertUser(AuthorUser authorUser);
 
 
+    Long lock(int id);
 }

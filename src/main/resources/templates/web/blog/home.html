@@ -27,16 +27,16 @@
 				</ul>
 			</div>
 			<div class="row ">
-				<ul class="list-unstyled" >
+				<ul class="list-unstyled" style="width: 100%" >
 					<li class="media my-4" th:each="homeArticle:${homeArticleList}">
-						<a th:href="@{'/article/'+${homeArticle.uid}}"><img class="mr-3 rounded h-120px" th:src="@{${homeArticle.imgUrlMin}}" alt="user avatar"></a>
+						<a th:href="@{'/article/'+${homeArticle.uid}}"><img class="mr-3 rounded h-80px" th:src="@{${homeArticle.imgUrlMin}}" alt="user avatar"></a>
 						<div class="media-body">
                             <h5 class="mt-0 mb-1">
 								<a th:if="${homeArticle.seriesTitle!=null}" th:href="@{'/article/'+${homeArticle.uid}}"  style="font-size: 16px;font-weight:bold " th:text="@{'【'+${homeArticle.seriesTitle}+'】'}"></a>
 								<a th:href="@{'/article/'+${homeArticle.uid}}"  style="font-size: 16px;font-weight:bold " th:text="${homeArticle.articleTitle}"></a>
 								<small class="float-right text-danger font-weight-normal mr-4">gitHub</small>
 							</h5>
-							<div class="h-66px ov-hidden">
+							<div class="ov-hidden">
 								<span th:text="${homeArticle.articleMem}"/>
 							</div>
 

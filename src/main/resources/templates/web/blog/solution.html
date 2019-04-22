@@ -9,38 +9,43 @@
 <div th:replace="web/shareHtml/shareHeader"></div>
 <div class="container-fluid mt-4">
     <div class="row m-0">
-        <div class="col-9">
-            <div class="cursor-pointer" >
-                <span class="articleType p-2"><a th:href="@{'/solution/?position=2&language='+${language}}" th:class="${showPosition=='2'}? 'text-danger' : ''">精选</a></span>
-                <span class="articleType p-2 "><a th:href="@{'/solution/?position=1&language='+${language}}" th:class="${showPosition=='1'}? 'text-danger' : ''">候选</a></span>
-                <strong class="p-2 ml-5">语言：</strong>
-                <span class="languageType p-2 "><a th:href="@{'/solution/?position='+${showPosition}}" th:class="${language==''}? 'text-danger' : ''">全部</a></span>
-                <span class="languageType p-2 "><a th:href="@{'/solution/?position='+${showPosition}+'&language=java'}" th:class="${language=='java'}? 'text-danger' : ''">java</a></span>
-                <span class="languageType p-2 "><a th:href="@{'/solution/?position='+${showPosition}+'&language=.net'}" th:class="${language=='.net'}? 'text-danger' : ''">.net</a></span>
-                <span class="languageType p-2 "><a th:href="@{'/solution/?position='+${showPosition}+'&language=js'}" th:class="${language=='js'}? 'text-danger' : ''">js</a></span>
-            </div>
-            <div class="row mt-4">
-                <ul class="list-group w-100" th:each="solutionRecommendArticle:${solutionRecommendArticleList}">
-                    <li class="list-group-item"><a th:href="@{'/details/?id='+${solutionRecommendArticle.id}}" > <span th:if="${solutionRecommendArticle.seriesTitle!=null}">[<span th:text="${solutionRecommendArticle.seriesTitle}"></span>]</span> <span th:text="${solutionRecommendArticle.articleTitle}"></span></a></li>
+        <div class="col-8">
+            <!--<div class="cursor-pointer" >
+                &lt;!&ndash;<span class="articleType p-2"><a th:href="@{'/?position=2&language='+${language}}" th:class="${showPosition=='2'}? 'text-danger' : ''">精选</a></span>
+                <span class="articleType p-2 "><a th:href="@{'/?position=1&language='+${language}}" th:class="${showPosition=='1'}? 'text-danger' : ''">候选</a></span>
+                <strong class="p-2 ml-5">语言：</strong>&ndash;&gt;
+                <span class="languageType p-2 "><a th:href="@{'/?position='+${showPosition}}" th:class="${language==''}? 'text-danger' : ''">全部</a></span>
+                <span class="languageType p-2 "><a th:href="@{'/?position='+${showPosition}+'&language=java'}" th:class="${language=='java'}? 'text-danger' : ''">java</a></span>
+                <span class="languageType p-2 "><a th:href="@{'/?position='+${showPosition}+'&language=.net'}" th:class="${language=='.net'}? 'text-danger' : ''">.net</a></span>
+                <span class="languageType p-2 "><a th:href="@{'/?position='+${showPosition}+'&language=js'}" th:class="${language=='js'}? 'text-danger' : ''">js</a></span>
+            </div>-->
+            <div class="row mt-4" style="margin-top: 0.2rem!important;">
+                <ul class="list-group w-100" th:each="homeRecommendArticle:${homeRecommendArticleList}">
+                    <li class="list-group-item">
+                        <a th:if="${homeRecommendArticle.seriesTitle!=null}" th:href="@{'/series/'+${homeRecommendArticle.uid}}" > [<span th:text="${homeRecommendArticle.seriesTitle}">系列</span>]</a>
+                        <a th:href="@{'/article/'+${homeRecommendArticle.uid}}" > <span th:text="${homeRecommendArticle.articleTitle}">多种实现的依赖注入</span></a></li>
                 </ul>
             </div>
-            <div class="row mt-4">
-                <ul class="list-unstyled" >
-                    <li class="media my-4" th:each="solutionArticle:${solutionArticleList}">
-                        <a th:href="@{'/details/?id='+${solutionArticle.id}}"><img class="mr-3 rounded h-120px" th:src="@{${solutionArticle.imgUrlMin}}" alt="user avatar"></a>
+            <div class="row ">
+                <ul class="list-unstyled" style="width: 100%" >
+                    <li class="media my-4" th:each="homeArticle:${homeArticleList}">
+                        <a th:href="@{'/article/'+${homeArticle.uid}}"><img class="mr-3 rounded h-80px" th:src="@{${homeArticle.imgUrlMin}}" alt="user avatar"></a>
                         <div class="media-body">
-                            <h5 class="mt-0 mb-1"><a th:href="@{'/details/?id='+${solutionArticle.id}}" ><span th:if="${solutionArticle.seriesTitle!=null}">[<span th:text="${solutionArticle.seriesTitle}"></span>]</span> <span th:text="${solutionArticle.articleTitle}"></span></a>
+                            <h5 class="mt-0 mb-1">
+                                <a th:if="${homeArticle.seriesTitle!=null}" th:href="@{'/article/'+${homeArticle.uid}}"  style="font-size: 16px;font-weight:bold " th:text="@{'【'+${homeArticle.seriesTitle}+'】'}"></a>
+                                <a th:href="@{'/article/'+${homeArticle.uid}}"  style="font-size: 16px;font-weight:bold " th:text="${homeArticle.articleTitle}"></a>
                                 <small class="float-right text-danger font-weight-normal mr-4">gitHub</small>
                             </h5>
-                            <div class="h-66px ov-hidden">
-								<span th:text="${solutionArticle.articleMem}">
+                            <div class="ov-hidden">
+                                <span th:text="${homeArticle.articleMem}"/>
                             </div>
 
                             <div class="mt-1">
-                                <a href="" th:text="${solutionArticle.khName}"></a>
-                                <a th:href="@{'/details/?id='+${solutionArticle.id}}">评论:<span th:text="${solutionArticle.commentCount}"></span></a>
-                                <a th:href="@{'/details/?id='+${solutionArticle.id}}">阅读:<span th:text="${solutionArticle.readCount}"></span></a>
-                                <a th:href="@{'/details/?id='+${solutionArticle.id}}">实践:<span  th:text="${solutionArticle.practiceCount}"></span></a>
+                                <a href="" th:text="${homeArticle.khName}"></a>
+                                <a th:href="@{'/article/'+${homeArticle.uid}}">评论:<span th:text="${homeArticle.commentCount}"></span></a>
+                                <a th:href="@{'/article/'+${homeArticle.uid}}">阅读:<span th:text="${homeArticle.readCount}"></span></a>
+                                <a th:href="@{'/article/'+${homeArticle.uid}}">实践:<span  th:text="${homeArticle.practiceCount}"></span></a>
+                                <span th:if="${homeArticle.aiComment!=null}"  style="color: red;" th:text="@{'AI:'+${homeArticle.aiComment}}"></span>
                             </div>
                         </div>
                     </li>
@@ -53,24 +58,32 @@
                 </ul>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-4">
             <div class="card">
+                <div class="card-header text-white bg-dark">最新实践</div>
+                <ul class="list-group" th:each="practiceArticle:${practiceArticleList}">
+                    <li class="list-group-item">
+                        <a th:if="${practiceArticle.seriesTitle!=null}" th:href="@{'/series/'+${practiceArticle.uid}}" > [<span th:text="${practiceArticle.seriesTitle}">系列</span>]</a>
+                        <a th:href="@{'/article/'+${practiceArticle.uid}}" ><span th:text="${practiceArticle.articleTitle}">多种实现的依赖注入</span></a>
+                    </li>
+                </ul>
+            </div>
+            <!--<div class="card">
                 <div class="card-header text-white bg-dark">编辑推荐</div>
                 <ul class="list-group" th:each="editorRecommendArticle:${editorRecommendArticleList}">
                     <li class="list-group-item">
-                        <a th:href="@{'/details/?id='+${editorRecommendArticle.id}}" ><span th:if="${editorRecommendArticle.seriesTitle!=null}">
-							[<span th:text="${editorRecommendArticle.seriesTitle}"></span>]</span><span th:text="${editorRecommendArticle.articleTitle}"></span></a>
+                        <a th:if="${editorRecommendArticle.seriesTitle!=null}" th:href="@{'/series/'+${editorRecommendArticle.uid}}" > [<span th:text="${editorRecommendArticle.seriesTitle}">系列</span>]</a>
+                        <a th:href="@{'/article/'+${editorRecommendArticle.uid}}" ><span th:text="${editorRecommendArticle.articleTitle}">多种实现的依赖注入</span></a>
                     </li>
-                    <!--<div class="card-footer">Card footer</div>-->
                 </ul>
-            </div>
+            </div>-->
+
         </div>
     </div>
 </div>
 
-
 <div th:replace="web/shareHtml/shareFoot"></div>
-<script src="/web/js/home.js"></script>
+<script src="/web/js/blog/home.js"></script>
 <script>
     //1：从后端Controller把分页page信息传递到前端
     //2：设置分页的UL的ID为page

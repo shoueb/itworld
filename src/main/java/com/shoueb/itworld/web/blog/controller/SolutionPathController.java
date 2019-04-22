@@ -12,17 +12,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import java.util.List;
 
 /**
- * @Description: 首页
+ * @Description: 解决方案
  * @Author: yuangui.hu
- * @Date: 2019/1/12 13:22
+ * @Date: 2019/02/15
  */
 @Controller
 @RequestMapping("/")
-public class HomePathController extends BaseController {
+public class SolutionPathController extends BaseController {
     /**
      * 博客Service
      */
@@ -30,9 +29,9 @@ public class HomePathController extends BaseController {
     private BlogArticleService blogArticleService;
 
     /**
-     * @return 跳转到首页
+     * @return 跳转到解决方案
      **/
-    @GetMapping(value = "/")
+    @GetMapping(value = "/solution")
     public String index(){
         request.setAttribute("home","active");
         //条件
@@ -56,24 +55,20 @@ public class HomePathController extends BaseController {
         //servce 调用
         //1：头部推荐【3条】
         List<BlogArticleHotRO> homeRecommendArticle= blogArticleService.queryHomeRecommendArticle();
-        //2：编辑推荐【10条】
-        blogArticleHot.setRows(10);
-        blogArticleHot.setEditorRecommend(BlogEditorRecommendEnum.EDITOR_RECOMMEND.getKey());
-        List<BlogArticleHotRO> editorRecommendArticle= blogArticleService.queryEditorRecommendArticle(blogArticleHot);
-        //2：最新实践【10条】
+
+        //2：最新实践【20条】
+        blogArticleHot.setRows(20);
         blogArticleHot.setEditorRecommend(BlogEditorRecommendEnum.ALL.getKey());
-        blogArticleHot.setSeriesType(SeriesTypeEnum.PRACTICE.getKey());
+        blogArticleHot.setSeriesType(SeriesTypeEnum.SOLUTION_PRACTICE.getKey());
         List<BlogArticleHotRO> practiceArticleList= blogArticleService.queryPracticeArticleList(blogArticleHot);
 
-        //3：精选15条 文章【15条】
+        //3：解决方案15条
         blogArticleHot.setRows(15);
         blogArticleHot.setEditorRecommend(BlogEditorRecommendEnum.ALL.getKey());
-        blogArticleHot.setSeriesType(SeriesTypeEnum.SERIAL.getKey());
-        blogArticleHot.setShowPosition(BlogShowPositionEnum.ESSENCE.getKey());
+        blogArticleHot.setSeriesType(SeriesTypeEnum.SOLUTION.getKey());
         List<BlogArticleHotRO> homeArticle= blogArticleService.queryHomeArticle(blogArticleHot);
         //设置值
         request.setAttribute("homeRecommendArticleList",homeRecommendArticle);
-        request.setAttribute("editorRecommendArticleList",editorRecommendArticle);
         request.setAttribute("practiceArticleList",practiceArticleList);
         request.setAttribute("homeArticleList",homeArticle);
         //回显
@@ -81,6 +76,6 @@ public class HomePathController extends BaseController {
         request.setAttribute("language",language);
         request.setAttribute("page",page);
         //跳转
-        return "web/blog/home";
+        return "web/blog/solution";
     }
 }
